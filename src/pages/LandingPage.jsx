@@ -118,18 +118,22 @@ const LandingPage = () => {
               muted
               loop
               playsInline
-              className="object-cover absolute inset-0 w-full h-full"
+              className="object-cover absolute inset-0 w-full h-full z-0"
+              poster="https://images.pexels.com/photos/4056816/pexels-photo-4056816.jpeg?auto=compress&cs=tinysrgb&w=1600"
               src="https://assets.mixkit.co/videos/preview/mixkit-doctor-explaining-something-to-a-patient-41872-large.mp4"
             />
             
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#EBF2FF]/80 to-[#DBEAFE]/60 z-0" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#EBF2FF]/60 to-[#DBEAFE]/40 z-10" />
 
             {/* Content Over Overlay */}
-            <div className="relative z-10 flex flex-col items-start justify-start h-full p-8 md:p-12 pt-36 max-w-[88rem] mx-auto w-full">
+            <div className="relative z-20 flex flex-col items-start justify-start h-full p-8 md:p-12 pt-36 max-w-[88rem] mx-auto w-full">
               
-              <h1 className="text-[#0A1628] text-5xl md:text-6xl font-medium leading-tight max-w-xl mb-4" style={{ letterSpacing: '-0.04em' }}>
-                Your Health,<br />Guided by AI
+              <h1 className="text-[#0A1628] text-5xl md:text-6xl lg:text-7xl font-black max-w-xl mb-6 font-display leading-[1.05]" style={{ letterSpacing: '-0.04em' }}>
+                Your Health,<br />
+                <span className="bg-gradient-to-r from-[#1A6FE8] via-[#0f6df0] to-[#0A3D8F] bg-clip-text text-transparent">
+                  Guided by AI
+                </span>
               </h1>
               
               <p className="text-[#0A1628]/70 text-base md:text-lg max-w-md mb-8 leading-relaxed" style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif" }}>
@@ -302,15 +306,16 @@ const LandingPage = () => {
               muted
               loop
               playsInline
-              className="object-cover absolute inset-0 w-full h-full opacity-60"
+              className="object-cover absolute inset-0 w-full h-full opacity-60 z-0"
+              poster="https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg?auto=compress&cs=tinysrgb&w=1600"
               src="https://assets.mixkit.co/videos/preview/mixkit-medical-consultation-with-a-tablet-41874-large.mp4"
             />
             
             {/* Dark vignette overlay to ensure text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/30 to-transparent z-0" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/40 to-transparent z-10" />
 
             {/* Overlay Content */}
-            <div className="relative z-10 p-10 md:p-12">
+            <div className="relative z-20 p-10 md:p-12">
               <h3 className="text-4xl md:text-5xl font-medium leading-tight mb-5 text-white" style={{ letterSpacing: '-0.03em' }}>
                 Rural Healthcare
               </h3>
