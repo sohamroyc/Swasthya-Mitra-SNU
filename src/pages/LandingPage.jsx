@@ -119,7 +119,7 @@ const LandingPage = () => {
               loop
               playsInline
               className="object-cover absolute inset-0 w-full h-full"
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4"
+              src="https://assets.mixkit.co/videos/preview/mixkit-doctor-explaining-something-to-a-patient-41872-large.mp4"
             />
             
             {/* Gradient Overlay */}
@@ -303,7 +303,7 @@ const LandingPage = () => {
               loop
               playsInline
               className="object-cover absolute inset-0 w-full h-full opacity-60"
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4"
+              src="https://assets.mixkit.co/videos/preview/mixkit-medical-consultation-with-a-tablet-41874-large.mp4"
             />
             
             {/* Dark vignette overlay to ensure text contrast */}
