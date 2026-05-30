@@ -1,282 +1,352 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import Footer from '../components/Footer';
+import { ArrowRight } from 'lucide-react';
+
+const LogoIcon = ({ className = 'w-7 h-7' }) => (
+  <svg
+    className={className}
+    viewBox="0 0 256 256"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M 128 32 C 128 32 96 64 64 96 L 64 128 L 96 128 L 96 192 L 160 192 L 160 128 L 192 128 L 192 96 C 160 64 128 32 128 32 Z M 48 112 L 16 112 L 16 144 L 48 144 Z M 208 112 L 240 112 L 240 144 L 208 144 Z" />
+  </svg>
+);
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
-  const features = [
-    {
-      path: '/main-wellness-dashboard',
-      title: 'Wellness Dashboard',
-      description: 'Track vitals, activity, and wellness goals with real-time AI insights.',
-      icon: 'dashboard',
-      gradient: 'from-blue-500 to-blue-600',
-      bg: 'bg-blue-50',
-      text: 'text-blue-600',
-    },
-    {
-      path: '/ai-symptom-checker-interface',
-      title: 'Symptom Checker',
-      description: 'Describe symptoms and receive instant AI-powered health guidance.',
-      icon: 'stethoscope',
-      gradient: 'from-rose-500 to-pink-600',
-      bg: 'bg-rose-50',
-      text: 'text-rose-600',
-    },
-    {
-      path: '/ai-x-ray-analysis-tool',
-      title: 'X-Ray Analysis',
-      description: 'Upload medical imaging for rapid AI-assisted diagnostic review.',
-      icon: 'radiology',
-      gradient: 'from-violet-500 to-purple-600',
-      bg: 'bg-violet-50',
-      text: 'text-violet-600',
-    },
-    {
-      path: '/medication-manager-calendar',
-      title: 'Medication Tracker',
-      description: 'Never miss a dose with smart scheduling and reminders.',
-      icon: 'medication',
-      gradient: 'from-emerald-500 to-green-600',
-      bg: 'bg-emerald-50',
-      text: 'text-emerald-600',
-    },
-    {
-      path: '/patient-profile-records',
-      title: 'Medical Records',
-      description: 'Securely store and access your complete health history anytime.',
-      icon: 'folder_shared',
-      gradient: 'from-indigo-500 to-indigo-600',
-      bg: 'bg-indigo-50',
-      text: 'text-indigo-600',
-    },
-    {
-      path: '/health-reports-analytics',
-      title: 'Health Analytics',
-      description: 'Visualize trends and patterns in your health data over time.',
-      icon: 'monitoring',
-      gradient: 'from-amber-500 to-orange-600',
-      bg: 'bg-amber-50',
-      text: 'text-amber-600',
-    },
-    {
-      path: '/emergency-clinic-locator',
-      title: 'Emergency Finder',
-      description: 'Locate the nearest clinics and hospitals in seconds.',
-      icon: 'emergency',
-      gradient: 'from-red-500 to-red-600',
-      bg: 'bg-red-50',
-      text: 'text-red-600',
-    },
-    {
-      path: '/first-aid-knowledge-base',
-      title: 'First Aid Guide',
-      description: 'Step-by-step instructions for common emergencies and injuries.',
-      icon: 'local_hospital',
-      gradient: 'from-teal-500 to-cyan-600',
-      bg: 'bg-teal-50',
-      text: 'text-teal-600',
-    },
+  const handleStart = () => {
+    navigate(user ? '/main-wellness-dashboard' : '/create-account');
+  };
+
+  const handleOpenApp = () => {
+    navigate(user ? '/main-wellness-dashboard' : '/login');
+  };
+
+  // Hero Marquee Modules
+  const heroModules = [
+    { text: 'AI Symptom Checker', style: { fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: '-0.02em', fontSize: '15px' } },
+    { text: 'X-Ray Analyser', style: { fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: '0.06em', fontSize: '13px', textTransform: 'uppercase' } },
+    { text: 'AI Dermatologist', style: { fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: '0.01em', fontSize: '15px', fontStyle: 'italic' } },
+    { text: 'Medication Manager', style: { fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: '0.10em', fontSize: '13px', textTransform: 'uppercase' } },
+    { text: 'Govt. Schemes Finder', style: { fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '-0.01em', fontSize: '16px' } },
+    { text: 'Emergency Locator', style: { fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: '0.04em', fontSize: '14px' } },
+    { text: 'Wellness Dashboard', style: { fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: '-0.03em', fontSize: '13px' } },
   ];
 
-  const stats = [
-    { value: '50K+', label: 'Active Users' },
-    { value: '99.2%', label: 'Accuracy Rate' },
-    { value: '24/7', label: 'AI Availability' },
-    { value: '500+', label: 'Conditions Covered' },
+  // Backers Marquee Partners
+  const partners = [
+    { text: 'IndiaAI Mission', style: { fontFamily: "'Times New Roman', Times, serif", fontWeight: 400, letterSpacing: '0.02em', fontSize: '14px' } },
+    { text: 'Ayushman Bharat', style: { fontFamily: "'Arial Black', Gadget, sans-serif", fontWeight: 900, letterSpacing: '0.06em', fontSize: '16px' } },
+    { text: 'e-Sanjeevani', style: { fontFamily: 'Impact, Charcoal, sans-serif', fontWeight: 700, letterSpacing: '0.05em', fontSize: '18px' } },
+    { text: 'ABDM', style: { fontFamily: 'Georgia, serif', fontWeight: 600, letterSpacing: '-0.02em', fontSize: '17px' } },
+    { text: 'Jan Aushadhi', style: { fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", fontWeight: 700, letterSpacing: '-0.01em', fontSize: '15px' } },
+    { text: 'NHA', style: { fontFamily: 'Verdana, Geneva, sans-serif', fontWeight: 700, letterSpacing: '0.06em', fontSize: '14px', textTransform: 'uppercase' } },
+    { text: 'PM-JAY', style: { fontFamily: "'Courier New', Courier, monospace", fontWeight: 700, letterSpacing: '0.16em', fontSize: '14px' } },
+    { text: 'Qure.ai', style: { fontFamily: "'Palatino Linotype', 'Book Antiqua', Palatino, serif", fontWeight: 500, letterSpacing: '0.03em', fontSize: '15px' } },
   ];
 
   return (
-    <div className="min-h-screen bg-white font-display">
-      {/* ── Navbar ── */}
-      <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-100">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/25">
-              <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
-            </div>
-            <span className="text-xl font-bold tracking-tight text-slate-900">Arogya</span><span className="text-blue-600">Setu</span>
-          </div>
+    <div className="flex flex-col bg-[#F8FAFF] min-h-screen">
+      {/* Dynamic Marquee CSS keyframes */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes backers-marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+          display: flex;
+          width: max-content;
+          animation: marquee 22s linear infinite;
+        }
+        .backers-track {
+          display: flex;
+          width: max-content;
+          animation: backers-marquee 30s linear infinite;
+        }
+      `}} />
 
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Features</a>
-            <a href="#stats" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">About</a>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {user ? (
-              <>
-                <button
-                  onClick={() => navigate('/main-wellness-dashboard')}
-                  className="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors px-4 py-2"
-                >
-                  Dashboard
-                </button>
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                    {(user.name || "User").split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
-                  </div>
-                  <span className="text-sm font-semibold text-slate-700 hidden sm:inline">{user.name || "User"}</span>
-                </div>
-                <button
-                  onClick={async () => { await logout(); }}
-                  className="text-sm font-semibold text-slate-500 hover:text-red-600 transition-colors px-3 py-2"
-                >
-                  Sign out
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  onClick={() => navigate('/login')}
-                  className="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors px-4 py-2"
-                >
-                  Sign in
-                </button>
-                <button
-                  onClick={() => navigate('/create-account')}
-                  className="text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-full px-5 py-2.5 transition-colors shadow-sm"
-                >
-                  Get Started
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-      </nav>
-
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden">
-        {/* Decorative background */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-b from-blue-50 via-blue-50/50 to-transparent rounded-full blur-3xl opacity-70" />
-          <div className="absolute top-40 right-0 w-72 h-72 bg-violet-100 rounded-full blur-3xl opacity-40 animate-float" />
-          <div className="absolute top-20 left-10 w-56 h-56 bg-rose-100 rounded-full blur-3xl opacity-30 animate-float" style={{ animationDelay: '2s' }} />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 pt-20 pb-24 md:pt-28 md:pb-32">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="animate-fade-in-up">
-              <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold tracking-wide mb-6">
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>auto_awesome</span>
-                AI-POWERED HEALTHCARE
-              </span>
+      {/* ── 1. Navbar + Hero wrapper (h-screen container) ── */}
+      <div className="h-screen w-full relative flex flex-col overflow-hidden container mx-auto">
+        
+        {/* Navbar */}
+        <nav className="absolute top-0 left-0 right-0 z-20 px-6 py-5">
+          <div className="max-w-[88rem] mx-auto flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center gap-2">
+              <LogoIcon className="w-7 h-7 text-[#1A6FE8]" />
+              <span className="text-2xl font-medium tracking-tight text-[#0A1628]">Swasthya Mitra</span>
             </div>
 
-            <h1 className="animate-fade-in-up stagger-1 text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08]">
-              Your Health,{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-violet-500 bg-clip-text text-transparent">
-                Reimagined
-              </span>
-            </h1>
-
-            <p className="animate-fade-in-up stagger-2 mt-6 text-lg md:text-xl text-slate-500 leading-relaxed max-w-2xl mx-auto">
-              Meet your AI health companion — symptom analysis, medical records, medication tracking, and emergency guidance — all in one beautifully crafted platform.
-            </p>
-
-            <div className="animate-fade-in-up stagger-3 flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-              <button
-                onClick={() => navigate('/create-account')}
-                className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-8 py-3.5 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300"
-              >
-                Start for Free
-                <span className="material-symbols-outlined text-lg group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
-              </button>
-
+            {/* Links */}
+            <div className="hidden md:flex items-center gap-8">
+              {['Platform', 'Modules', 'Eligibility', 'Emergency', 'About'].map((link) => (
+                <a
+                  key={link}
+                  href={`#${link.toLowerCase()}`}
+                  className="text-base text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors duration-200"
+                >
+                  {link}
+                </a>
+              ))}
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── Stats Strip ── */}
-      <section id="stats" className="border-y border-slate-100 bg-slate-50/50">
-        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, i) => (
-            <div key={i} className="text-center">
-              <p className="text-3xl md:text-4xl font-extrabold text-slate-900">{stat.value}</p>
-              <p className="mt-1 text-sm font-medium text-slate-500">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Features Grid ── */}
-      <section id="features" className="max-w-7xl mx-auto px-6 py-20 md:py-28">
-        <div className="text-center mb-16">
-          <span className="text-sm font-semibold text-blue-600 tracking-widest uppercase">Everything You Need</span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Powerful tools for your well-being
-          </h2>
-          <p className="mt-4 text-slate-500 max-w-lg mx-auto">
-            From AI diagnostics to emergency guidance — explore a full suite of healthcare tools designed around you.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              onClick={() => navigate(feature.path)}
-              className={`animate-fade-in-up stagger-${index + 1} group cursor-pointer relative rounded-2xl border border-slate-100 bg-white p-6 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300`}
+            {/* Open App */}
+            <button
+              onClick={handleOpenApp}
+              className="bg-[#1A6FE8] text-white text-base font-medium px-7 py-2.5 rounded-full hover:bg-[#1558C0] transition-colors duration-200 shadow-md shadow-blue-500/10 active:scale-95 transform"
             >
-              <div className={`${feature.bg} h-12 w-12 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                <span className={`material-symbols-outlined ${feature.text} text-xl`} style={{ fontVariationSettings: "'FILL' 1" }}>
-                  {feature.icon}
-                </span>
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-slate-500 leading-relaxed">
-                {feature.description}
+              Open App
+            </button>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section className="flex-1 px-6 pt-20 pb-6 flex items-end">
+          <div className="relative w-full rounded-2xl overflow-hidden" style={{ height: 'calc(100vh - 96px)' }}>
+            
+            {/* Background Medical Video */}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="object-cover absolute inset-0 w-full h-full"
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4"
+            />
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#EBF2FF]/80 to-[#DBEAFE]/60 z-0" />
+
+            {/* Content Over Overlay */}
+            <div className="relative z-10 flex flex-col items-start justify-start h-full p-8 md:p-12 pt-36 max-w-[88rem] mx-auto w-full">
+              
+              <h1 className="text-[#0A1628] text-5xl md:text-6xl font-medium leading-tight max-w-xl mb-4" style={{ letterSpacing: '-0.04em' }}>
+                Your Health,<br />Guided by AI
+              </h1>
+              
+              <p className="text-[#0A1628]/70 text-base md:text-lg max-w-md mb-8 leading-relaxed" style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif" }}>
+                AI-powered multimodal healthcare guidance — symptom checking, X-ray analysis, dermatology, medication management, government scheme discovery, and emergency access. Built for India.
               </p>
-              <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Explore
-                <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </span>
+
+              {/* Get Started Button */}
+              <button
+                onClick={handleStart}
+                className="inline-flex items-center gap-3 bg-[#1A6FE8] text-white text-base md:text-lg font-medium pl-8 pr-2 py-2 rounded-full hover:bg-[#1558C0] transition-colors duration-200 group shadow-lg shadow-blue-500/20 active:scale-95 transform"
+              >
+                Get Started
+                <span className="bg-white rounded-full p-2 group-hover:translate-x-1 transition-transform duration-200 flex items-center justify-center">
+                  <ArrowRight className="w-5 h-5 text-[#1A6FE8]" />
+                </span>
+              </button>
+
+              {/* Module Marquee */}
+              <div className="mt-auto w-full max-w-lg overflow-hidden py-4 border-t border-blue-500/10">
+                <div className="marquee-track">
+                  {/* First render */}
+                  {heroModules.map((item, idx) => (
+                    <span key={`m1-${idx}`} className="mx-7 shrink-0 text-[#0A1628]/60 whitespace-nowrap" style={item.style}>
+                      {item.text}
+                    </span>
+                  ))}
+                  {/* Seamless loop render */}
+                  {heroModules.map((item, idx) => (
+                    <span key={`m2-${idx}`} className="mx-7 shrink-0 text-[#0A1628]/60 whitespace-nowrap" style={item.style}>
+                      {item.text}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
             </div>
-          ))}
+          </div>
+        </section>
+
+      </div>
+
+      {/* ── 2. Info Section ("Meet ArogyaSetu.") ── */}
+      <section id="platform" className="bg-[#F8FAFF] px-6 py-24">
+        <div className="max-w-[88rem] mx-auto">
+          
+          {/* Row 1: 2-col header */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-start">
+            <div>
+              <h2 className="text-[#0A1628] text-4xl md:text-5xl font-medium leading-tight mb-8" style={{ letterSpacing: '-0.03em' }}>
+                Meet ArogyaSetu.
+              </h2>
+              {/* Explore Button */}
+              <button
+                onClick={handleStart}
+                className="inline-flex items-center gap-3 bg-[#1A6FE8] text-white text-base font-medium pl-6 pr-2 py-1.5 rounded-full hover:bg-[#1558C0] transition-colors duration-200 group shadow-md"
+              >
+                Explore Platform
+                <span className="bg-white rounded-full p-1.5 group-hover:translate-x-1 transition-transform duration-200 flex items-center justify-center">
+                  <ArrowRight className="w-4 h-4 text-[#1A6FE8]" />
+                </span>
+              </button>
+            </div>
+            <div>
+              <p className="text-[#0A1628]/70 text-2xl md:text-3xl leading-relaxed font-light">
+                ArogyaSetu is a unified AI healthcare guidance platform that brings symptom checking, medical imaging, dermatology, medication tracking, government scheme discovery, and emergency clinic location together — built specifically for Indian users across all socioeconomic backgrounds.
+              </p>
+            </div>
+          </div>
+
+          {/* Row 2: 4-col card grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            {/* Card 1 (spans 2 cols on lg) */}
+            <div className="lg:col-span-2 rounded-2xl bg-gradient-to-br from-[#1A6FE8] to-[#0A3D8F] p-7 min-h-80 flex flex-col justify-between shadow-lg shadow-blue-500/10 hover:scale-[1.01] transition-transform duration-300">
+              <h3 className="text-white text-2xl font-medium leading-snug" style={{ letterSpacing: '-0.02em' }}>
+                AI that understands<br />your symptoms
+              </h3>
+              <p className="text-white/70 text-base max-w-xs leading-relaxed font-light">
+                Conversational AI gathers your full medical history and context — not just surface-level questions — before guiding you.
+              </p>
+            </div>
+
+            {/* Card 2: Solid #0A1628 */}
+            <div className="rounded-2xl bg-[#0A1628] p-7 min-h-80 flex flex-col justify-between shadow-lg hover:scale-[1.01] transition-transform duration-300">
+              <h3 className="text-white text-2xl font-medium leading-snug">
+                Built for<br />Indian skin.
+              </h3>
+              <p className="text-white/60 text-base leading-relaxed font-light">
+                Our dermatology module is trained and tested for Fitzpatrick IV–VI skin tones — accuracy for South Asian users, not an afterthought.
+              </p>
+            </div>
+
+            {/* Card 3: Solid #1A6FE8 */}
+            <div className="rounded-2xl bg-[#1A6FE8] p-7 min-h-80 flex flex-col justify-between shadow-lg hover:scale-[1.01] transition-transform duration-300">
+              <h3 className="text-white text-2xl font-medium leading-snug">
+                Your schemes,<br />discovered.
+              </h3>
+              <p className="text-white/70 text-base leading-relaxed font-light">
+                No more missing out on Ayushman Bharat PM-JAY or state health cards. ArogyaSetu finds the schemes you're actually eligible for.
+              </p>
+            </div>
+
+            {/* Card 4: bg-white border border-[#DBEAFE] */}
+            <div className="rounded-2xl bg-white border border-[#DBEAFE] p-7 min-h-80 flex flex-col justify-between shadow-sm hover:scale-[1.01] transition-transform duration-300">
+              <h3 className="text-[#0A1628] text-2xl font-medium leading-snug">
+                Last mile<br />care access.
+              </h3>
+              <p className="text-[#4A5568] text-base leading-relaxed font-light">
+                From diagnosis to the nearest clinic or SOS emergency — ArogyaSetu connects advice to actual care.
+              </p>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="mx-6 mb-20">
-        <div className="max-w-5xl mx-auto rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-8 py-16 md:px-16 text-center relative overflow-hidden">
-          {/* Decorative orbs */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-violet-500/20 rounded-full blur-3xl" />
+      {/* ── 3. Trusted By Section ── */}
+      <section className="bg-[#F8FAFF] px-6 py-16 border-t border-slate-100">
+        <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+          
+          {/* Left Col (1/4) */}
+          <div className="text-[#0A1628]/70 text-base leading-relaxed font-medium">
+            Aligned with India's<br />national health initiatives.
+          </div>
 
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-              Ready to take control of your health?
-            </h2>
-            <p className="mt-4 text-slate-400 max-w-lg mx-auto">
-              Join thousands of users who trust Swasthya Mitra for smarter, faster, and more accessible healthcare.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <button
-                onClick={() => navigate('/create-account')}
-                className="group flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-900 font-semibold rounded-full px-8 py-3.5 transition-all duration-300 shadow-lg"
-              >
-                Get Started — It's Free
-                <span className="material-symbols-outlined text-lg group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
-              </button>
-              <button
-                onClick={() => navigate('/login')}
-                className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-full px-8 py-3.5 border border-white/10 transition-all duration-300"
-              >
-                Sign In
-              </button>
+          {/* Right Col (3/4) */}
+          <div className="md:col-span-3 overflow-hidden py-2">
+            <div className="backers-track">
+              {/* First render */}
+              {partners.map((partner, idx) => (
+                <span key={`p1-${idx}`} className="mx-10 shrink-0 text-[#0A1628]/50 whitespace-nowrap flex items-center justify-center" style={partner.style}>
+                  {partner.text}
+                </span>
+              ))}
+              {/* Seamless loop render */}
+              {partners.map((partner, idx) => (
+                <span key={`p2-${idx}`} className="mx-10 shrink-0 text-[#0A1628]/50 whitespace-nowrap flex items-center justify-center" style={partner.style}>
+                  {partner.text}
+                </span>
+              ))}
             </div>
           </div>
+
+        </div>
+      </section>
+
+      {/* ── 4. Use Cases Section ── */}
+      <section id="modules" className="bg-[#F8FAFF] px-6 py-24 border-t border-slate-100">
+        <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          
+          {/* Left column */}
+          <div className="md:pr-12 md:pt-2">
+            <span className="text-[#1A6FE8] text-sm font-medium mb-2 block uppercase tracking-wider">
+              ArogyaSetu in Practice
+            </span>
+            <h2 className="text-5xl md:text-6xl font-medium leading-none mb-6 text-[#0A1628]" style={{ letterSpacing: '-0.04em' }}>
+              Use cases
+            </h2>
+            <p className="text-[#0A1628]/60 text-base md:text-lg leading-relaxed max-w-sm font-light">
+              ArogyaSetu powers healthcare access for individuals in rural and semi-urban India, ASHA workers, Jan Aushadhi pharmacy networks, telemedicine operators, and anyone navigating India's public health system.
+            </p>
+          </div>
+
+          {/* Right column */}
+          <div className="relative rounded-3xl overflow-hidden min-h-[720px] bg-gradient-to-br from-[#1A6FE8] to-[#0A3D8F] shadow-2xl flex flex-col justify-end">
+            {/* Background Medical Video Backdrop */}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="object-cover absolute inset-0 w-full h-full opacity-60"
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4"
+            />
+            
+            {/* Dark vignette overlay to ensure text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/30 to-transparent z-0" />
+
+            {/* Overlay Content */}
+            <div className="relative z-10 p-10 md:p-12">
+              <h3 className="text-4xl md:text-5xl font-medium leading-tight mb-5 text-white" style={{ letterSpacing: '-0.03em' }}>
+                Rural Healthcare
+              </h3>
+              <p className="text-white/70 text-base max-w-md mb-8 leading-relaxed font-light">
+                Swasthya Mitra gives someone in a small town or village what currently doesn't exist — a dependable AI-backed first point of contact that triages smartly, surfaces government entitlements, and points them to the nearest clinic.
+              </p>
+              
+              {/* Explore Link with circle */}
+              <div className="flex items-center gap-4 cursor-pointer group" onClick={handleStart}>
+                <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center hover:bg-white/40 group-hover:scale-105 transition-all duration-200">
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-white font-medium text-base">Explore modules</span>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
       {/* ── Footer ── */}
-      <Footer />
+      <footer className="bg-white border-t border-slate-100 py-12 px-6">
+        <div className="max-w-[88rem] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2">
+            <LogoIcon className="w-6 h-6 text-[#1A6FE8]" />
+            <span className="font-semibold text-slate-800 text-lg">Swasthya Mitra</span>
+            <span className="text-slate-300">|</span>
+            <span className="text-slate-500 text-sm">ArogyaSetu AI</span>
+          </div>
+          <p className="text-slate-400 text-sm font-light">
+            © {new Date().getFullYear()} Swasthya Mitra. Crafted for healthcare accessibility.
+          </p>
+        </div>
+      </footer>
+
     </div>
   );
 };
