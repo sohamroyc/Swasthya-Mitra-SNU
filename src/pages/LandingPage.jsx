@@ -100,15 +100,34 @@ const LandingPage = () => {
         <section className="flex-1 pt-24 pb-6 flex items-end">
           <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/15" style={{ height: 'calc(100vh - 120px)' }}>
             
-            {/* Background Holographic Lungs Image */}
-            <img
-              src="/hero_hologram_lungs.png"
-              alt="Futuristic Holographic Lungs Diagnostics"
+            {/* Background Hero Video */}
+            <video
               className="object-cover absolute inset-0 w-full h-full"
-            />
-            
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/hero_hologram_lungs.png"
+            >
+              {/* Primary: Pexels medical/healthcare video */}
+              <source
+                src="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4"
+                type="video/mp4"
+              />
+              {/* Fallback 1 */}
+              <source
+                src="https://videos.pexels.com/video-files/4114012/4114012-hd_1920_1080_25fps.mp4"
+                type="video/mp4"
+              />
+              {/* Fallback 2: smaller */}
+              <source
+                src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
+                type="video/mp4"
+              />
+            </video>
+
             {/* Gradient Dark Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/45 to-transparent z-0" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/50 to-slate-950/20 z-0" />
 
             {/* Content Over Overlay */}
             <div className="relative z-10 flex flex-col items-start justify-between h-full p-8 md:p-14 max-w-[88rem] mx-auto w-full">
