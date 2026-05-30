@@ -1,7 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ArrowRight } from 'lucide-react';
+import { 
+  ArrowRight, 
+  Stethoscope, 
+  Sparkles, 
+  FileSpreadsheet, 
+  Flame, 
+  FolderHeart, 
+  Activity, 
+  ShieldCheck, 
+  ShieldAlert, 
+  Home, 
+  Leaf, 
+  Globe, 
+  Rss 
+} from 'lucide-react';
 
 const LogoIcon = ({ className = 'w-7 h-7' }) => (
   <svg
@@ -26,82 +40,56 @@ const LandingPage = () => {
     navigate(user ? '/main-wellness-dashboard' : '/login');
   };
 
-  // Hero Marquee Modules
-  const heroModules = [
-    { text: 'AI Symptom Checker', style: { fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: '-0.02em', fontSize: '15px' } },
-    { text: 'X-Ray Analyser', style: { fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: '0.06em', fontSize: '13px', textTransform: 'uppercase' } },
-    { text: 'AI Dermatologist', style: { fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: '0.01em', fontSize: '15px', fontStyle: 'italic' } },
-    { text: 'Medication Manager', style: { fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: '0.10em', fontSize: '13px', textTransform: 'uppercase' } },
-    { text: 'Govt. Schemes Finder', style: { fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '-0.01em', fontSize: '16px' } },
-    { text: 'Emergency Locator', style: { fontFamily: "'Inter', sans-serif", fontWeight: 700, letterSpacing: '0.04em', fontSize: '14px' } },
-    { text: 'Wellness Dashboard', style: { fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: '-0.03em', fontSize: '13px' } },
-  ];
-
-  // Backers Marquee Partners
+  // Partners Marquee Partners
   const partners = [
-    { text: 'IndiaAI Mission', style: { fontFamily: "'Times New Roman', Times, serif", fontWeight: 400, letterSpacing: '0.02em', fontSize: '14px' } },
-    { text: 'Ayushman Bharat', style: { fontFamily: "'Arial Black', Gadget, sans-serif", fontWeight: 900, letterSpacing: '0.06em', fontSize: '16px' } },
-    { text: 'e-Sanjeevani', style: { fontFamily: 'Impact, Charcoal, sans-serif', fontWeight: 700, letterSpacing: '0.05em', fontSize: '18px' } },
-    { text: 'ABDM', style: { fontFamily: 'Georgia, serif', fontWeight: 600, letterSpacing: '-0.02em', fontSize: '17px' } },
-    { text: 'Jan Aushadhi', style: { fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", fontWeight: 700, letterSpacing: '-0.01em', fontSize: '15px' } },
-    { text: 'NHA', style: { fontFamily: 'Verdana, Geneva, sans-serif', fontWeight: 700, letterSpacing: '0.06em', fontSize: '14px', textTransform: 'uppercase' } },
-    { text: 'PM-JAY', style: { fontFamily: "'Courier New', Courier, monospace", fontWeight: 700, letterSpacing: '0.16em', fontSize: '14px' } },
-    { text: 'Qure.ai', style: { fontFamily: "'Palatino Linotype', 'Book Antiqua', Palatino, serif", fontWeight: 500, letterSpacing: '0.03em', fontSize: '15px' } },
+    'IndiaAI Mission',
+    'Ayushman Bharat',
+    'ABDM',
+    'NHA India',
+    'MeitY',
+    'Startup India'
   ];
 
   return (
-    <div className="flex flex-col bg-[#F8FAFF] min-h-screen">
+    <div className="flex flex-col bg-[#F8FAFF] min-h-screen font-display">
       {/* Dynamic Marquee CSS keyframes */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
         @keyframes backers-marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .marquee-track {
-          display: flex;
-          width: max-content;
-          animation: marquee 22s linear infinite;
-        }
         .backers-track {
           display: flex;
           width: max-content;
-          animation: backers-marquee 30s linear infinite;
+          animation: backers-marquee 25s linear infinite;
         }
       `}} />
 
       {/* ── 1. Navbar + Hero wrapper (h-screen container) ── */}
-      <div className="h-screen w-full relative flex flex-col overflow-hidden container mx-auto">
+      <div className="h-screen w-full relative flex flex-col overflow-hidden container mx-auto px-4 md:px-6">
         
         {/* Navbar */}
-        <nav className="absolute top-0 left-0 right-0 z-20 px-6 py-5">
+        <nav className="absolute top-0 left-0 right-0 z-30 px-6 py-6">
           <div className="max-w-[88rem] mx-auto flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <LogoIcon className="w-7 h-7 text-[#1A6FE8]" />
-              <span className="text-2xl font-medium tracking-tight text-[#0A1628]">Swasthya Mitra</span>
+              <span className="text-2xl font-bold tracking-tight text-[#0A1628]">Swasthya Mitra</span>
             </div>
 
             {/* Links */}
             <div className="hidden md:flex items-center gap-8">
-              {['Platform', 'Modules', 'Eligibility', 'Emergency', 'About'].map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  className="text-base text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors duration-200"
-                >
-                  {link}
-                </a>
-              ))}
+              <a href="#platform" className="text-sm text-[#1A6FE8] font-bold border-b-2 border-[#1A6FE8] pb-1 transition-all">Platform</a>
+              <a href="#modules" className="text-sm text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors">Modules</a>
+              <a href="#eligibility" className="text-sm text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors">Eligibility</a>
+              <a href="#emergency" className="text-sm text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors">Emergency</a>
+              <a href="#about" className="text-sm text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors">About</a>
             </div>
 
             {/* Open App */}
             <button
               onClick={handleOpenApp}
-              className="bg-[#1A6FE8] text-white text-base font-medium px-7 py-2.5 rounded-full hover:bg-[#1558C0] transition-colors duration-200 shadow-md shadow-blue-500/10 active:scale-95 transform"
+              className="bg-[#1A6FE8] text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-[#1558C0] transition-all shadow-md shadow-blue-500/10 active:scale-95 transform"
             >
               Open App
             </button>
@@ -109,64 +97,83 @@ const LandingPage = () => {
         </nav>
 
         {/* Hero Section */}
-        <section className="flex-1 px-6 pt-20 pb-6 flex items-end">
-          <div className="relative w-full rounded-2xl overflow-hidden" style={{ height: 'calc(100vh - 96px)' }}>
+        <section className="flex-1 pt-24 pb-6 flex items-end">
+          <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/15" style={{ height: 'calc(100vh - 120px)' }}>
             
-            {/* Background Medical Video */}
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="object-cover absolute inset-0 w-full h-full z-0"
-              poster="https://images.pexels.com/photos/4056816/pexels-photo-4056816.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              src="https://assets.mixkit.co/videos/preview/mixkit-doctor-explaining-something-to-a-patient-41872-large.mp4"
+            {/* Background Holographic Lungs Image */}
+            <img
+              src="/hero_hologram_lungs.png"
+              alt="Futuristic Holographic Lungs Diagnostics"
+              className="object-cover absolute inset-0 w-full h-full"
             />
             
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#EBF2FF]/60 to-[#DBEAFE]/40 z-10" />
+            {/* Gradient Dark Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/45 to-transparent z-0" />
 
             {/* Content Over Overlay */}
-            <div className="relative z-20 flex flex-col items-start justify-start h-full p-8 md:p-12 pt-36 max-w-[88rem] mx-auto w-full">
+            <div className="relative z-10 flex flex-col items-start justify-between h-full p-8 md:p-14 max-w-[88rem] mx-auto w-full">
               
-              <h1 className="text-[#0A1628] text-5xl md:text-6xl lg:text-7xl font-black max-w-xl mb-6 font-display leading-[1.05]" style={{ letterSpacing: '-0.04em' }}>
-                Your Health,<br />
-                <span className="bg-gradient-to-r from-[#1A6FE8] via-[#0f6df0] to-[#0A3D8F] bg-clip-text text-transparent">
-                  Guided by AI
-                </span>
-              </h1>
-              
-              <p className="text-[#0A1628]/70 text-base md:text-lg max-w-md mb-8 leading-relaxed" style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif" }}>
-                AI-powered multimodal healthcare guidance — symptom checking, X-ray analysis, dermatology, medication management, government scheme discovery, and emergency access. Built for India.
-              </p>
+              {/* Central Title Area */}
+              <div className="max-w-2xl mt-12 md:mt-20">
+                <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 font-display" style={{ letterSpacing: '-0.04em' }}>
+                  Your Health,<br />
+                  <span className="text-[#4F92F8]">
+                    Guided by AI.
+                  </span>
+                </h1>
+                
+                <p className="text-white/80 text-sm md:text-base lg:text-lg max-w-xl mb-10 leading-relaxed font-light">
+                  ArogyaSetu integrates multimodal clinical AI with public health intelligence to provide precision care pathways for every citizen across the subcontinent.
+                </p>
 
-              {/* Get Started Button */}
-              <button
-                onClick={handleStart}
-                className="inline-flex items-center gap-3 bg-[#1A6FE8] text-white text-base md:text-lg font-medium pl-8 pr-2 py-2 rounded-full hover:bg-[#1558C0] transition-colors duration-200 group shadow-lg shadow-blue-500/20 active:scale-95 transform"
-              >
-                Get Started
-                <span className="bg-white rounded-full p-2 group-hover:translate-x-1 transition-transform duration-200 flex items-center justify-center">
-                  <ArrowRight className="w-5 h-5 text-[#1A6FE8]" />
-                </span>
-              </button>
-
-              {/* Module Marquee */}
-              <div className="mt-auto w-full max-w-lg overflow-hidden py-4 border-t border-blue-500/10">
-                <div className="marquee-track">
-                  {/* First render */}
-                  {heroModules.map((item, idx) => (
-                    <span key={`m1-${idx}`} className="mx-7 shrink-0 text-[#0A1628]/60 whitespace-nowrap" style={item.style}>
-                      {item.text}
+                {/* Hero Action Buttons */}
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <button
+                    onClick={handleStart}
+                    className="inline-flex items-center gap-3 bg-[#1A6FE8] text-white text-sm font-semibold pl-6 pr-2 py-2 rounded-full hover:bg-[#1558C0] transition-all group shadow-lg shadow-blue-500/20 active:scale-95 transform"
+                  >
+                    Get Started
+                    <span className="bg-white rounded-full p-1.5 group-hover:translate-x-1 transition-transform flex items-center justify-center">
+                      <ArrowRight className="w-4 h-4 text-[#1A6FE8]" />
                     </span>
-                  ))}
-                  {/* Seamless loop render */}
-                  {heroModules.map((item, idx) => (
-                    <span key={`m2-${idx}`} className="mx-7 shrink-0 text-[#0A1628]/60 whitespace-nowrap" style={item.style}>
-                      {item.text}
-                    </span>
-                  ))}
+                  </button>
+                  <button
+                    onClick={handleStart}
+                    className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold backdrop-blur transition-all active:scale-95 transform"
+                  >
+                    Clinical Safety
+                  </button>
                 </div>
+              </div>
+
+              {/* Lower Frosted-Glass Pill Tab Bar */}
+              <div className="w-full bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-4 mt-8 flex flex-wrap items-center justify-between gap-4">
+                
+                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
+                  <Stethoscope className="w-4.5 h-4.5 text-[#4F92F8]" />
+                  <span>AI Symptom Checker</span>
+                </div>
+                
+                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
+                  <Sparkles className="w-4.5 h-4.5 text-[#4F92F8]" />
+                  <span>Derm-Scan Pro</span>
+                </div>
+
+                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
+                  <FileSpreadsheet className="w-4.5 h-4.5 text-[#4F92F8]" />
+                  <span>Scheme Eligibility</span>
+                </div>
+
+                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
+                  <Flame className="w-4.5 h-4.5 text-[#4F92F8]" />
+                  <span>Emergency Response</span>
+                </div>
+
+                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
+                  <FolderHeart className="w-4.5 h-4.5 text-[#4F92F8]" />
+                  <span>ABHA Record</span>
+                </div>
+
               </div>
 
             </div>
@@ -175,180 +182,255 @@ const LandingPage = () => {
 
       </div>
 
-      {/* ── 2. Info Section ("Meet ArogyaSetu.") ── */}
-      <section id="platform" className="bg-[#F8FAFF] px-6 py-24">
+      {/* ── 2. Info Section ("Meet ArogyaSetu") ── */}
+      <section id="platform" className="bg-[#F8FAFF] px-6 py-24 border-t border-slate-100">
         <div className="max-w-[88rem] mx-auto">
           
-          {/* Row 1: 2-col header */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-start">
-            <div>
-              <h2 className="text-[#0A1628] text-4xl md:text-5xl font-medium leading-tight mb-8" style={{ letterSpacing: '-0.03em' }}>
-                Meet ArogyaSetu.
-              </h2>
-              {/* Explore Button */}
-              <button
-                onClick={handleStart}
-                className="inline-flex items-center gap-3 bg-[#1A6FE8] text-white text-base font-medium pl-6 pr-2 py-1.5 rounded-full hover:bg-[#1558C0] transition-colors duration-200 group shadow-md"
-              >
-                Explore Platform
-                <span className="bg-white rounded-full p-1.5 group-hover:translate-x-1 transition-transform duration-200 flex items-center justify-center">
-                  <ArrowRight className="w-4 h-4 text-[#1A6FE8]" />
-                </span>
-              </button>
-            </div>
-            <div>
-              <p className="text-[#0A1628]/70 text-2xl md:text-3xl leading-relaxed font-light">
-                ArogyaSetu is a unified AI healthcare guidance platform that brings symptom checking, medical imaging, dermatology, medication tracking, government scheme discovery, and emergency clinic location together — built specifically for Indian users across all socioeconomic backgrounds.
-              </p>
-            </div>
-          </div>
-
-          {/* Row 2: 4-col card grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            
-            {/* Card 1 (spans 2 cols on lg) */}
-            <div className="lg:col-span-2 rounded-2xl bg-gradient-to-br from-[#1A6FE8] to-[#0A3D8F] p-7 min-h-80 flex flex-col justify-between shadow-lg shadow-blue-500/10 hover:scale-[1.01] transition-transform duration-300">
-              <h3 className="text-white text-2xl font-medium leading-snug" style={{ letterSpacing: '-0.02em' }}>
-                AI that understands<br />your symptoms
-              </h3>
-              <p className="text-white/70 text-base max-w-xs leading-relaxed font-light">
-                Conversational AI gathers your full medical history and context — not just surface-level questions — before guiding you.
-              </p>
-            </div>
-
-            {/* Card 2: Solid #0A1628 */}
-            <div className="rounded-2xl bg-[#0A1628] p-7 min-h-80 flex flex-col justify-between shadow-lg hover:scale-[1.01] transition-transform duration-300">
-              <h3 className="text-white text-2xl font-medium leading-snug">
-                Built for<br />Indian skin.
-              </h3>
-              <p className="text-white/60 text-base leading-relaxed font-light">
-                Our dermatology module is trained and tested for Fitzpatrick IV–VI skin tones — accuracy for South Asian users, not an afterthought.
-              </p>
-            </div>
-
-            {/* Card 3: Solid #1A6FE8 */}
-            <div className="rounded-2xl bg-[#1A6FE8] p-7 min-h-80 flex flex-col justify-between shadow-lg hover:scale-[1.01] transition-transform duration-300">
-              <h3 className="text-white text-2xl font-medium leading-snug">
-                Your schemes,<br />discovered.
-              </h3>
-              <p className="text-white/70 text-base leading-relaxed font-light">
-                No more missing out on Ayushman Bharat PM-JAY or state health cards. ArogyaSetu finds the schemes you're actually eligible for.
-              </p>
-            </div>
-
-            {/* Card 4: bg-white border border-[#DBEAFE] */}
-            <div className="rounded-2xl bg-white border border-[#DBEAFE] p-7 min-h-80 flex flex-col justify-between shadow-sm hover:scale-[1.01] transition-transform duration-300">
-              <h3 className="text-[#0A1628] text-2xl font-medium leading-snug">
-                Last mile<br />care access.
-              </h3>
-              <p className="text-[#4A5568] text-base leading-relaxed font-light">
-                From diagnosis to the nearest clinic or SOS emergency — ArogyaSetu connects advice to actual care.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── 3. Trusted By Section ── */}
-      <section className="bg-[#F8FAFF] px-6 py-16 border-t border-slate-100">
-        <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
-          
-          {/* Left Col (1/4) */}
-          <div className="text-[#0A1628]/70 text-base leading-relaxed font-medium">
-            Aligned with India's<br />national health initiatives.
-          </div>
-
-          {/* Right Col (3/4) */}
-          <div className="md:col-span-3 overflow-hidden py-2">
-            <div className="backers-track">
-              {/* First render */}
-              {partners.map((partner, idx) => (
-                <span key={`p1-${idx}`} className="mx-10 shrink-0 text-[#0A1628]/50 whitespace-nowrap flex items-center justify-center" style={partner.style}>
-                  {partner.text}
-                </span>
-              ))}
-              {/* Seamless loop render */}
-              {partners.map((partner, idx) => (
-                <span key={`p2-${idx}`} className="mx-10 shrink-0 text-[#0A1628]/50 whitespace-nowrap flex items-center justify-center" style={partner.style}>
-                  {partner.text}
-                </span>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── 4. Use Cases Section ── */}
-      <section id="modules" className="bg-[#F8FAFF] px-6 py-24 border-t border-slate-100">
-        <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          
-          {/* Left column */}
-          <div className="md:pr-12 md:pt-2">
-            <span className="text-[#1A6FE8] text-sm font-medium mb-2 block uppercase tracking-wider">
-              ArogyaSetu in Practice
-            </span>
-            <h2 className="text-5xl md:text-6xl font-medium leading-none mb-6 text-[#0A1628]" style={{ letterSpacing: '-0.04em' }}>
-              Use cases
+          {/* Header */}
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-[#0A1628] text-4xl font-extrabold mb-4 font-display" style={{ letterSpacing: '-0.02em' }}>
+              Meet ArogyaSetu
             </h2>
-            <p className="text-[#0A1628]/60 text-base md:text-lg leading-relaxed max-w-sm font-light">
-              ArogyaSetu powers healthcare access for individuals in rural and semi-urban India, ASHA workers, Jan Aushadhi pharmacy networks, telemedicine operators, and anyone navigating India's public health system.
+            <p className="text-[#4A5568] text-base md:text-lg leading-relaxed font-light">
+              A unified digital health architecture designed to empower citizens with clinical-grade diagnostics, localized government scheme identification, and instant emergency connectivity.
             </p>
           </div>
 
-          {/* Right column */}
-          <div className="relative rounded-3xl overflow-hidden min-h-[720px] bg-gradient-to-br from-[#1A6FE8] to-[#0A3D8F] shadow-2xl flex flex-col justify-end">
-            {/* Background Medical Video Backdrop */}
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="object-cover absolute inset-0 w-full h-full opacity-60 z-0"
-              poster="https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              src="https://assets.mixkit.co/videos/preview/mixkit-medical-consultation-with-a-tablet-41874-large.mp4"
-            />
+          {/* Grid Row 1: 3-column cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* Dark vignette overlay to ensure text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/40 to-transparent z-10" />
+            {/* Card 1: Blue background */}
+            <div className="rounded-3xl bg-[#1A6FE8] p-8 min-h-80 flex flex-col justify-between shadow-xl shadow-blue-500/10 hover:scale-[1.01] transition-transform duration-300">
+              <div className="size-12 rounded-2xl bg-white/20 flex items-center justify-center text-white shrink-0">
+                <Activity className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-white text-2xl font-bold mb-3">
+                  Multimodal Diagnostics
+                </h3>
+                <p className="text-white/80 text-sm leading-relaxed font-light">
+                  Conversational AI that understands regional nuances to provide clinical triage and symptom guidance.
+                </p>
+              </div>
+            </div>
 
-            {/* Overlay Content */}
-            <div className="relative z-20 p-10 md:p-12">
-              <h3 className="text-4xl md:text-5xl font-medium leading-tight mb-5 text-white" style={{ letterSpacing: '-0.03em' }}>
-                Rural Healthcare
-              </h3>
-              <p className="text-white/70 text-base max-w-md mb-8 leading-relaxed font-light">
-                Swasthya Mitra gives someone in a small town or village what currently doesn't exist — a dependable AI-backed first point of contact that triages smartly, surfaces government entitlements, and points them to the nearest clinic.
-              </p>
-              
-              {/* Explore Link with circle */}
-              <div className="flex items-center gap-4 cursor-pointer group" onClick={handleStart}>
-                <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center hover:bg-white/40 group-hover:scale-105 transition-all duration-200">
-                  <ArrowRight className="w-4 h-4 text-white" />
-                </div>
-                <span className="text-white font-medium text-base">Explore modules</span>
+            {/* Card 2: Dark Slate */}
+            <div className="rounded-3xl bg-[#0D1627] p-8 min-h-80 flex flex-col justify-between shadow-xl hover:scale-[1.01] transition-transform duration-300">
+              <div className="size-12 rounded-2xl bg-teal-400/10 flex items-center justify-center text-teal-400 shrink-0">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-white text-2xl font-bold mb-3">
+                  Skin Health
+                </h3>
+                <p className="text-white/70 text-sm leading-relaxed font-light">
+                  Localized AI trained on 500k+ diverse Indian skin clinical samples.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3: White card with border */}
+            <div className="rounded-3xl bg-white border border-[#EBF2FF] p-8 min-h-80 flex flex-col justify-between shadow-sm hover:scale-[1.01] transition-transform duration-300">
+              <div className="size-12 rounded-2xl bg-blue-50 flex items-center justify-center text-[#1A6FE8] shrink-0">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-[#0A1628] text-2xl font-bold mb-3">
+                  Ayushman Bharat
+                </h3>
+                <p className="text-[#4A5568] text-sm leading-relaxed font-light">
+                  Instant eligibility check for PM-JAY and other state-sponsored schemes.
+                </p>
               </div>
             </div>
 
           </div>
 
+          {/* Grid Row 2: Full-width horizontal wide card */}
+          <div className="mt-6 rounded-3xl bg-white border border-[#EBF2FF] p-8 md:p-10 shadow-sm flex flex-col lg:flex-row items-center gap-8 justify-between hover:shadow-md transition-shadow duration-300">
+            <div className="flex-1 max-w-2xl">
+              <span className="text-[#1A6FE8] text-xs font-bold uppercase tracking-wider mb-2 block">
+                EQUITY IN ACCESS
+              </span>
+              <h3 className="text-[#0A1628] text-2xl md:text-3xl font-extrabold mb-4 font-display">
+                Last Mile Care Access
+              </h3>
+              <p className="text-[#4A5568] text-sm md:text-base font-light leading-relaxed">
+                Bridging the rural-urban divide by bringing premium clinical screening tools to the most remote corners of the nation via low-bandwidth interfaces.
+              </p>
+            </div>
+            
+            {/* Visual Phone Graphics Asset */}
+            <div className="w-full lg:w-96 h-48 rounded-2xl overflow-hidden shrink-0 shadow-lg border border-slate-100">
+              <img
+                src="/phone_field_health.png"
+                alt="Health Charts on Phone"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="bg-white border-t border-slate-100 py-12 px-6">
-        <div className="max-w-[88rem] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <LogoIcon className="w-6 h-6 text-[#1A6FE8]" />
-            <span className="font-semibold text-slate-800 text-lg">Swasthya Mitra</span>
-            <span className="text-slate-300">|</span>
-            <span className="text-slate-500 text-sm">ArogyaSetu AI</span>
+      {/* ── 3. Partners Section ── */}
+      <section className="bg-[#F8FAFF] px-6 py-16 border-t border-slate-100">
+        <div className="max-w-[88rem] mx-auto">
+          <h4 className="text-[#0A1628]/40 text-xs font-extrabold uppercase tracking-widest text-center mb-10">
+            PARTNERING FOR A HEALTHIER BHARAT
+          </h4>
+          
+          <div className="overflow-hidden py-2">
+            <div className="backers-track">
+              {/* Render twice for seamless loop */}
+              {partners.map((partner, idx) => (
+                <span key={`p1-${idx}`} className="mx-16 shrink-0 text-xl font-bold text-[#0A1628]/35 tracking-tight whitespace-nowrap">
+                  {partner}
+                </span>
+              ))}
+              {partners.map((partner, idx) => (
+                <span key={`p2-${idx}`} className="mx-16 shrink-0 text-xl font-bold text-[#0A1628]/35 tracking-tight whitespace-nowrap">
+                  {partner}
+                </span>
+              ))}
+            </div>
           </div>
-          <p className="text-slate-400 text-sm font-light">
-            © {new Date().getFullYear()} Swasthya Mitra. Crafted for healthcare accessibility.
-          </p>
+        </div>
+      </section>
+
+      {/* ── 4. Use Cases Section (Clinical Journey) ── */}
+      <section id="modules" className="bg-[#F8FAFF] px-6 py-24 border-t border-slate-100">
+        <div className="max-w-[88rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Left Column: Outreach details */}
+          <div>
+            <span className="text-[#1A6FE8] text-xs font-bold uppercase tracking-wider mb-2 block">
+              AROGYASETU IN PRACTICE
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#0A1628] leading-tight mb-12 font-display" style={{ letterSpacing: '-0.03em' }}>
+              Transforming the Clinical<br />Journey.
+            </h2>
+
+            {/* List items */}
+            <div className="space-y-8">
+              
+              {/* Item 1 */}
+              <div className="flex items-start gap-4">
+                <div className="size-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-[#1A6FE8] shrink-0 shadow-sm">
+                  <Flame className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-lg mb-1 font-display">Real-time Triage</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed font-light max-w-md">
+                    Instant assessment of symptoms using localized language models, reducing wait times at Primary Health Centers (PHCs).
+                  </p>
+                </div>
+              </div>
+
+              {/* Item 2 */}
+              <div className="flex items-start gap-4">
+                <div className="size-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-[#1A6FE8] shrink-0 shadow-sm">
+                  <Home className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-lg mb-1 font-display">Rural Outreach</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed font-light max-w-md">
+                    Offline-first capabilities allow ASHAs and front-line health workers to deliver quality screenings in regions with zero connectivity.
+                  </p>
+                </div>
+              </div>
+
+              {/* Item 3 */}
+              <div className="flex items-start gap-4">
+                <div className="size-10 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0 shadow-sm">
+                  <Leaf className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-lg mb-1 font-display">Predictive Wellness</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed font-light max-w-md">
+                    Analysis of aggregate health trends to predict and prevent seasonal outbreaks at a district level.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Right Column: Doctors Testimonial Card */}
+          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl min-h-[580px] flex flex-col justify-end">
+            <img
+              src="/two_doctors_clinic.png"
+              alt="Two Indian Doctors Reviewing Data"
+              className="object-cover absolute inset-0 w-full h-full"
+            />
+            
+            {/* Dark contrast gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-0" />
+
+            {/* Testimonial floating container */}
+            <div className="relative z-10 p-8 m-6 bg-slate-950/70 backdrop-blur-md rounded-2xl border border-white/10 text-white">
+              <h4 className="text-white text-lg font-bold mb-2.5 font-display">
+                Empowering Rural Healthcare
+              </h4>
+              <p className="text-white/80 text-sm leading-relaxed font-light italic mb-5">
+                "Swasthya Mitra has enabled us to reach patients in the most remote areas, providing diagnostic accuracy that was previously only available in major cities."
+              </p>
+              
+              {/* Doctor Details */}
+              <div className="flex items-center gap-3">
+                <div className="size-8 rounded-full bg-white/20 text-white font-bold flex items-center justify-center text-xs shrink-0 font-display">
+                  Dr
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-white font-display">Dr. Anjali Verma</p>
+                  <p className="text-[10px] text-white/50">Public Health Administrator</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── 5. Footer Section ── */}
+      <footer className="bg-white border-t border-slate-100 py-16 px-6">
+        <div className="max-w-[88rem] mx-auto">
+          
+          <div className="flex flex-col md:flex-row items-start justify-between gap-12 pb-12 border-b border-slate-100">
+            {/* Left */}
+            <div>
+              <div className="flex items-center gap-2">
+                <LogoIcon className="w-6 h-6 text-[#1A6FE8]" />
+                <span className="font-bold text-slate-900 text-lg tracking-tight">Swasthya Mitra</span>
+              </div>
+              <p className="text-[#4A5568] text-sm mt-4 max-w-xs leading-relaxed font-light">
+                Leveraging clinical-grade AI to democratize quality healthcare across the nation.
+              </p>
+              <p className="text-slate-400 text-xs mt-8">
+                © 2026 Swasthya Mitra. Precision Healthcare AI.
+              </p>
+            </div>
+
+            {/* Right Links */}
+            <div className="flex flex-col items-start md:items-end gap-6">
+              <div className="flex flex-wrap gap-4 text-xs font-medium text-[#4A5568]">
+                <a href="#privacy" className="hover:text-[#1A6FE8] transition-colors">Privacy Policy</a>
+                <span className="text-slate-200">•</span>
+                <a href="#terms" className="hover:text-[#1A6FE8] transition-colors">Terms of Service</a>
+                <span className="text-slate-200">•</span>
+                <a href="#safety" className="hover:text-[#1A6FE8] transition-colors">Clinical Safety</a>
+                <span className="text-slate-200">•</span>
+                <a href="#contact" className="hover:text-[#1A6FE8] transition-colors">Contact Us</a>
+              </div>
+
+              {/* Icons */}
+              <div className="flex items-center gap-4 text-[#4A5568]/60 mt-2">
+                <Globe className="w-5 h-5 hover:text-[#1A6FE8] cursor-pointer transition-colors" />
+                <Rss className="w-5 h-5 hover:text-[#1A6FE8] cursor-pointer transition-colors" />
+              </div>
+            </div>
+          </div>
+
         </div>
       </footer>
 
