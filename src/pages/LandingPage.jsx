@@ -109,21 +109,7 @@ const LandingPage = () => {
               playsInline
               poster="/hero_hologram_lungs.png"
             >
-              {/* Primary: Pexels medical/healthcare video */}
-              <source
-                src="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4"
-                type="video/mp4"
-              />
-              {/* Fallback 1 */}
-              <source
-                src="https://videos.pexels.com/video-files/4114012/4114012-hd_1920_1080_25fps.mp4"
-                type="video/mp4"
-              />
-              {/* Fallback 2: smaller */}
-              <source
-                src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
-                type="video/mp4"
-              />
+              <source src="/hero_video.mp4" type="video/mp4" />
             </video>
 
             {/* Gradient Dark Overlay */}
