@@ -205,47 +205,68 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* Card 1: Blue background */}
-            <div className="rounded-3xl bg-[#1A6FE8] p-8 min-h-80 flex flex-col justify-between shadow-xl shadow-blue-500/10 hover:scale-[1.01] transition-transform duration-300">
-              <div className="size-12 rounded-2xl bg-white/20 flex items-center justify-center text-white shrink-0">
-                <Activity className="w-6 h-6" />
+            <div className="rounded-3xl bg-[#1A6FE8] overflow-hidden min-h-80 flex flex-col justify-between shadow-xl shadow-blue-500/10 hover:scale-[1.01] transition-transform duration-300">
+              {/* Card Image */}
+              <div className="relative h-44 w-full overflow-hidden shrink-0">
+                <img src="/card_diagnostics.png" alt="Multimodal Diagnostics" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1A6FE8]" />
               </div>
-              <div>
-                <h3 className="text-white text-2xl font-bold mb-3">
-                  Multimodal Diagnostics
-                </h3>
-                <p className="text-white/80 text-sm leading-relaxed font-light">
-                  Conversational AI that understands regional nuances to provide clinical triage and symptom guidance.
-                </p>
+              <div className="p-8 pt-2 flex flex-col gap-4">
+                <div className="size-12 rounded-2xl bg-white/20 flex items-center justify-center text-white shrink-0">
+                  <Activity className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-white text-2xl font-bold mb-3">
+                    Multimodal Diagnostics
+                  </h3>
+                  <p className="text-white/80 text-sm leading-relaxed font-light">
+                    Conversational AI that understands regional nuances to provide clinical triage and symptom guidance.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Card 2: Dark Slate */}
-            <div className="rounded-3xl bg-[#0D1627] p-8 min-h-80 flex flex-col justify-between shadow-xl hover:scale-[1.01] transition-transform duration-300">
-              <div className="size-12 rounded-2xl bg-teal-400/10 flex items-center justify-center text-teal-400 shrink-0">
-                <Sparkles className="w-6 h-6" />
+            <div className="rounded-3xl bg-[#0D1627] overflow-hidden min-h-80 flex flex-col justify-between shadow-xl hover:scale-[1.01] transition-transform duration-300">
+              {/* Card Image */}
+              <div className="relative h-44 w-full overflow-hidden shrink-0">
+                <img src="/card_skin_health.png" alt="Skin Health AI" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0D1627]" />
               </div>
-              <div>
-                <h3 className="text-white text-2xl font-bold mb-3">
-                  Skin Health
-                </h3>
-                <p className="text-white/70 text-sm leading-relaxed font-light">
-                  Localized AI trained on 500k+ diverse Indian skin clinical samples.
-                </p>
+              <div className="p-8 pt-2 flex flex-col gap-4">
+                <div className="size-12 rounded-2xl bg-teal-400/10 flex items-center justify-center text-teal-400 shrink-0">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-white text-2xl font-bold mb-3">
+                    Skin Health
+                  </h3>
+                  <p className="text-white/70 text-sm leading-relaxed font-light">
+                    Localized AI trained on 500k+ diverse Indian skin clinical samples.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Card 3: White card with border */}
-            <div className="rounded-3xl bg-white border border-[#EBF2FF] p-8 min-h-80 flex flex-col justify-between shadow-sm hover:scale-[1.01] transition-transform duration-300">
-              <div className="size-12 rounded-2xl bg-blue-50 flex items-center justify-center text-[#1A6FE8] shrink-0">
-                <ShieldCheck className="w-6 h-6" />
+            <div className="rounded-3xl bg-white border border-[#EBF2FF] overflow-hidden min-h-80 flex flex-col justify-between shadow-sm hover:scale-[1.01] transition-transform duration-300">
+              {/* Card Image */}
+              <div className="relative h-44 w-full overflow-hidden shrink-0">
+                <img src="/card_ayushman.png" alt="Ayushman Bharat Scheme" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
               </div>
-              <div>
-                <h3 className="text-[#0A1628] text-2xl font-bold mb-3">
-                  Ayushman Bharat
-                </h3>
-                <p className="text-[#4A5568] text-sm leading-relaxed font-light">
-                  Instant eligibility check for PM-JAY and other state-sponsored schemes.
-                </p>
+              <div className="p-8 pt-2 flex flex-col gap-4">
+                <div className="size-12 rounded-2xl bg-blue-50 flex items-center justify-center text-[#1A6FE8] shrink-0">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-[#0A1628] text-2xl font-bold mb-3">
+                    Ayushman Bharat
+                  </h3>
+                  <p className="text-[#4A5568] text-sm leading-relaxed font-light">
+                    Instant eligibility check for PM-JAY and other state-sponsored schemes.
+                  </p>
+                </div>
               </div>
             </div>
 
