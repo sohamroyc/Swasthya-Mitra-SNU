@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import TopHeader from '../components/TopHeader';
-import Footer from '../components/Footer';
+import AppLayout from '../components/AppLayout';
 
 const HealthReportsAnalytics = () => {
     const [filter, setFilter] = useState('7'); // days: 7,30,180,custom
@@ -19,14 +18,8 @@ const HealthReportsAnalytics = () => {
         alert('PDF generation is not implemented in this demo.');
     };
     return (
-        <>
-            <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
-                <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-                    <div className="layout-container flex h-full grow flex-col">
-                        {/* Navigation Header */}
-                        <TopHeader />
-                        <main className="flex flex-col items-center">
-                            <div className="max-w-[1200px] w-full px-6 py-8">
+        <AppLayout activeTab="my-health">
+            <div className="max-w-[1200px] w-full px-6 py-8">
                                 {/* Page Title & Actions */}
                                 <div className="flex flex-wrap justify-between items-end gap-4 mb-8">
                                     <div className="flex flex-col gap-1">
@@ -246,7 +239,7 @@ const HealthReportsAnalytics = () => {
                                                     <span className="text-sm font-bold text-slate-900 dark:text-white">85%</span>
                                                 </div>
                                                 <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
-                                                    <div className="bg-primary h-2 rounded-full" style="width: 85%"></div>
+                                                    <div className="bg-primary h-2 rounded-full" style={{ width: '85%' }}></div>
                                                 </div>
                                             </div>
                                             <div>
@@ -255,7 +248,7 @@ const HealthReportsAnalytics = () => {
                                                     <span className="text-sm font-bold text-slate-900 dark:text-white">62%</span>
                                                 </div>
                                                 <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
-                                                    <div className="bg-primary h-2 rounded-full" style="width: 62%"></div>
+                                                    <div className="bg-primary h-2 rounded-full" style={{ width: '62%' }}></div>
                                                 </div>
                                             </div>
                                             <div>
@@ -264,7 +257,7 @@ const HealthReportsAnalytics = () => {
                                                     <span className="text-sm font-bold text-slate-900 dark:text-white">40%</span>
                                                 </div>
                                                 <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
-                                                    <div className="bg-amber-500 h-2 rounded-full" style="width: 40%"></div>
+                                                    <div className="bg-amber-500 h-2 rounded-full" style={{ width: '40%' }}></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,15 +266,8 @@ const HealthReportsAnalytics = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </main>
-                        <div className="mt-auto">
-                            <Footer />
-                        </div>
-                    </div>
-                </div>
             </div>
-        </>
+        </AppLayout>
     );
 };
 

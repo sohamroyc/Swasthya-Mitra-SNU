@@ -133,6 +133,45 @@
       "prevention": "Drink boiled or filtered water. Wash hands before eating and after toilet. Avoid outside food during monsoon.",
       "season": "Monsoon — very common in Kolkata due to water contamination",
       "response": "Diarrhea is very common in Kolkata especially during monsoon. The most important treatment is ORS (Oral Rehydration Solution) — you can buy it at any pharmacy or make it at home (1 litre boiled water + 6 teaspoons sugar + half teaspoon salt). Drink a glass after every loose motion. Eat light food — rice, curd, banana, khichdi. Avoid spicy, oily, and outside food. See a doctor if you have blood in stool, fever above 102°F with diarrhea, or signs of dehydration (no urine for 8 hours, very dry mouth). Diarrhea in infants and elderly people needs prompt medical attention."
+    },
+    {
+      "id": "sd_011",
+      "name": "Gout & Inflammatory Arthritis",
+      "keywords": ["gout", "uric acid", "knee joint", "knee pain", "swelling knee", "joint swelling"],
+      "urgency": "MEDIUM",
+      "symptoms": ["severe sudden joint pain", "swelling and redness in knee or big toe", "joint feels hot to the touch", "limited range of motion"],
+      "warning_signs": ["high fever with joint pain (possible joint infection)", "inability to move joint at all"],
+      "diagnosis": "Serum uric acid test, joint fluid analysis, X-ray",
+      "treatment": "Rest, elevate joint, cold packs. Meds: NSAIDs (ibuprofen, naproxen), colchicine under doctor's guidance.",
+      "prevention": "Reduce purine-rich foods (red meat, seafood), limit alcohol, drink plenty of water to flush uric acid.",
+      "season": "Year-round",
+      "response": "Gout is a painful form of arthritis caused by high uric acid crystals depositing in joints, commonly the big toe or knee. If you have severe joint pain, swelling, and redness without trauma, rest and elevate the joint. Apply cold packs. Avoid self-medicating with strong steroids. Consult a doctor or rheumatologist for specific medications like colchicine or NSAIDs. If you also have a high fever, go to a clinic immediately as it could indicate an infected joint (septic arthritis)."
+    },
+    {
+      "id": "sd_012",
+      "name": "Drug Eruption & Erythema Multiforme",
+      "keywords": ["target lesions", "rash antibiotics", "drug rash", "erythema multiforme", "target-like lesions"],
+      "urgency": "MEDIUM",
+      "symptoms": ["itchy red rash with bullseye or target-like circular spots", "lesions spreading on arms and chest", "mild fever", "sore throat"],
+      "warning_signs": ["blisters in mouth, eyes, or genitals", "peeling skin over large areas (Stevens-Johnson syndrome risk)"],
+      "diagnosis": "Clinical skin examination, skin biopsy if needed",
+      "treatment": "Stop the suspected antibiotic or medication immediately after consulting doctor. Antihistamines for itching, topical mild steroids.",
+      "prevention": "Never take the causative drug again. Inform all healthcare providers of your drug allergy.",
+      "season": "Year-round",
+      "response": "A progressive rash with target-like circular lesions after taking antibiotics could indicate an allergic drug eruption such as Erythema Multiforme. You should stop taking the suspected medication immediately and see a doctor or dermatologist today for a proper assessment. Do not ignore it, as severe drug reactions can progress to serious systemic conditions. If you notice any blistering in your mouth, eyes, or throat, or skin peeling, seek emergency medical care immediately."
+    },
+    {
+      "id": "sd_013",
+      "name": "Meningitis",
+      "keywords": ["meningitis", "stiff neck", "photophobia", "sensitivity to light", "neck stiffness"],
+      "urgency": "HIGH",
+      "symptoms": ["high fever", "stiff neck", "severe headache", "nausea or vomiting", "sensitivity to light", "confusion", "lethargy"],
+      "warning_signs": ["seizures", "unconsciousness", "delirium", "purple skin rash"],
+      "diagnosis": "Lumbar puncture (spinal tap), blood culture, CT scan",
+      "treatment": "EMERGENCY hospitalization. Intravenous antibiotics and supportive care immediately.",
+      "prevention": "Meningococcal vaccine, pneumococcal vaccine, good hygiene.",
+      "season": "Year-round",
+      "response": "Meningitis is a medical emergency characterized by inflammation of the membranes covering the brain and spinal cord. Key symptoms are high fever, sudden stiff neck, severe headache, and light sensitivity. Go to a hospital emergency department immediately for a spinal tap and IV antibiotic treatment. Delayed treatment can cause permanent brain damage or be fatal."
     }
   ],
 

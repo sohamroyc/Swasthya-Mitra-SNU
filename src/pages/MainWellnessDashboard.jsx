@@ -1,134 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { patientProfileService } from '../services/api';
-import { Link, useNavigate } from 'react-router-dom';
-import HeaderActions from '../components/HeaderActions';
 import { useAuth } from '../context/AuthContext';
-import Footer from '../components/Footer';
-
+import AppLayout from '../components/AppLayout';
 
 const MainWellnessDashboard = () => {
-    const { user, logout } = useAuth();
-    const navigate = useNavigate();
-    const [profile, setProfile] = useState({ name: user?.name || "Loading...", role: "Loading..." });
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const handleSearch = (e) => {
-        if (e.key === 'Enter' && searchQuery.trim()) {
-            console.log('Searching for:', searchQuery);
-            // Example navigation
-            // navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
-            setSearchQuery('');
-        }
-    };
+    const { user } = useAuth();
+    const [profile, setProfile] = useState({ name: user?.name || "Loading..." });
 
     useEffect(() => {
         const fetchProfile = async () => {
             const data = await patientProfileService.getProfile();
-            setProfile({ name: user?.name || data.name, role: 'Pro Member' });
+            setProfile({ name: user?.name || data.name });
         };
         fetchProfile();
-    }, []);
+    }, [user]);
 
     return (
-        <>
-            <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
-                <div className="flex h-screen overflow-hidden">
-                    <aside className="w-64 flex-shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col">
-                        <Link to="/dashboard" className="p-6 flex items-center gap-3 hover:opacity-80 transition-opacity">
-                            <div className="size-10 bg-primary rounded-xl flex items-center justify-center text-white">
-                                <span className="material-symbols-outlined">health_and_safety</span>
-                            </div>
-                            <div>
-                                <h1 className="font-bold text-lg leading-tight">Swasthya Mitra</h1>
-                                <p className="text-xs text-slate-500 dark:text-slate-400">AI Wellness Hub</p>
-                            </div>
-                        </Link>
-                        <nav className="flex-1 px-4 py-4 space-y-1">
-                            <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-semibold" to="/">
-                                <span className="material-symbols-outlined">dashboard</span>
-                                <span>Dashboard</span>
-                            </Link>
-                            <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" to="/ai-symptom-checker-interface">
-                                <span className="material-symbols-outlined">stethoscope</span>
-                                <span>Consultations</span>
-                            </Link>
-                            <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" to="/my-health">
-                                <span className="material-symbols-outlined">monitoring</span>
-                                <span>My Health</span>
-                            </Link>
-                            <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" to="/medication-manager-calendar">
-                                <span className="material-symbols-outlined">pill</span>
-                                <span>Medications</span>
-                            </Link>
-                            <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" to="/patient-profile-records">
-                                <span className="material-symbols-outlined">folder_shared</span>
-                                <span>Health Records</span>
-                            </Link>
-                            <Link className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" to="/emergency-clinic-locator">
-                                <span className="material-symbols-outlined">local_hospital</span>
-                                <span>Nearby Clinics</span>
-                            </Link>
-                        </nav>
-                        <div className="p-4 border-t border-slate-200 dark:border-slate-800">
-                            <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-4 mb-4">
-                                <p className="text-sm font-semibold mb-1">Go Premium</p>
-                                <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">Get unlimited AI scans and 24/7 doctor chat.</p>
-                                <button className="w-full py-2 bg-primary text-white rounded-lg text-sm font-bold">Upgrade Now</button>
-                            </div>
-                            <div className="flex items-center gap-3 px-2">
-                                <div className="size-8 rounded-full bg-slate-200 dark:bg-slate-700" data-alt="User profile avatar icon" style={{ backgroundImage: 'url(https://lh3.googleusercontent.com/aida-public/AB6AXuDdROacabQcsgkHNRU9h3DjZRhBrqKeRWRfDh7W6ySZ7f1VaSESWTzydRxPYS5AKSG9lFTKidvp-_GwA5en2WRCT4ZCSajS5TI4MgzQEB2Ae4oeESmt5AknBD7hNhuyl6kn68PiaFPXYVkBw7BXcJBs4874o1zUQQ7H-j3F2VptTSS9hGTiruLTCAMrTyt2iA3hkYqihOn6QGRuAKGwBEeKpKmiXY0qL6e6bAEDZgKg4idmrbyfwl_ofr8AZqdE8oGIV03k7fq4GwM)' }}></div>
-                                <Link to="/patient-profile-records" className="flex-1 min-w-0 pr-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg p-1 transition-colors">
-                                    <p className="text-sm font-medium truncate">{profile.name}</p>
-                                    <p className="text-xs text-slate-500 truncate">{profile.role}</p>
-                                </Link>
-                                <div className="flex flex-col gap-2">
-                                    <Link to="/patient-profile-records" className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
-                                        <span className="material-symbols-outlined text-xl">settings</span>
-                                    </Link>
-                                    <Link title="Logout" to="/" onClick={async (e) => { e.preventDefault(); await logout(); navigate('/'); }} className="text-slate-400 hover:text-red-500">
-                                        <span className="material-symbols-outlined text-xl">logout</span>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-                    <main className="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
-                        <header className="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between">
-                            <div className="flex-1 max-w-xl">
-                                <div className="relative group">
-                                    <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
-                                    <input
-                                        className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-10 py-2 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm focus:shadow-md"
-                                        placeholder="Search health records, symptoms, or doctors..."
-                                        type="search"
-                                        value={searchQuery}
-                                        onChange={(e) => setSearchQuery(e.target.value)}
-                                        onKeyDown={handleSearch}
-                                    />
-                                    {searchQuery && (
-                                        <button
-                                            onClick={() => setSearchQuery('')}
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none"
-                                        >
-                                            <span className="material-symbols-outlined text-[16px]">close</span>
-                                        </button>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-4">
-                                <HeaderActions />
-                                <div className="h-8 w-px bg-slate-200 dark:bg-slate-800 mx-2"></div>
-                                <button className="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
-                                    <span className="material-symbols-outlined">notifications</span>
-                                    <span className="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-white dark:border-slate-900"></span>
-                                </button>
-                            </div>
-                        </header>
-                        <div className="p-8 max-w-7xl mx-auto space-y-8">
-                            <div>
-                                <h2 className="text-3xl font-extrabold tracking-tight">Good morning, {profile.name.split(' ')[0]}</h2>
-                                <p className="text-slate-500 dark:text-slate-400 mt-1">Here's your wellness overview.</p>
-                            </div>
+        <AppLayout activeTab="dashboard">
+            <div>
+                <h2 className="text-3xl font-extrabold tracking-tight">Good morning, {(profile.name || "User").split(' ')[0]}</h2>
+                <p className="text-slate-500 dark:text-slate-400 mt-1">Here's your wellness overview.</p>
+            </div>
                             <section>
                                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                                     <span className="material-symbols-outlined text-primary">bolt</span>
@@ -415,13 +308,7 @@ const MainWellnessDashboard = () => {
                                     </section>
                                 </div>
                             </div>
-                        </div>
-                        <Footer />
-                    </main>
-                </div>
-
-            </div>
-        </>
+        </AppLayout>
     );
 };
 

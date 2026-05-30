@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import TopHeader from '../components/TopHeader';
+import AppLayout from '../components/AppLayout';
 import { useAuth } from '../context/AuthContext';
-import Footer from '../components/Footer';
 
 const PatientProfileRecords = () => {
     const [isEditing, setIsEditing] = useState(false);
-    const { user } = useAuth();
+    const { user, updateProfile } = useAuth();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const fields = {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            gender: formData.get('gender'),
+            dob: formData.get('dob'),
+            bloodType: formData.get('bloodType'),
+            height: formData.get('height') ? Number(formData.get('height')) : '',
+            weight: formData.get('weight') ? Number(formData.get('weight')) : '',
+            allergies: formData.get('allergies'),
+            conditions: formData.get('conditions'),
+        };
+        await updateProfile(user?.email, fields);
+        setIsEditing(false);
+    };
 
     // Helper to format DOB
     const formatDob = (dob) => {
@@ -254,7 +271,7 @@ const PatientProfileRecords = () => {
     );
 
     const EditView = () => (
-        <div className="max-w-4xl mx-auto space-y-8">
+        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-8">
             <div className="text-center mb-8">
                 <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-2">Edit Profile & Medical ID</h1>
                 <p className="text-sm font-bold text-slate-500">Manage your identity and critical health details for emergency response.</p>
@@ -277,7 +294,7 @@ const PatientProfileRecords = () => {
                         <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest flex items-center gap-1"><span className="material-symbols-outlined text-[14px]">verified</span> Verified Identity</p>
                     </div>
                 </div>
-                <button className="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-sm font-bold text-slate-700 py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+                <button type="button" className="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-sm font-bold text-slate-700 py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
                     <span className="material-symbols-outlined text-[18px]">upload</span> Upload New Photo
                 </button>
             </div>
@@ -293,25 +310,25 @@ const PatientProfileRecords = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Full Name</label>
-                                    <input type="text" defaultValue={user?.name || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
+                                    <input type="text" name="name" defaultValue={user?.name || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
                                 </div>
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Phone Number</label>
-                                    <input type="text" defaultValue={user?.phone || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
+                                    <input type="text" name="phone" defaultValue={user?.phone || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
                                 </div>
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Email Address</label>
-                                <input type="email" defaultValue={user?.email || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
+                                <input type="email" name="email" readOnly defaultValue={user?.email || ''} className="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-sm font-semibold text-slate-500 cursor-not-allowed" />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Gender</label>
-                                    <input type="text" defaultValue={formatGender(user?.gender)} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
+                                    <input type="text" name="gender" defaultValue={user?.gender || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
                                 </div>
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Date of Birth</label>
-                                    <input type="date" defaultValue={user?.dob || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
+                                    <input type="date" name="dob" defaultValue={user?.dob || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-blue-500 focus:border-blue-500" />
                                 </div>
                             </div>
                         </div>
@@ -326,7 +343,7 @@ const PatientProfileRecords = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Blood Type</label>
-                                    <select defaultValue={user?.bloodType || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500">
+                                    <select name="bloodType" defaultValue={user?.bloodType || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500">
                                         <option value="">Select</option>
                                         <option value="A+">A+</option>
                                         <option value="A-">A-</option>
@@ -340,23 +357,23 @@ const PatientProfileRecords = () => {
                                 </div>
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Height (cm)</label>
-                                    <input type="number" defaultValue={user?.height || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500" />
+                                    <input type="number" name="height" defaultValue={user?.height || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500" />
                                 </div>
                             </div>
 
                             <div>
                                 <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Weight (kg)</label>
-                                <input type="number" defaultValue={user?.weight || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500" />
+                                <input type="number" name="weight" defaultValue={user?.weight || ''} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500" />
                             </div>
 
                             <div>
                                 <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Known Allergies</label>
-                                <textarea rows="2" defaultValue={user?.allergies || ''} placeholder="e.g. Penicillin, Peanuts" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500"></textarea>
+                                <textarea name="allergies" rows="2" defaultValue={user?.allergies || ''} placeholder="e.g. Penicillin, Peanuts" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500"></textarea>
                             </div>
 
                             <div>
                                 <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Chronic Conditions</label>
-                                <textarea rows="3" defaultValue={user?.conditions || ''} placeholder="e.g. Type 2 Diabetes, Mild Asthma" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500"></textarea>
+                                <textarea name="conditions" rows="3" defaultValue={user?.conditions || ''} placeholder="e.g. Type 2 Diabetes, Mild Asthma" className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500"></textarea>
                             </div>
                         </div>
                     </div>
@@ -381,7 +398,7 @@ const PatientProfileRecords = () => {
                                 <label className="block text-[10px] font-bold uppercase tracking-widest text-red-800 mb-1">Phone Number</label>
                                 <input type="text" defaultValue="+1 (555) 987-6543" className="w-full px-3 py-2 bg-white border border-red-100 rounded-lg text-sm font-semibold focus:ring-red-500 focus:border-red-500" />
                             </div>
-                            <button className="text-[10px] font-bold text-blue-600 uppercase tracking-widest hover:underline flex items-center gap-1 mt-2">
+                            <button type="button" className="text-[10px] font-bold text-blue-600 uppercase tracking-widest hover:underline flex items-center gap-1 mt-2">
                                 <span className="material-symbols-outlined text-[14px]">add_circle</span> Add Second Contact
                             </button>
                         </div>
@@ -410,31 +427,18 @@ const PatientProfileRecords = () => {
 
             {/* Actions */}
             <div className="flex items-center justify-end gap-4 pt-6 border-t border-slate-200">
-                <button onClick={() => setIsEditing(false)} className="px-6 py-2.5 text-sm font-bold text-slate-500 hover:text-slate-800 transition-colors">Cancel</button>
-                <button onClick={() => setIsEditing(false)} className="px-6 py-2.5 bg-blue-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-all flex items-center gap-2">
+                <button type="button" onClick={() => setIsEditing(false)} className="px-6 py-2.5 text-sm font-bold text-slate-500 hover:text-slate-800 transition-colors">Cancel</button>
+                <button type="submit" className="px-6 py-2.5 bg-blue-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-all flex items-center gap-2">
                     <span className="material-symbols-outlined text-[18px]">save</span> Save All Changes
                 </button>
             </div>
-        </div>
+        </form>
     );
 
     return (
-        <div className="bg-slate-50 min-h-screen font-display text-slate-900">
-            {/* Top Navigation */}
-            <TopHeader />
-
-            {/* Main Content Area */}
-            <main className="max-w-[1200px] mx-auto px-6 py-10">
-                {isEditing ? <EditView /> : <OverviewView />}
-            </main>
-
-            {/* Footer */}
-            {!isEditing && (
-                <div className="mt-12">
-                    <Footer />
-                </div>
-            )}
-        </div>
+        <AppLayout activeTab="records">
+            {isEditing ? <EditView /> : <OverviewView />}
+        </AppLayout>
     );
 };
 

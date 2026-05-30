@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import TopHeader from '../components/TopHeader';
-import Footer from '../components/Footer';
 import { supabase } from '../supabaseClient';
-
-
-
+import { useAuth } from '../context/AuthContext';
+import AppLayout from '../components/AppLayout';
 import { fetchLocalMeds, addLocalMed, updateLocalMed } from '../services/medicalDb';
 
 const MedicationManagerCalendar = () => {
+    const { user } = useAuth();
     const [activeTab, setActiveTab] = useState('Month');
     const [baseDate, setBaseDate] = useState(new Date()); // Changed to CURRENT date
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,8 +25,14 @@ const MedicationManagerCalendar = () => {
 
     const loadMedications = async () => {
         try {
-            // First check if we have them in Supabase (optional, but keep for compatibility if service is up)
-            let { data, error } = await supabase.from('medications').select('*').order('created_at', { ascending: false });
+            if (!user) return;
+
+            // Fetch medications specific to the logged-in user
+            let { data, error } = await supabase
+                .from('medications')
+                .select('*')
+                .eq('user_email', user.email)
+                .order('created_at', { ascending: false });
 
             const local = fetchLocalMeds();
 
@@ -48,7 +52,7 @@ const MedicationManagerCalendar = () => {
 
     const handleAddMedication = async (e) => {
         e.preventDefault();
-        if (!newMed.name) return;
+        if (!newMed.name || !user) return;
 
         const medPayload = {
             name: newMed.name,
@@ -58,7 +62,8 @@ const MedicationManagerCalendar = () => {
             remaining: '30 / 30',
             type: 'pills',
             status: 'Refill Not Ready',
-            icon: 'pill'
+            icon: 'pill',
+            user_email: user.email
         };
 
         try {
@@ -222,13 +227,9 @@ const MedicationManagerCalendar = () => {
     }
 
     return (
-        <div className="font-display bg-slate-50 min-h-screen text-slate-900 pb-12">
-            <TopHeader />
-
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col xl:flex-row gap-8 mt-6">
-
-                {/* Main Middle Area */}
-                <main className="flex-1 w-full min-w-0">
+        <AppLayout activeTab="medications">
+            <div className="flex flex-col xl:flex-row gap-8">
+                <div className="flex-1 w-full min-w-0">
                     <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                         <div>
                             <h1 className="text-3xl font-black text-slate-900 tracking-tight">Medication Manager</h1>
@@ -317,7 +318,7 @@ const MedicationManagerCalendar = () => {
                             </div>
                         </div>
                     </div>
-                </main>
+                </div>
 
                 {/* Right Sidebar - Prescriptions */}
                 <aside className="w-full xl:w-80 flex flex-col gap-6 shrink-0 z-10">
@@ -429,8 +430,7 @@ const MedicationManagerCalendar = () => {
                 </div>
             )}
 
-            <Footer />
-        </div>
+        </AppLayout>
     );
 }
 

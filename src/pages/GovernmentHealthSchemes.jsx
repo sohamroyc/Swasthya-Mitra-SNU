@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import TopHeader from '../components/TopHeader';
 import ReactMarkdown from 'react-markdown';
-import Footer from '../components/Footer';
+import AppLayout from '../components/AppLayout';
 
 const SCHEMES_LIST = [
     {
@@ -304,8 +303,7 @@ CRITICAL RULE: ONLY answer questions related to health, the Swasthya Mitra proje
 
     if (selectedScheme) {
         return (
-            <div className="font-display bg-[#f8fafc] text-slate-900 min-h-screen pb-12">
-                <TopHeader />
+            <AppLayout activeTab="schemes">
                 <div className="max-w-7xl mx-auto px-4 mt-6">
                     {/* Breadcrumbs */}
                     <div className="flex items-center gap-2 text-xs font-bold text-slate-500 mb-6 uppercase tracking-wider">
@@ -650,13 +648,12 @@ CRITICAL RULE: ONLY answer questions related to health, the Swasthya Mitra proje
                         </div>
                     </div>
                 </div>
-            </div>
+            </AppLayout>
         );
     }
 
     return (
-        <div className="font-display bg-[#f8fafc] min-h-screen text-slate-900">
-            <TopHeader />
+        <AppLayout activeTab="schemes">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-20 text-center">
                 <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-widest mb-6">
                     <span className="material-symbols-outlined text-[14px]">verified</span>
@@ -746,9 +743,6 @@ CRITICAL RULE: ONLY answer questions related to health, the Swasthya Mitra proje
                 </div>
             </div>
 
-            {/* Footer */}
-            <Footer />
-
             {/* AI Scheme Finder Modal */}
             {isAiFinderOpen && (
                 <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
@@ -797,7 +791,7 @@ CRITICAL RULE: ONLY answer questions related to health, the Swasthya Mitra proje
                     </div>
                 </div>
             )}
-        </div>
+        </AppLayout>
     );
 };
 

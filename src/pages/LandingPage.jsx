@@ -117,9 +117,9 @@ const LandingPage = () => {
                 </button>
                 <div className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                    {user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
+                    {(user.name || "User").split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
                   </div>
-                  <span className="text-sm font-semibold text-slate-700 hidden sm:inline">{user.name}</span>
+                  <span className="text-sm font-semibold text-slate-700 hidden sm:inline">{user.name || "User"}</span>
                 </div>
                 <button
                   onClick={async () => { await logout(); }}

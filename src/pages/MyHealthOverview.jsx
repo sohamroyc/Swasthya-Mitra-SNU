@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { patientProfileService } from '../services/api';
-import TopHeader from '../components/TopHeader';
-import Footer from '../components/Footer';
+import AppLayout from '../components/AppLayout';
 import VitalsDashboard from '../components/VitalsDashboard';
 import ActivitiesDashboard from '../components/ActivitiesDashboard';
 import NutritionDashboard from '../components/NutritionDashboard';
@@ -229,55 +228,52 @@ const MyHealthOverview = () => {
     };
 
     return (
-        <div className="font-display bg-slate-50 min-h-screen text-slate-900 pb-12">
-            {/* Top Navigation Bar */}
-            <TopHeader />
-
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col xl:flex-row gap-8 mt-6">
+        <AppLayout activeTab="my-health">
+            <div className="flex flex-col xl:flex-row gap-8">
                 <div className="flex flex-col md:flex-row gap-8 flex-1 w-full min-w-0">
                     {/* Left Sidebar */}
                     <aside className="hidden md:flex w-64 flex-col gap-6 shrink-0">
-                        <nav className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex flex-col gap-1">
+                        <nav className="bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-1">
                             <button
                                 onClick={() => setActiveTab('overview')}
-                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'overview' ? 'bg-blue-50 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'overview' ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
                             >
                                 <span className="material-symbols-outlined text-[18px]">grid_view</span>
                                 Overview
                             </button>
                             <button
                                 onClick={() => setActiveTab('vitals')}
-                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'vitals' ? 'bg-blue-50 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'vitals' ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
                             >
                                 <span className="material-symbols-outlined text-[18px]">monitor_heart</span>
                                 Vitals
                             </button>
                             <button
                                 onClick={() => setActiveTab('activities')}
-                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'activities' ? 'bg-blue-50 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'activities' ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
                             >
                                 <span className="material-symbols-outlined text-[18px]">show_chart</span>
                                 Activities
                             </button>
                             <button
                                 onClick={() => setActiveTab('nutrition')}
-                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'nutrition' ? 'bg-blue-50 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'nutrition' ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
                             >
                                 <span className="material-symbols-outlined text-[18px]">apple</span>
                                 Nutrition
                             </button>
                             <button
                                 onClick={() => setActiveTab('settings')}
-                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'settings' ? 'bg-blue-50 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+                                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors ${activeTab === 'settings' ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
                             >
                                 <span className="material-symbols-outlined text-[18px]">settings</span>
                                 Settings
                             </button>
                         </nav>
 
-                        <div className="mt-auto bg-red-50 rounded-2xl p-5 border border-red-100 shadow-sm">
+                        <div className="mt-auto bg-red-50 dark:bg-red-950/20 rounded-2xl p-5 border border-red-100 dark:border-red-900/30 shadow-sm">
                             <p className="text-red-500 text-[10px] font-extrabold uppercase tracking-widest mb-3">Emergency</p>
-                            <p className="font-extrabold text-sm text-slate-900 leading-tight">Dr. Sarah Miller</p>
+                            <p className="font-extrabold text-sm text-slate-900 dark:text-slate-100 leading-tight">Dr. Sarah Miller</p>
                             <p className="text-xs font-semibold text-slate-500 mb-4 mt-1">+1 (555) 000-1234</p>
                             <a href="tel:+15550001234" className="block text-center w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-2.5 rounded-xl transition-colors shadow-md shadow-red-500/20 active:scale-95">
                                 Call Now
@@ -319,68 +315,67 @@ const MyHealthOverview = () => {
                     </div>
 
                     {/* AI Wellness Tips Component */}
-                    <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col">
+                    <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
                         <div className="flex items-center gap-2 mb-6">
                             <span className="material-symbols-outlined text-blue-600 text-[18px]">lightbulb</span>
-                            <h3 className="font-bold text-slate-900 text-[14px]">AI Wellness Tips</h3>
+                            <h3 className="font-bold text-slate-900 dark:text-slate-100 text-[14px]">AI Wellness Tips</h3>
                         </div>
 
                         <div className="flex flex-col gap-6 mb-6">
                             {/* Tip 1 */}
                             <div className="flex gap-4">
-                                <div className="size-8 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center shrink-0 mt-0.5">
+                                <div className="size-8 rounded-full bg-emerald-50 dark:bg-emerald-950/20 text-emerald-500 flex items-center justify-center shrink-0 mt-0.5">
                                     <span className="material-symbols-outlined text-[16px]">water_drop</span>
                                 </div>
                                 <div>
-                                    <h4 className="text-[13px] font-black text-slate-900 mb-1 leading-tight">Increase Hydration</h4>
-                                    <p className="text-[11px] font-medium text-slate-500 leading-relaxed">Based on your activity, drink 500ml more water today.</p>
+                                    <h4 className="text-[13px] font-black text-slate-900 dark:text-slate-100 mb-1 leading-tight">Increase Hydration</h4>
+                                    <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-relaxed">Based on your activity, drink 500ml more water today.</p>
                                 </div>
                             </div>
                             {/* Tip 2 */}
                             <div className="flex gap-4">
-                                <div className="size-8 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center shrink-0 mt-0.5">
+                                <div className="size-8 rounded-full bg-amber-50 dark:bg-amber-950/20 text-amber-500 flex items-center justify-center shrink-0 mt-0.5">
                                     <span className="material-symbols-outlined text-[16px]">bedtime</span>
                                 </div>
                                 <div>
-                                    <h4 className="text-[13px] font-black text-slate-900 mb-1 leading-tight">Sleep Quality</h4>
-                                    <p className="text-[11px] font-medium text-slate-500 leading-relaxed">Heart rate trend suggests you need 30 mins more rest.</p>
+                                    <h4 className="text-[13px] font-black text-slate-900 dark:text-slate-100 mb-1 leading-tight">Sleep Quality</h4>
+                                    <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-relaxed">Heart rate trend suggests you need 30 mins more rest.</p>
                                 </div>
                             </div>
                             {/* Tip 3 */}
                             <div className="flex gap-4">
-                                <div className="size-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                <div className="size-8 rounded-full bg-blue-50 dark:bg-blue-950/20 text-blue-500 flex items-center justify-center shrink-0 mt-0.5">
                                     <span className="material-symbols-outlined text-[16px]">directions_run</span>
                                 </div>
                                 <div>
-                                    <h4 className="text-[13px] font-black text-slate-900 mb-1 leading-tight">Morning Jog</h4>
-                                    <p className="text-[11px] font-medium text-slate-500 leading-relaxed">A 20-min low intensity jog will help stabilize BP.</p>
+                                    <h4 className="text-[13px] font-black text-slate-900 dark:text-slate-100 mb-1 leading-tight">Morning Jog</h4>
+                                    <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-relaxed">A 20-min low intensity jog will help stabilize BP.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <Link to="/health-reports-analytics" className="w-full bg-slate-50 hover:bg-slate-100 text-blue-600 font-bold text-[12px] py-3 rounded-xl transition-colors text-center block active:scale-[0.98]">
+                        <Link to="/health-reports-analytics" className="w-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-blue-600 dark:text-blue-400 font-bold text-[12px] py-3 rounded-xl transition-colors text-center block active:scale-[0.98]">
                             See Detailed Plan
                         </Link>
                     </div>
 
                     {/* Next Appointment Component */}
-                    <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm cursor-pointer hover:border-blue-300 transition-colors" onClick={() => navigate('/first-aid-knowledge-base')}>
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer hover:border-blue-300 dark:hover:border-blue-700 transition-colors" onClick={() => navigate('/first-aid-knowledge-base')}>
                         <h3 className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-4">NEXT APPOINTMENT</h3>
                         <div className="flex items-center gap-4">
-                            <div className="size-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center">
+                            <div className="size-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                                 <span className="material-symbols-outlined text-[18px]">calendar_today</span>
                             </div>
                             <div>
-                                <h4 className="text-[13px] font-black text-slate-900 mb-1 leading-tight">Annual Physical</h4>
-                                <p className="text-[11px] font-bold text-slate-500 mt-1">Oct 24, 10:00 AM</p>
+                                <h4 className="text-[13px] font-black text-slate-900 dark:text-slate-100 mb-1 leading-tight">Annual Physical</h4>
+                                <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mt-1">Oct 24, 10:00 AM</p>
                             </div>
                             <span className="material-symbols-outlined text-slate-300 ml-auto">chevron_right</span>
                         </div>
                     </div>
                 </aside>
             </div>
-            <Footer />
-        </div>
+        </AppLayout>
     );
 };
 

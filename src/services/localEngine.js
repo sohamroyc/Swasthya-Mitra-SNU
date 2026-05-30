@@ -205,7 +205,20 @@ function buildResponse(entry) {
 // ── Emergency check ───────────────────────────────────────────────────────────
 function checkEmergency(query) {
   const q = query.toLowerCase();
-  return EMERGENCY_KEYWORDS.some(kw => q.includes(kw));
+  if (EMERGENCY_KEYWORDS.some(kw => q.includes(kw))) return true;
+
+  // Compound indicators (Chest Pain + Sweat/Breath or Smoking + Chest Pain + Breath)
+  const hasChestPain = q.includes("chest pain") || q.includes("heart pain") || q.includes("angina") || q.includes("crushing pain") || q.includes("chest tightness");
+  const hasSweating = q.includes("sweat") || q.includes("sweating") || q.includes("profuse");
+  const hasBreath = q.includes("breath") || q.includes("breathing") || q.includes("dyspnea") || q.includes("sob") || q.includes("shortness");
+
+  if (hasChestPain && (hasSweating || hasBreath)) return true;
+
+  // Stroke complex signs
+  const hasStrokeSigns = q.includes("stroke") || (q.includes("droop") && q.includes("face")) || (q.includes("slurred") && q.includes("speech")) || (q.includes("arm") && q.includes("weakness"));
+  if (hasStrokeSigns) return true;
+
+  return false;
 }
 
 // ── Main search function (exported) ──────────────────────────────────────────

@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import TopHeader from '../components/TopHeader';
-import Footer from '../components/Footer';
+import AppLayout from '../components/AppLayout';
 import { supabase } from '../supabaseClient';
 
 const specialtiesList = [
@@ -18,17 +17,13 @@ const FirstAidKnowledgeBase = () => {
     const [selectedDoctor, setSelectedDoctor] = useState(null);
 
     return (
-        <div className="font-display bg-slate-50 min-h-screen text-slate-900">
-            <TopHeader />
-
+        <AppLayout activeTab="doctor">
             {selectedDoctor ? (
                 <DoctorDetailView doctor={selectedDoctor} onBack={() => setSelectedDoctor(null)} />
             ) : (
                 <DoctorListView onSelectDoctor={setSelectedDoctor} />
             )}
-
-            <Footer />
-        </div>
+        </AppLayout>
     );
 };
 
@@ -677,7 +672,6 @@ const DoctorDetailView = ({ doctor, onBack }) => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

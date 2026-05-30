@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import HeaderActions from '../components/HeaderActions';
-import TopHeader from '../components/TopHeader';
+import AppLayout from '../components/AppLayout';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -285,17 +284,16 @@ const EmergencyClinicLocator = () => {
     };
 
     return (
-        <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
-            <div className="layout-container flex h-screen flex-col">
-                {/* Header */}
-                <TopHeader />
-
-                {/* Main Content Area */}
-                <main className="flex flex-1 overflow-hidden relative">
+        <AppLayout activeTab="clinics">
+            <div>
+                <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mb-2">Nearby Clinics & SOS</h1>
+                <p className="text-slate-500 dark:text-slate-400 font-medium mb-6">Locate emergency healthcare, hospitals, and active clinics near you.</p>
+                
+                <div className="flex flex-col lg:flex-row border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden bg-white dark:bg-slate-900 shadow-sm h-[640px] relative">
                     {/* Sidebar: Clinic List & SOS */}
-                    <aside className="w-96 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark overflow-hidden shrink-0 z-10 shadow-xl">
+                    <aside className="w-full lg:w-96 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shrink-0 z-10 shadow-lg h-full">
                         {/* High-Visibility SOS Section */}
-                        <div className="p-6 bg-red-50 dark:bg-red-900/10 border-b border-red-100 dark:border-red-900/20 shrink-0">
+                        <div className="p-6 bg-red-50 dark:bg-red-950/20 border-b border-red-100 dark:border-red-900/30 shrink-0">
                             <div className="flex flex-col gap-4">
                                 <div className="flex items-center justify-between">
                                     <h3 className="text-red-600 dark:text-red-400 font-bold text-lg uppercase tracking-wider flex items-center gap-2">
@@ -404,7 +402,7 @@ const EmergencyClinicLocator = () => {
                     </aside>
 
                     {/* Map Area */}
-                    <section className="flex-1 relative bg-slate-100 dark:bg-slate-900 z-0">
+                    <section className="flex-1 relative bg-slate-100 dark:bg-slate-900 z-0 h-full">
                         {/* Interactive React Leaflet Map */}
                         <div className="absolute inset-0 leaflet-container-override">
                             <MapContainer
@@ -510,7 +508,7 @@ const EmergencyClinicLocator = () => {
                             </div>
                         </div>
                     </section>
-                </main>
+                </div>
             </div>
 
             {/* Injected CSS for Leaflet overrides */}
@@ -532,7 +530,7 @@ const EmergencyClinicLocator = () => {
                     border: none;
                 }
             `}</style>
-        </div >
+        </AppLayout>
     );
 };
 
