@@ -185,6 +185,8 @@ const LandingPage = () => {
           </div>
         </section>
 
+      </div>{/* ── end h-screen wrapper ── */}
+
             {/* ── 2. Info Section ("Meet Swasthya Mitra") ── */}
       <section id="platform" className="bg-[#F8FAFF] px-6 py-24 border-t border-slate-100">
         <div className="max-w-[88rem] mx-auto">
