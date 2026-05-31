@@ -8,7 +8,7 @@ const Footer = () => {
                     <div className="size-6 rounded bg-primary/10 flex items-center justify-center text-primary">
                         <span className="material-symbols-outlined text-[14px]">health_and_safety</span>
                     </div>
-                    <span className="font-bold text-sm text-slate-900 dark:text-slate-100">Arogya<span className="text-primary">Setu</span></span>
+                    <span className="font-bold text-sm text-slate-900 dark:text-slate-100">Swasthya<span className="text-primary"> Mitra</span></span>
                 </div>
                 <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
                     &copy; {new Date().getFullYear()} Swasthya Mitra AI Healthcare Framework. Built internally.

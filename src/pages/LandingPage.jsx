@@ -128,7 +128,7 @@ const LandingPage = () => {
                 </h1>
                 
                 <p className="text-white/80 text-sm md:text-base lg:text-lg max-w-xl mb-10 leading-relaxed font-light">
-                  ArogyaSetu integrates multimodal clinical AI with public health intelligence to provide precision care pathways for every citizen across the subcontinent.
+                  Swasthya Mitra integrates multimodal clinical AI with public health intelligence to provide precision care pathways for every citizen across the subcontinent.
                 </p>
 
                 {/* Hero Action Buttons */}
@@ -328,7 +328,7 @@ const LandingPage = () => {
           {/* Left Column: Outreach details */}
           <div>
             <span className="text-[#1A6FE8] text-xs font-bold uppercase tracking-wider mb-2 block">
-              AROGYASETU IN PRACTICE
+              SWASTHYA MITRA IN PRACTICE
             </span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#0A1628] leading-tight mb-12 font-display" style={{ letterSpacing: '-0.03em' }}>
               Transforming the Clinical<br />Journey.
