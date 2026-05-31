@@ -119,6 +119,9 @@ CREATE TABLE IF NOT EXISTS public.profiles (
 -- Alter Medications Table to support per-user schedules (Idempotent)
 ALTER TABLE public.medications ADD COLUMN IF NOT EXISTS user_email TEXT;
 
+-- Add photo_url column to profiles table (Idempotent)
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS photo_url TEXT;
+
 
 -- ==========================================
 -- 5. Create Symptom Chats Table (IF NOT EXISTS)

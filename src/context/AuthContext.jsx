@@ -19,7 +19,8 @@ const mapProfile = (dbUser) => {
         bloodType: dbUser.blood_type,
         allergies: dbUser.allergies,
         conditions: dbUser.conditions,
-        createdAt: dbUser.created_at
+        createdAt: dbUser.created_at,
+        photoUrl: dbUser.photo_url || null,
     };
 };
 
@@ -161,6 +162,11 @@ export const AuthProvider = ({ children }) => {
                 allergies: fields.allergies || '',
                 conditions: fields.conditions || '',
             };
+
+            // Only include photo_url if the field is being updated (avoid overwriting with undefined)
+            if (fields.photoUrl !== undefined) {
+                dbFields.photo_url = fields.photoUrl;
+            }
 
             await supabase.from('profiles').update(dbFields).eq('email', email.toLowerCase());
         } catch (err) {

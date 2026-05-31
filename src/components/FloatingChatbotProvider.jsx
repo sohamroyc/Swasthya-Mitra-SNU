@@ -13,6 +13,10 @@ const FloatingChatbotProvider = ({ children }) => {
     const [inputValue, setInputValue] = useState("");
     const [isTyping, setIsTyping] = useState(false);
 
+    // Location state
+    const [userLocation, setUserLocation] = useState(null); // { city, state, country }
+    const locationFetchedRef = useRef(false);
+
     // Voice Interaction State
     const [isListening, setIsListening] = useState(false);
     const [currentLanguage, setCurrentLanguage] = useState('en-US'); // Default English
@@ -93,7 +97,37 @@ const FloatingChatbotProvider = ({ children }) => {
     };
 
     const toggleChatbot = () => {
-        setIsOpen(!isOpen);
+        const opening = !isOpen;
+        setIsOpen(opening);
+
+        // Fetch user location the first time the chat is opened
+        if (opening && !locationFetchedRef.current) {
+            locationFetchedRef.current = true;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    async (pos) => {
+                        try {
+                            const { latitude, longitude } = pos.coords;
+                            const res = await fetch(
+                                `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+                                { headers: { 'Accept-Language': 'en' } }
+                            );
+                            const geo = await res.json();
+                            const addr = geo.address || {};
+                            setUserLocation({
+                                city: addr.city || addr.town || addr.village || addr.county || 'your city',
+                                state: addr.state || '',
+                                country: addr.country || 'India',
+                            });
+                        } catch (_) {
+                            // Silently fail — location just won't be injected
+                        }
+                    },
+                    () => { /* permission denied — silently ignore */ },
+                    { timeout: 8000 }
+                );
+            }
+        }
     };
 
     const handleSendMessage = async () => {
@@ -119,8 +153,13 @@ const FloatingChatbotProvider = ({ children }) => {
             const langMap = { 'en-US': 'English', 'hi-IN': 'Hindi', 'bn-IN': 'Bengali' };
             const languageName = langMap[currentLanguage] || 'English';
 
+            const locationContext = userLocation
+                ? `The user is currently located in ${userLocation.city}${userLocation.state ? ', ' + userLocation.state : ''}, ${userLocation.country}. When relevant, suggest nearby hospitals, clinics, emergency numbers, or government health schemes that are applicable to this region.`
+                : '';
+
             const basePrompt = generateSystemPromptFromKB();
             const systemPrompt = `${basePrompt}
+${locationContext}
 CRITICAL DIRECTIVE: You MUST ONLY answer questions related to the Swasthya Mitra project, health, wellness, first-aid, or medical symptoms. 
 If the user asks ANY question unrelated to these topics (such as coding, math, general knowledge, translations of non-medical text, or any out-of-domain topic), you MUST firmly refuse to answer. Do not apologize, just state: "I am a medical assistant and can only answer health-related questions."
 Do not prescribe complex medications. Respond natively in ${languageName}, keeping answers extremely short and concise.`;
