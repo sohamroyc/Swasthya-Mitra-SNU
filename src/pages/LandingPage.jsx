@@ -77,21 +77,14 @@ const LandingPage = () => {
               <span className="text-2xl font-bold tracking-tight text-[#0A1628]">Swasthya Mitra</span>
             </div>
 
-            {/* Links */}
-            <div className="hidden md:flex items-center gap-8">
-              <a href="#platform" className="text-sm text-[#1A6FE8] font-bold border-b-2 border-[#1A6FE8] pb-1 transition-all">Platform</a>
-              <a href="#modules" className="text-sm text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors">Modules</a>
-              <a href="#eligibility" className="text-sm text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors">Eligibility</a>
-              <a href="#emergency" className="text-sm text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors">Emergency</a>
-              <a href="#about" className="text-sm text-[#4A5568] hover:text-[#1A6FE8] font-medium transition-colors">About</a>
-            </div>
+
 
             {/* Open App */}
             <button
               onClick={handleOpenApp}
               className="bg-[#1A6FE8] text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-[#1558C0] transition-all shadow-md shadow-blue-500/10 active:scale-95 transform"
             >
-              Open App
+              {user ? 'Open App' : 'Sign In / Log In'}
             </button>
           </div>
         </nav>

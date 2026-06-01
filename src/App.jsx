@@ -18,11 +18,18 @@ import GovernmentHealthSchemes from './pages/GovernmentHealthSchemes';
 import FloatingChatbotProvider from './components/FloatingChatbotProvider';
 
 const LayoutContainer = ({ children }) => {
+  const location = useLocation();
+  const showChatbot = location.pathname !== '/';
+
   return (
     <div className="relative">
-      <FloatingChatbotProvider>
-        {children}
-      </FloatingChatbotProvider>
+      {showChatbot ? (
+        <FloatingChatbotProvider>
+          {children}
+        </FloatingChatbotProvider>
+      ) : (
+        children
+      )}
     </div>
   );
 }
