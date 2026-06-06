@@ -73,7 +73,7 @@ const LandingPage = () => {
           <div className="max-w-[88rem] mx-auto flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center gap-2.5">
-              <LogoIcon className="w-7 h-7 text-[#1A6FE8]" />
+              <img src="/logo.png" className="w-8 h-8 object-contain bg-white rounded-lg p-0.5 shadow-sm border border-slate-100" alt="Logo" />
               <span className="text-2xl font-bold tracking-tight text-[#0A1628]">Swasthya Mitra</span>
             </div>
 
@@ -416,7 +416,7 @@ const LandingPage = () => {
             {/* Left */}
             <div>
               <div className="flex items-center gap-2">
-                <LogoIcon className="w-6 h-6 text-[#1A6FE8]" />
+                <img src="/logo.png" className="w-7 h-7 object-contain bg-white rounded-lg p-0.5 shadow-sm border border-slate-100" alt="Logo" />
                 <span className="font-bold text-slate-900 text-lg tracking-tight">Swasthya Mitra</span>
               </div>
               <p className="text-[#4A5568] text-sm mt-4 max-w-xs leading-relaxed font-light">

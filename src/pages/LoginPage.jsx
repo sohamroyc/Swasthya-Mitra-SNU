@@ -101,7 +101,7 @@ const LoginPage = () => {
 
           {/* Logo */}
           <div className="flex items-center gap-2.5">
-            <LogoIcon className="w-7 h-7 text-[#4F92F8]" />
+            <img src="/logo.png" className="w-8 h-8 object-contain bg-white rounded-lg p-0.5" alt="Logo" />
             <span className="text-xl font-bold tracking-tight text-white">Swasthya Mitra</span>
           </div>
 
@@ -148,7 +148,7 @@ const LoginPage = () => {
         {/* Mobile top bar */}
         <div className="lg:hidden flex items-center justify-between px-6 py-5 bg-white border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <LogoIcon className="w-6 h-6 text-[#1A6FE8]" />
+            <img src="/logo.png" className="w-7 h-7 object-contain bg-slate-50 rounded-lg p-0.5" alt="Logo" />
             <span className="font-bold text-[#0A1628] text-lg tracking-tight">Swasthya Mitra</span>
           </div>
           <Link to="/create-account" className="text-[#1A6FE8] text-sm font-semibold">

@@ -125,14 +125,9 @@ const AppLayout = ({ children, activeTab }) => {
             <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-6 py-3 flex items-center justify-between shadow-sm select-none">
                 
                 {/* 1. Left side: Square Logo Box */}
-                <div className="flex items-center gap-3 shrink-0">
-                    <Link to="/dashboard" className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-1.5 shadow-sm flex flex-col items-center justify-center size-12 hover:scale-[1.02] active:scale-95 transition-all">
-                        <svg className="w-5 h-5 text-[#1A6FE8]" viewBox="0 0 256 256" fill="currentColor">
-                            <path d="M 128 32 C 128 32 96 64 64 96 L 64 128 L 96 128 L 96 192 L 160 192 L 160 128 L 192 128 L 192 96 C 160 64 128 32 128 32 Z M 48 112 L 16 112 L 16 144 L 48 144 Z M 208 112 L 240 112 L 240 144 L 208 144 Z" />
-                        </svg>
-                        <span className="text-[7px] font-black tracking-widest text-[#0A1628] dark:text-white uppercase leading-none mt-1">MITRA</span>
+                    <Link to="/dashboard" className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-1 shadow-sm flex items-center justify-center size-12 hover:scale-[1.02] active:scale-95 transition-all overflow-hidden">
+                        <img src="/logo.png" className="w-full h-full object-contain" alt="Logo" />
                     </Link>
-                </div>
 
                 {/* 2. Center: Pill navigation container with smooth sliding controls */}
                 <div className="flex-1 max-w-4xl mx-4 relative flex items-center overflow-hidden">
