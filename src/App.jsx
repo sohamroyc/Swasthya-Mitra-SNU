@@ -15,6 +15,8 @@ import CreateAccountPage from './pages/CreateAccountPage';
 import MyHealthOverview from './pages/MyHealthOverview';
 import AiDermatologist from './pages/AiDermatologist';
 import GovernmentHealthSchemes from './pages/GovernmentHealthSchemes';
+import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
 import FloatingChatbotProvider from './components/FloatingChatbotProvider';
 
 const LayoutContainer = ({ children }) => {
@@ -41,20 +43,20 @@ function App() {
         <LayoutContainer>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/create-account" element={<CreateAccountPage />} />
-            <Route path="/ai-symptom-checker-interface" element={<AiSymptomCheckerInterface />} />
-            <Route path="/ai-x-ray-analysis-tool" element={<AiXRayAnalysisTool />} />
-            <Route path="/emergency-clinic-locator" element={<EmergencyClinicLocator />} />
-            <Route path="/first-aid-knowledge-base" element={<FirstAidKnowledgeBase />} />
-            <Route path="/health-reports-analytics" element={<HealthReportsAnalytics />} />
-            <Route path="/dashboard" element={<MainWellnessDashboard />} />
-            <Route path="/main-wellness-dashboard" element={<MainWellnessDashboard />} />
-            <Route path="/medication-manager-calendar" element={<MedicationManagerCalendar />} />
-            <Route path="/patient-profile-records" element={<PatientProfileRecords />} />
-            <Route path="/my-health" element={<MyHealthOverview />} />
-            <Route path="/ai-dermatologist" element={<AiDermatologist />} />
-            <Route path="/government-health-schemes" element={<GovernmentHealthSchemes />} />
+            <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
+            <Route path="/create-account" element={<PublicRoute><CreateAccountPage /></PublicRoute>} />
+            <Route path="/ai-symptom-checker-interface" element={<ProtectedRoute><AiSymptomCheckerInterface /></ProtectedRoute>} />
+            <Route path="/ai-x-ray-analysis-tool" element={<ProtectedRoute><AiXRayAnalysisTool /></ProtectedRoute>} />
+            <Route path="/emergency-clinic-locator" element={<ProtectedRoute><EmergencyClinicLocator /></ProtectedRoute>} />
+            <Route path="/first-aid-knowledge-base" element={<ProtectedRoute><FirstAidKnowledgeBase /></ProtectedRoute>} />
+            <Route path="/health-reports-analytics" element={<ProtectedRoute><HealthReportsAnalytics /></ProtectedRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute><MainWellnessDashboard /></ProtectedRoute>} />
+            <Route path="/main-wellness-dashboard" element={<ProtectedRoute><MainWellnessDashboard /></ProtectedRoute>} />
+            <Route path="/medication-manager-calendar" element={<ProtectedRoute><MedicationManagerCalendar /></ProtectedRoute>} />
+            <Route path="/patient-profile-records" element={<ProtectedRoute><PatientProfileRecords /></ProtectedRoute>} />
+            <Route path="/my-health" element={<ProtectedRoute><MyHealthOverview /></ProtectedRoute>} />
+            <Route path="/ai-dermatologist" element={<ProtectedRoute><AiDermatologist /></ProtectedRoute>} />
+            <Route path="/government-health-schemes" element={<ProtectedRoute><GovernmentHealthSchemes /></ProtectedRoute>} />
           </Routes>
         </LayoutContainer>
       </AuthProvider>

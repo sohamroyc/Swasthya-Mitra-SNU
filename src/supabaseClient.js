@@ -46,7 +46,27 @@ if (!supabaseClient) {
     };
 
     supabaseClient = {
-        from: () => createChainableMock()
+        from: () => createChainableMock(),
+        auth: {
+            signUp: async ({ email, password, options }) => {
+                return { data: { user: { email, user_metadata: options?.data } }, error: null };
+            },
+            signInWithPassword: async ({ email, password }) => {
+                return { data: { user: { email } }, error: null };
+            },
+            signInWithOAuth: async ({ provider, options }) => {
+                return { data: { provider: 'google', url: '#' }, error: null };
+            },
+            signOut: async () => {
+                return { error: null };
+            },
+            getSession: async () => {
+                return { data: { session: null }, error: null };
+            },
+            onAuthStateChange: (callback) => {
+                return { data: { subscription: { unsubscribe: () => {} } } };
+            }
+        }
     };
 }
 

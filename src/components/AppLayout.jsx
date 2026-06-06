@@ -1,16 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { patientProfileService } from '../services/api';
-import HeaderActions from './HeaderActions';
 import Footer from './Footer';
+import SOSEmergencyButton from './SOSEmergencyButton';
+import {
+  LayoutDashboard,
+  Stethoscope,
+  HeartPulse,
+  Pill,
+  FolderHeart,
+  Hospital,
+  Brain,
+  MessageSquare,
+  Sparkles,
+  ShieldCheck,
+  Globe,
+  Moon,
+  Sun,
+  Bell,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  LogOut,
+} from 'lucide-react';
 
 const AppLayout = ({ children, activeTab }) => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [profile, setProfile] = useState({ name: user?.name || "Loading...", role: "Loading..." });
-    const [searchQuery, setSearchQuery] = useState('');
+
+    // Sliding navigation menu controls
+    const scrollRef = useRef(null);
+    const [showLeftArrow, setShowLeftArrow] = useState(false);
+    const [showRightArrow, setShowRightArrow] = useState(false);
+
+    // Live theme switcher state
+    const [darkMode, setDarkMode] = useState(() => {
+        return localStorage.getItem('theme') === 'dark' || document.documentElement.classList.contains('dark');
+    });
+
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [darkMode]);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -24,120 +63,201 @@ const AppLayout = ({ children, activeTab }) => {
         fetchProfile();
     }, [user]);
 
-    const handleSearch = (e) => {
-        if (e.key === 'Enter' && searchQuery.trim()) {
-            console.log('Searching for:', searchQuery);
-            setSearchQuery('');
+    const navLinks = [
+        { id: 'dashboard', path: '/dashboard', label: 'Dashboard', iconComponent: LayoutDashboard },
+        { id: 'consultations', path: '/ai-symptom-checker-interface', label: 'Consultations', iconComponent: Stethoscope },
+        { id: 'my-health', path: '/my-health', label: 'My Health', iconComponent: HeartPulse },
+        { id: 'medications', path: '/medication-manager-calendar', label: 'Medications', iconComponent: Pill },
+        { id: 'records', path: '/patient-profile-records', label: 'Health Records', iconComponent: FolderHeart },
+        { id: 'clinics', path: '/emergency-clinic-locator', label: 'Nearby Clinics', iconComponent: Hospital },
+        { id: 'xray', path: '/ai-x-ray-analysis-tool', label: 'AI X-Ray', iconComponent: Brain },
+        { id: 'doctor', path: '/first-aid-knowledge-base', label: 'AI Doctor Chat', iconComponent: MessageSquare },
+        { id: 'dermatologist', path: '/ai-dermatologist', label: 'AI Dermatologist', iconComponent: Sparkles },
+        { id: 'schemes', path: '/government-health-schemes', label: 'Health Schemes', iconComponent: ShieldCheck },
+    ];
+
+    // Recalculate arrow visibility
+    const updateArrows = () => {
+        if (scrollRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+            setShowLeftArrow(scrollLeft > 2);
+            setShowRightArrow(scrollLeft + clientWidth < scrollWidth - 2);
         }
     };
 
-    const navLinks = [
-        { id: 'dashboard', path: '/dashboard', label: 'Dashboard', icon: 'dashboard' },
-        { id: 'consultations', path: '/ai-symptom-checker-interface', label: 'Consultations', icon: 'stethoscope' },
-        { id: 'my-health', path: '/my-health', label: 'My Health', icon: 'monitoring' },
-        { id: 'medications', path: '/medication-manager-calendar', label: 'Medications', icon: 'pill' },
-        { id: 'records', path: '/patient-profile-records', label: 'Health Records', icon: 'folder_shared' },
-        { id: 'clinics', path: '/emergency-clinic-locator', label: 'Nearby Clinics', icon: 'local_hospital' },
-        { id: 'xray', path: '/ai-x-ray-analysis-tool', label: 'AI X-Ray', icon: 'radiology' },
-        { id: 'doctor', path: '/first-aid-knowledge-base', label: 'AI Doctor Chat', icon: 'chat' },
-        { id: 'dermatologist', path: '/ai-dermatologist', label: 'AI Dermatologist', icon: 'face' },
-        { id: 'schemes', path: '/government-health-schemes', label: 'Health Schemes', icon: 'verified_user' },
-    ];
+    useEffect(() => {
+        updateArrows();
+        // A minor timeout allows DOM to compute dimensions properly on load/tab switch
+        const timer = setTimeout(updateArrows, 150);
+        
+        window.addEventListener('resize', updateArrows);
+        return () => {
+            window.removeEventListener('resize', updateArrows);
+            clearTimeout(timer);
+        };
+    }, [location.pathname]);
 
-    const getLinkClass = (linkId) => {
-        const baseClass = "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold transition-colors";
-        if (activeTab === linkId || location.pathname === navLinks.find(l => l.id === linkId)?.path) {
-            return `${baseClass} bg-primary/10 text-primary`;
+    const handleScrollLeft = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({ left: -240, behavior: 'smooth' });
         }
-        return `${baseClass} text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800`;
+    };
+
+    const handleScrollRight = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({ left: 240, behavior: 'smooth' });
+        }
     };
 
     return (
-        <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
-            <div className="flex h-screen overflow-hidden">
-                {/* ── SIDEBAR NAVIGATION ── */}
-                <aside className="w-64 flex-shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col">
-                    <Link to="/dashboard" className="p-5 flex items-center gap-3 hover:opacity-80 transition-opacity">
-                        <div className="size-10 bg-primary rounded-xl flex items-center justify-center text-white">
-                            <span className="material-symbols-outlined">health_and_safety</span>
-                        </div>
-                        <div>
-                            <h1 className="font-bold text-base leading-tight">Swasthya Mitra</h1>
-                            <p className="text-[11px] text-slate-500 dark:text-slate-400">AI Wellness Hub</p>
-                        </div>
+        <div className="min-h-screen bg-[#F8FAFF] dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-display flex flex-col">
+            <style dangerouslySetInnerHTML={{ __html: `
+              .no-scrollbar::-webkit-scrollbar {
+                display: none;
+              }
+              .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+              }
+            `}} />
+
+            {/* ── HORIZONTAL HEADER ── */}
+            <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-6 py-3 flex items-center justify-between shadow-sm select-none">
+                
+                {/* 1. Left side: Square Logo Box */}
+                <div className="flex items-center gap-3 shrink-0">
+                    <Link to="/dashboard" className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-1.5 shadow-sm flex flex-col items-center justify-center size-12 hover:scale-[1.02] active:scale-95 transition-all">
+                        <svg className="w-5 h-5 text-[#1A6FE8]" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M 128 32 C 128 32 96 64 64 96 L 64 128 L 96 128 L 96 192 L 160 192 L 160 128 L 192 128 L 192 96 C 160 64 128 32 128 32 Z M 48 112 L 16 112 L 16 144 L 48 144 Z M 208 112 L 240 112 L 240 144 L 208 144 Z" />
+                        </svg>
+                        <span className="text-[7px] font-black tracking-widest text-[#0A1628] dark:text-white uppercase leading-none mt-1">MITRA</span>
                     </Link>
+                    <div className="hidden xl:block">
+                        <h1 className="font-extrabold text-sm text-slate-900 dark:text-white leading-tight">Swasthya Mitra</h1>
+                        <p className="text-[10px] text-slate-400 font-semibold leading-none">AI Wellness Hub</p>
+                    </div>
+                </div>
+
+                {/* 2. Center: Pill navigation container with smooth sliding controls */}
+                <div className="flex-1 max-w-4xl mx-4 relative flex items-center overflow-hidden">
                     
-                    <nav className="flex-1 px-4 py-2 space-y-1 overflow-y-auto max-h-[calc(100vh-180px)]">
-                        {navLinks.map(link => (
-                            <Link key={link.id} className={getLinkClass(link.id)} to={link.path}>
-                                <span className="material-symbols-outlined text-[20px]">{link.icon}</span>
-                                <span>{link.label}</span>
-                            </Link>
-                        ))}
-                    </nav>
+                    {/* Left Slide Button */}
+                    {showLeftArrow && (
+                        <button
+                            onClick={handleScrollLeft}
+                            className="absolute left-1 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-white/95 dark:bg-slate-800/95 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white shadow-md active:scale-90 transition-all"
+                            title="Scroll Left"
+                        >
+                            <ChevronLeft className="w-4 h-4" />
+                        </button>
+                    )}
 
-                    <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-                        <div className="flex items-center gap-3 px-1">
-                            <div className="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-black text-white bg-cover bg-center" style={{ backgroundImage: 'url(https://lh3.googleusercontent.com/aida-public/AB6AXuDdROacabQcsgkHNRU9h3DjZRhBrqKeRWRfDh7W6ySZ7f1VaSESWTzydRxPYS5AKSG9lFTKidvp-_GwA5en2WRCT4ZCSajS5TI4MgzQEB2Ae4oeESmt5AknBD7hNhuyl6kn68PiaFPXYVkBw7BXcJBs4874o1zUQQ7H-j3F2VptTSS9hGTiruLTCAMrTyt2iA3hkYqihOn6QGRuAKGwBEeKpKmiXY0qL6e6bAEDZgKg4idmrbyfwl_ofr8AZqdE8oGIV03k7fq4GwM)' }}></div>
-                            <Link to="/patient-profile-records" className="flex-1 min-w-0 pr-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg p-1 transition-colors">
-                                <p className="text-xs font-bold truncate text-slate-800 dark:text-slate-200">{profile.name}</p>
-                                <p className="text-[10px] text-slate-500 truncate">{profile.role}</p>
-                            </Link>
-                            <div className="flex items-center gap-1.5">
-                                <Link to="/patient-profile-records" className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
-                                    <span className="material-symbols-outlined text-[18px]">settings</span>
+                    {/* Right Slide Button */}
+                    {showRightArrow && (
+                        <button
+                            onClick={handleScrollRight}
+                            className="absolute right-1 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-white/95 dark:bg-slate-800/95 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white shadow-md active:scale-90 transition-all"
+                            title="Scroll Right"
+                        >
+                            <ChevronRight className="w-4 h-4" />
+                        </button>
+                    )}
+
+                    {/* Scrollable nav bar row */}
+                    <div
+                        ref={scrollRef}
+                        onScroll={updateArrows}
+                        className="w-full bg-slate-100/70 dark:bg-slate-800/80 rounded-full border border-slate-200/40 dark:border-slate-700/50 p-1 flex items-center gap-1 overflow-x-auto no-scrollbar whitespace-nowrap scroll-smooth"
+                    >
+                        {navLinks.map((link) => {
+                            const isActive = activeTab === link.id || location.pathname === link.path;
+                            const Icon = link.iconComponent;
+                            return (
+                                <Link
+                                    key={link.id}
+                                    to={link.path}
+                                    className={`flex items-center gap-2 py-1.5 px-4 rounded-full text-xs font-semibold transition-all duration-200 ${
+                                        isActive
+                                            ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white font-bold shadow-sm border border-slate-200/40 dark:border-slate-600'
+                                            : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-white/40 dark:hover:bg-slate-700/40'
+                                    }`}
+                                >
+                                    <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#1A6FE8]' : 'text-slate-400 dark:text-slate-500'}`} />
+                                    <span>{link.label}</span>
                                 </Link>
-                                <a title="Logout" href="#" onClick={async (e) => { e.preventDefault(); await logout(); navigate('/'); }} className="text-slate-400 hover:text-red-500">
-                                    <span className="material-symbols-outlined text-[18px]">logout</span>
-                                </a>
-                            </div>
-                        </div>
+                            );
+                        })}
                     </div>
-                </aside>
+                </div>
 
-                {/* ── MAIN CONTENT CONTAINER ── */}
-                <main className="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark flex flex-col">
-                    {/* Sticky Header */}
-                    <header className="sticky top-0 z-40 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between">
-                        <div className="flex-1 max-w-xl">
-                            <div className="relative group">
-                                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
-                                <input
-                                    className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-10 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm focus:shadow-md"
-                                    placeholder="Search health records, symptoms, or doctors..."
-                                    type="search"
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    onKeyDown={handleSearch}
-                                />
-                                {searchQuery && (
-                                    <button
-                                        onClick={() => setSearchQuery('')}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none"
-                                    >
-                                        <span className="material-symbols-outlined text-[16px]">close</span>
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <HeaderActions />
-                            <div className="h-8 w-px bg-slate-200 dark:bg-slate-800 mx-2"></div>
-                            <button className="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
-                                <span className="material-symbols-outlined">notifications</span>
-                                <span className="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-white dark:border-slate-900"></span>
-                            </button>
-                        </div>
-                    </header>
-
-                    {/* Scrollable Children */}
-                    <div className="flex-1 p-8 max-w-7xl mx-auto w-full space-y-8">
-                        {children}
+                {/* 3. Right side: Language, theme, notifications, avatar, logout, SOS */}
+                <div className="flex items-center gap-3 shrink-0">
+                    
+                    {/* SOS Emergency button */}
+                    <div className="scale-90">
+                        <SOSEmergencyButton />
                     </div>
 
-                    <Footer />
-                </main>
-            </div>
+                    {/* Language selector */}
+                    <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 shadow-sm cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors select-none">
+                        <Globe className="w-3.5 h-3.5 text-[#1A6FE8]" />
+                        <span>EN</span>
+                        <ChevronDown className="w-3 h-3 text-slate-400" />
+                    </div>
+
+                    {/* Theme Toggle */}
+                    <button
+                        onClick={() => setDarkMode(!darkMode)}
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white shadow-sm hover:scale-105 active:scale-95 transition-all"
+                        title="Toggle theme"
+                    >
+                        {darkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4 text-[#1A6FE8]" />}
+                    </button>
+
+                    {/* Notification bell */}
+                    <button
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white shadow-sm relative hover:scale-105 active:scale-95 transition-all"
+                        title="Notifications"
+                    >
+                        <Bell className="w-4 h-4 text-slate-500" />
+                        <span className="absolute top-2.5 right-2.5 size-2 bg-[#1A6FE8] rounded-full border border-white dark:border-slate-800"></span>
+                    </button>
+
+                    {/* Avatar with Pink Border */}
+                    <Link
+                        to="/patient-profile-records"
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-slate-800 border-2 border-pink-400 dark:border-pink-500 text-slate-800 dark:text-white shadow-sm hover:scale-105 transition-all shrink-0 overflow-hidden"
+                    >
+                        {user?.photoUrl ? (
+                            <img src={user.photoUrl} className="h-full w-full object-cover" alt="Profile" />
+                        ) : (
+                            <span className="text-xs font-bold text-slate-700 dark:text-slate-200">
+                                {user?.name ? user.name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 1) : 'U'}
+                            </span>
+                        )}
+                    </Link>
+
+                    {/* Logout button */}
+                    <button
+                        onClick={async () => {
+                            await logout();
+                            navigate('/');
+                        }}
+                        className="hidden md:flex items-center gap-1.5 px-4 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/20 dark:hover:text-red-400 transition-colors select-none"
+                    >
+                        <LogOut className="w-3.5 h-3.5" />
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </header>
+
+            {/* ── MAIN SCROLLABLE CONTAINER ── */}
+            <main className="flex-1 flex flex-col overflow-y-auto">
+                <div className="flex-1 p-6 md:p-8 max-w-7xl mx-auto w-full">
+                    {children}
+                </div>
+                <Footer />
+            </main>
         </div>
     );
 };
