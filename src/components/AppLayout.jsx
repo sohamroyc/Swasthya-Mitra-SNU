@@ -132,10 +132,6 @@ const AppLayout = ({ children, activeTab }) => {
                         </svg>
                         <span className="text-[7px] font-black tracking-widest text-[#0A1628] dark:text-white uppercase leading-none mt-1">MITRA</span>
                     </Link>
-                    <div className="hidden xl:block">
-                        <h1 className="font-extrabold text-sm text-slate-900 dark:text-white leading-tight">Swasthya Mitra</h1>
-                        <p className="text-[10px] text-slate-400 font-semibold leading-none">AI Wellness Hub</p>
-                    </div>
                 </div>
 
                 {/* 2. Center: Pill navigation container with smooth sliding controls */}
