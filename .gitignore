@@ -29,3 +29,11 @@ error.txt
 db.json
 lint_output.txt
 error*.txt
+
+# IDE Planning and scratch files
+implementation_plan.md
+task.md
+walkthrough.md
+scratch/
+public/43925b20-59be-4422-893e-2d81cfcfb4cf.jpg
+

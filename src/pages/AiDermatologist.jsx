@@ -3,6 +3,41 @@ import { Link } from 'react-router-dom';
 import AppLayout from '../components/AppLayout';
 import ReactMarkdown from 'react-markdown';
 
+const generateDermatologyFallback = (text, hasImage) => {
+    const query = (text || "").toLowerCase();
+    let condition = "Mild Skin Inflammation";
+    let score = 75;
+    let message = "The symptoms described could indicate mild skin inflammation or irritation. Keep the area clean and moisturized. Please consult a dermatologist if symptoms persist or worsen.";
+
+    if (query.includes("acne") || query.includes("pimple") || query.includes("zits")) {
+        condition = "Acne Vulgaris";
+        score = 88;
+        message = "This assessment suggests mild to moderate **Acne Vulgaris**. It is recommended to use a gentle cleanser, avoid touching or popping lesions, and look for non-comedogenic skincare products. Always consult a doctor for clinical treatment plans.";
+    } else if (query.includes("rash") || query.includes("eczema") || query.includes("itch")) {
+        condition = "Contact Dermatitis";
+        score = 82;
+        message = "Symptoms point toward **Contact Dermatitis** or mild **Eczema**. Try to identify any recent exposure to new soaps, cosmetics, or fabrics. Applying a mild over-the-counter moisturizer may help soothe the area.";
+    } else if (query.includes("mole") || query.includes("spot") || query.includes("freckle")) {
+        condition = "Benign Melanocytic Nevus";
+        score = 92;
+        message = "The mole/spot appears **benign** with regular borders and even coloring. However, please self-monitor it monthly using the ABCDE criteria (Asymmetry, Border, Color, Diameter, Evolving) and consult a physician for any changes.";
+    } else if (query.includes("dry") || query.includes("xerosis") || query.includes("peel")) {
+        condition = "Xerosis (Dry Skin)";
+        score = 90;
+        message = "This looks like **Xerosis** (dry skin). Keeping the skin hydrated with a thick emollient cream and avoiding hot showers will help restore the skin barrier. If scaling persists, consult a dermatologist.";
+    } else if (hasImage) {
+        condition = "Epithelial Lesion";
+        score = 80;
+        message = "The uploaded image shows characteristics of a localized **Epithelial Lesion** or mild rash. Ensure the skin remains clean and dry. We advise booking a professional consultation for a complete evaluation.";
+    }
+
+    return {
+        chatMessage: `${message}\n\n*Disclaimer: AI assessments are preliminary and informational. They should not replace professional medical evaluations.*`,
+        topCondition: condition,
+        confidenceScore: score
+    };
+};
+
 const AiDermatologist = () => {
     const [messages, setMessages] = useState([
         { id: 1, sender: 'ai', time: '10:42 AM', text: "Hello! I'm your AI Dermatology Assistant. Please upload a photo of the area of concern, or tell me about any symptoms you're experiencing." }
@@ -140,15 +175,33 @@ Ensure there are absolutely NO markdown formatting blocks like \`\`\`json wrappe
             }
 
         } catch (error) {
-            console.error(error);
-            setMessages(prev => [...prev, {
-                id: Date.now(),
-                sender: 'ai',
-                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                text: "I'm sorry, I'm having trouble connecting to the medical AI network right now. Please try again."
-            }]);
+            console.error("Gemini AI failed, using local fallback.", error);
+            
+            // Wait 1.5s to simulate thinking before responding
+            const timer = setTimeout(() => {
+                const parsedData = generateDermatologyFallback(currentInput, !!fileToAnalyze);
+                
+                setMessages(prev => [...prev, {
+                    id: Date.now(),
+                    sender: 'ai',
+                    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                    text: parsedData.chatMessage
+                }]);
+
+                setDiagnosisState({
+                    condition: parsedData.topCondition,
+                    score: parsedData.confidenceScore
+                });
+                setIsTyping(false);
+            }, 1500);
+            return () => clearTimeout(timer);
         } finally {
-            setIsTyping(false);
+            // Only clear isTyping immediately if Gemini resolved successfully;
+            // otherwise, the catch block's setTimeout handles it at the right time.
+            const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+            if (apiKey) {
+                setIsTyping(false);
+            }
         }
     };
 

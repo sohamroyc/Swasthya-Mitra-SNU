@@ -71,10 +71,12 @@ const LandingPage = () => {
         {/* Navbar */}
         <nav className="absolute top-0 left-0 right-0 z-30 px-6 py-6">
           <div className="max-w-[88rem] mx-auto flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-2.5">
-              <img src="/logo.png" className="w-8 h-8 object-contain bg-white rounded-lg p-0.5 shadow-sm border border-slate-100" alt="Logo" />
-              <span className="text-2xl font-bold tracking-tight text-[#0A1628]">Swasthya Mitra</span>
+            <div className="flex items-center gap-3">
+              <img src="/logo.png" className="w-12 h-12 object-contain bg-white rounded-xl p-1 shadow-md border border-slate-100" alt="Logo" />
+              <span className="text-3xl font-extrabold tracking-tight leading-none select-none flex items-center">
+                <span className="text-[#0057B8]">Swasthya</span>
+                <span className="bg-gradient-to-r from-[#0057B8] to-[#00D4FF] bg-clip-text text-transparent ml-1.5">Mitra</span>
+              </span>
             </div>
 
 
@@ -415,9 +417,12 @@ const LandingPage = () => {
           <div className="flex flex-col md:flex-row items-start justify-between gap-12 pb-12 border-b border-slate-100">
             {/* Left */}
             <div>
-              <div className="flex items-center gap-2">
-                <img src="/logo.png" className="w-7 h-7 object-contain bg-white rounded-lg p-0.5 shadow-sm border border-slate-100" alt="Logo" />
-                <span className="font-bold text-slate-900 text-lg tracking-tight">Swasthya Mitra</span>
+              <div className="flex items-center gap-2.5">
+                <img src="/logo.png" className="w-10 h-10 object-contain bg-white rounded-xl p-1 shadow-sm border border-slate-100" alt="Logo" />
+                <span className="font-extrabold text-xl tracking-tight leading-none select-none flex items-center">
+                  <span className="text-[#0057B8]">Swasthya</span>
+                  <span className="bg-gradient-to-r from-[#0057B8] to-[#00D4FF] bg-clip-text text-transparent ml-1">Mitra</span>
+                </span>
               </div>
               <p className="text-[#4A5568] text-sm mt-4 max-w-xs leading-relaxed font-light">
                 Leveraging clinical-grade AI to democratize quality healthcare across the nation.

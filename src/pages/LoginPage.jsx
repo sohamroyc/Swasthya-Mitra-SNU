@@ -100,9 +100,12 @@ const LoginPage = () => {
         <div className="relative z-10 flex flex-col h-full p-10 xl:p-14">
 
           {/* Logo */}
-          <div className="flex items-center gap-2.5">
-            <img src="/logo.png" className="w-8 h-8 object-contain bg-white rounded-lg p-0.5" alt="Logo" />
-            <span className="text-xl font-bold tracking-tight text-white">Swasthya Mitra</span>
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" className="w-12 h-12 object-contain bg-white rounded-xl p-1 shadow-md" alt="Logo" />
+            <span className="text-2xl font-extrabold tracking-tight leading-none select-none flex items-center">
+              <span className="text-white">Swasthya</span>
+              <span className="bg-gradient-to-r from-white to-[#00D4FF] bg-clip-text text-transparent ml-1.5">Mitra</span>
+            </span>
           </div>
 
           {/* Main copy */}
@@ -147,9 +150,12 @@ const LoginPage = () => {
 
         {/* Mobile top bar */}
         <div className="lg:hidden flex items-center justify-between px-6 py-5 bg-white border-b border-slate-100">
-          <div className="flex items-center gap-2">
-            <img src="/logo.png" className="w-7 h-7 object-contain bg-slate-50 rounded-lg p-0.5" alt="Logo" />
-            <span className="font-bold text-[#0A1628] text-lg tracking-tight">Swasthya Mitra</span>
+          <div className="flex items-center gap-2.5">
+            <img src="/logo.png" className="w-10 h-10 object-contain bg-slate-50 rounded-xl p-1 border border-slate-200" alt="Logo" />
+            <span className="font-extrabold text-xl tracking-tight leading-none select-none flex items-center">
+              <span className="text-[#0057B8]">Swasthya</span>
+              <span className="bg-gradient-to-r from-[#0057B8] to-[#00D4FF] bg-clip-text text-transparent ml-1">Mitra</span>
+            </span>
           </div>
           <Link to="/create-account" className="text-[#1A6FE8] text-sm font-semibold">
             Create account

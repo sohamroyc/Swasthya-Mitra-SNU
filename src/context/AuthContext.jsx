@@ -473,12 +473,15 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = async () => {
-        try {
-            await supabase.auth.signOut();
-        } catch (err) {
-            console.warn("Failed to sign out of Supabase session:", err);
+        // Fire signOut asynchronously to prevent blocking the UI
+        if (isSupabaseConfigured() && supabase.auth) {
+            supabase.auth.signOut().catch(err => {
+                console.warn("Failed to sign out of Supabase session:", err);
+            });
         }
+        // Immediately reset local user state and storage to guarantee instant feedback
         setUser(null);
+        localStorage.removeItem('pokedoc_user');
     };
 
     return (

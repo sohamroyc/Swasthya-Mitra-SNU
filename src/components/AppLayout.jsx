@@ -124,10 +124,16 @@ const AppLayout = ({ children, activeTab }) => {
             {/* ── HORIZONTAL HEADER ── */}
             <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-6 py-3 flex items-center justify-between shadow-sm select-none">
                 
-                {/* 1. Left side: Square Logo Box */}
-                    <Link to="/dashboard" className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-1 shadow-sm flex items-center justify-center size-12 hover:scale-[1.02] active:scale-95 transition-all overflow-hidden">
+                {/* 1. Left side: Square Logo Box + Premium Brand Typography */}
+                <div className="flex items-center gap-3 shrink-0">
+                    <Link to="/dashboard" className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-1 flex items-center justify-center h-12 w-12 hover:scale-[1.02] active:scale-95 transition-all overflow-hidden shrink-0 shadow-sm">
                         <img src="/logo.png" className="w-full h-full object-contain" alt="Logo" />
                     </Link>
+                    <span className="font-extrabold text-xl tracking-tight leading-none select-none flex items-center">
+                        <span className="text-[#0057B8] dark:text-white">Swasthya</span>
+                        <span className="bg-gradient-to-r from-[#0057B8] to-[#00D4FF] dark:from-white dark:to-[#00D4FF] bg-clip-text text-transparent ml-1">Mitra</span>
+                    </span>
+                </div>
 
                 {/* 2. Center: Pill navigation container with smooth sliding controls */}
                 <div className="flex-1 max-w-4xl mx-4 relative flex items-center overflow-hidden">
@@ -234,10 +240,10 @@ const AppLayout = ({ children, activeTab }) => {
                             await logout();
                             navigate('/');
                         }}
-                        className="hidden md:flex items-center gap-1.5 px-4 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/20 dark:hover:text-red-400 transition-colors select-none"
+                        className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/20 dark:hover:text-red-400 transition-colors select-none"
                     >
                         <LogOut className="w-3.5 h-3.5" />
-                        <span>Logout</span>
+                        <span className="hidden md:inline">Logout</span>
                     </button>
                 </div>
             </header>
