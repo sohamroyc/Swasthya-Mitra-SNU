@@ -183,7 +183,7 @@ const PatientProfileRecords = () => {
                         <h3 className="text-sm font-bold flex items-center gap-2 text-slate-900 dark:text-slate-100 mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
                             <span className="material-symbols-outlined text-blue-600">person</span> Personal Information
                         </h3>
-                        <div className="grid grid-cols-2 gap-y-5 gap-x-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-8">
                             <InfoRow label="Date of Birth"  value={formatDob(user?.dob)} />
                             <InfoRow label="Gender"         value={formatGender(user?.gender)} />
                             <InfoRow label="Email Address"  value={user?.email} />
@@ -413,7 +413,7 @@ const PatientProfileRecords = () => {
                             <span className="material-symbols-outlined text-blue-600">person</span> Personal Information
                         </h3>
                         <div className="space-y-4">
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Full Name</label>
                                     <input type="text" name="name" defaultValue={user?.name || ''} className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 outline-none transition" />
@@ -427,7 +427,7 @@ const PatientProfileRecords = () => {
                                 <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Email Address</label>
                                 <input type="email" readOnly defaultValue={user?.email || ''} className="w-full px-3 py-2.5 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold text-slate-400 cursor-not-allowed outline-none" />
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Gender</label>
                                     <select name="gender" defaultValue={user?.gender || ''} className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 outline-none transition">
@@ -452,7 +452,7 @@ const PatientProfileRecords = () => {
                             <span className="material-symbols-outlined">medical_information</span> Medical ID
                         </h3>
                         <div className="space-y-4">
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Blood Type</label>
                                     <select name="bloodType" defaultValue={user?.bloodType || ''} className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold focus:ring-2 focus:ring-red-500/20 focus:border-red-400 outline-none transition">

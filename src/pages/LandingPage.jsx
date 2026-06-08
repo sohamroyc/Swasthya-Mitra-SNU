@@ -63,28 +63,33 @@ const LandingPage = () => {
           width: max-content;
           animation: backers-marquee 25s linear infinite;
         }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
       `}} />
 
-      {/* ── 1. Navbar + Hero wrapper (h-screen container) ── */}
-      <div className="h-screen w-full relative flex flex-col overflow-hidden container mx-auto px-4 md:px-6">
+      {/* ── 1. Navbar + Hero wrapper (Scrollable on mobile, hidden on desktop) ── */}
+      <div className="min-h-screen lg:h-screen w-full relative flex flex-col lg:overflow-hidden container mx-auto px-4 md:px-6">
         
         {/* Navbar */}
-        <nav className="absolute top-0 left-0 right-0 z-30 px-6 py-6">
+        <nav className="absolute top-0 left-0 right-0 z-30 px-4 md:px-6 py-6">
           <div className="max-w-[88rem] mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <img src="/logo.png" className="w-12 h-12 object-contain bg-white rounded-xl p-1 shadow-md border border-slate-100" alt="Logo" />
-              <span className="text-3xl font-extrabold tracking-tight leading-none select-none flex items-center">
+            <div className="flex items-center gap-2 md:gap-3">
+              <img src="/logo.png" className="w-10 h-10 md:w-12 md:h-12 object-contain bg-white rounded-xl p-1 shadow-md border border-slate-100" alt="Logo" />
+              <span className="text-2xl md:text-3xl font-extrabold tracking-tight leading-none select-none flex items-center">
                 <span className="text-[#0057B8]">Swasthya</span>
                 <span className="bg-gradient-to-r from-[#0057B8] to-[#00D4FF] bg-clip-text text-transparent ml-1.5">Mitra</span>
               </span>
             </div>
 
-
-
             {/* Open App */}
             <button
               onClick={handleOpenApp}
-              className="bg-[#1A6FE8] text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-[#1558C0] transition-all shadow-md shadow-blue-500/10 active:scale-95 transform"
+              className="bg-[#1A6FE8] text-white text-xs md:text-sm font-semibold px-4 py-2 md:px-6 md:py-2.5 rounded-full hover:bg-[#1558C0] transition-all shadow-md shadow-blue-500/10 active:scale-95 transform"
             >
               {user ? 'Open App' : 'Sign In / Log In'}
             </button>
@@ -93,7 +98,7 @@ const LandingPage = () => {
 
         {/* Hero Section */}
         <section className="flex-1 pt-24 pb-6 flex items-end">
-          <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/15" style={{ height: 'calc(100vh - 120px)' }}>
+          <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/15 min-h-[calc(100vh-140px)] lg:h-[calc(100vh-120px)] flex flex-col justify-end">
             
             {/* Background Hero Video */}
             <video
@@ -111,26 +116,26 @@ const LandingPage = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/50 to-slate-950/20 z-0" />
 
             {/* Content Over Overlay */}
-            <div className="relative z-10 flex flex-col items-start justify-between h-full p-8 md:p-14 max-w-[88rem] mx-auto w-full">
+            <div className="relative z-10 flex flex-col items-start justify-between h-full p-6 md:p-14 max-w-[88rem] mx-auto w-full gap-8">
               
               {/* Central Title Area */}
-              <div className="max-w-2xl mt-12 md:mt-20">
-                <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 font-display" style={{ letterSpacing: '-0.04em' }}>
+              <div className="max-w-2xl mt-16 md:mt-20">
+                <h1 className="text-white text-3.5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] md:leading-[1.05] mb-4 md:mb-6 font-display" style={{ letterSpacing: '-0.04em' }}>
                   Your Health,<br />
                   <span className="text-[#4F92F8]">
                     Guided by AI.
                   </span>
                 </h1>
                 
-                <p className="text-white/80 text-sm md:text-base lg:text-lg max-w-xl mb-10 leading-relaxed font-light">
+                <p className="text-white/80 text-xs md:text-base lg:text-lg max-w-xl mb-8 md:mb-10 leading-relaxed font-light">
                   Swasthya Mitra integrates multimodal clinical AI with public health intelligence to provide precision care pathways for every citizen across the subcontinent.
                 </p>
 
                 {/* Hero Action Buttons */}
-                <div className="flex flex-col sm:flex-row items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                   <button
                     onClick={handleStart}
-                    className="inline-flex items-center gap-3 bg-[#1A6FE8] text-white text-sm font-semibold pl-6 pr-2 py-2 rounded-full hover:bg-[#1558C0] transition-all group shadow-lg shadow-blue-500/20 active:scale-95 transform"
+                    className="inline-flex items-center justify-center gap-3 bg-[#1A6FE8] text-white text-sm font-semibold pl-6 pr-2 py-2 rounded-full hover:bg-[#1558C0] transition-all group shadow-lg shadow-blue-500/20 active:scale-95 transform"
                   >
                     Get Started
                     <span className="bg-white rounded-full p-1.5 group-hover:translate-x-1 transition-transform flex items-center justify-center">
@@ -139,38 +144,38 @@ const LandingPage = () => {
                   </button>
                   <button
                     onClick={handleStart}
-                    className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold backdrop-blur transition-all active:scale-95 transform"
+                    className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold backdrop-blur transition-all justify-center items-center flex active:scale-95 transform"
                   >
                     Clinical Safety
                   </button>
                 </div>
               </div>
 
-              {/* Lower Frosted-Glass Pill Tab Bar */}
-              <div className="w-full bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-4 mt-8 flex flex-wrap items-center justify-between gap-4">
+              {/* Lower Frosted-Glass Swipeable Tab Bar */}
+              <div className="w-full bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-3 md:p-4 flex overflow-x-auto no-scrollbar items-center justify-between gap-4 whitespace-nowrap scroll-smooth">
                 
-                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
-                  <Stethoscope className="w-4.5 h-4.5 text-[#4F92F8]" />
+                <div className="flex items-center gap-2 text-white/90 text-xs md:text-sm font-medium px-3 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors shrink-0">
+                  <Stethoscope className="w-4 h-4 md:w-4.5 md:h-4.5 text-[#4F92F8]" />
                   <span>AI Symptom Checker</span>
                 </div>
                 
-                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
-                  <Sparkles className="w-4.5 h-4.5 text-[#4F92F8]" />
+                <div className="flex items-center gap-2 text-white/90 text-xs md:text-sm font-medium px-3 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors shrink-0">
+                  <Sparkles className="w-4 h-4 md:w-4.5 md:h-4.5 text-[#4F92F8]" />
                   <span>Derm-Scan Pro</span>
                 </div>
 
-                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
-                  <FileSpreadsheet className="w-4.5 h-4.5 text-[#4F92F8]" />
+                <div className="flex items-center gap-2 text-white/90 text-xs md:text-sm font-medium px-3 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors shrink-0">
+                  <FileSpreadsheet className="w-4 h-4 md:w-4.5 md:h-4.5 text-[#4F92F8]" />
                   <span>Scheme Eligibility</span>
                 </div>
 
-                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
-                  <Flame className="w-4.5 h-4.5 text-[#4F92F8]" />
+                <div className="flex items-center gap-2 text-white/90 text-xs md:text-sm font-medium px-3 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors shrink-0">
+                  <Flame className="w-4 h-4 md:w-4.5 md:h-4.5 text-[#4F92F8]" />
                   <span>Emergency Response</span>
                 </div>
 
-                <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium px-4 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
-                  <FolderHeart className="w-4.5 h-4.5 text-[#4F92F8]" />
+                <div className="flex items-center gap-2 text-white/90 text-xs md:text-sm font-medium px-3 py-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors shrink-0">
+                  <FolderHeart className="w-4 h-4 md:w-4.5 md:h-4.5 text-[#4F92F8]" />
                   <span>ABHA Record</span>
                 </div>
 

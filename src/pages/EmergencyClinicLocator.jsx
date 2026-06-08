@@ -108,6 +108,7 @@ const EmergencyClinicLocator = () => {
     const [liveClinics, setLiveClinics] = useState(CLINICS_DATA);
     const [isLoading, setIsLoading] = useState(true);
     const [apiMessage, setApiMessage] = useState("Fetching location...");
+    const [mobileView, setMobileView] = useState("list"); // 'list' or 'map'
 
     // Function to fetch real clinics via Overpass API (Free, No Key Needed)
     const fetchRealClinics = async (lat, lng) => {
@@ -289,9 +290,33 @@ const EmergencyClinicLocator = () => {
                 <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mb-2">Nearby Clinics & SOS</h1>
                 <p className="text-slate-500 dark:text-slate-400 font-medium mb-6">Locate emergency healthcare, hospitals, and active clinics near you.</p>
                 
+                {/* Mobile View Toggle Tabs (Visible only below lg) */}
+                <div className="flex lg:hidden bg-slate-100 dark:bg-slate-800 p-1 rounded-xl mb-4 max-w-xs shadow-sm">
+                    <button
+                        onClick={() => setMobileView('list')}
+                        className={`flex-1 py-2 text-center text-xs font-bold rounded-lg transition-all ${
+                            mobileView === 'list'
+                                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm'
+                                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                        }`}
+                    >
+                        List View
+                    </button>
+                    <button
+                        onClick={() => setMobileView('map')}
+                        className={`flex-1 py-2 text-center text-xs font-bold rounded-lg transition-all ${
+                            mobileView === 'map'
+                                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm'
+                                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                        }`}
+                    >
+                        Map View
+                    </button>
+                </div>
+
                 <div className="flex flex-col lg:flex-row border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden bg-white dark:bg-slate-900 shadow-sm h-[640px] relative">
                     {/* Sidebar: Clinic List & SOS */}
-                    <aside className="w-full lg:w-96 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shrink-0 z-10 shadow-lg h-full">
+                    <aside className={`w-full lg:w-96 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shrink-0 z-10 shadow-lg h-full ${mobileView === 'list' ? 'flex' : 'hidden lg:flex'}`}>
                         {/* High-Visibility SOS Section */}
                         <div className="p-6 bg-red-50 dark:bg-red-950/20 border-b border-red-100 dark:border-red-900/30 shrink-0">
                             <div className="flex flex-col gap-4">
@@ -402,7 +427,7 @@ const EmergencyClinicLocator = () => {
                     </aside>
 
                     {/* Map Area */}
-                    <section className="flex-1 relative bg-slate-100 dark:bg-slate-900 z-0 h-full">
+                    <section className={`flex-1 relative bg-slate-100 dark:bg-slate-900 z-0 h-full ${mobileView === 'map' ? 'block' : 'hidden lg:block'}`}>
                         {/* Interactive React Leaflet Map */}
                         <div className="absolute inset-0 leaflet-container-override">
                             <MapContainer
