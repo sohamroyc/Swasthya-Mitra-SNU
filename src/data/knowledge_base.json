@@ -1,0 +1,591 @@
+{
+  "version": "2.0",
+  "description": "Swasthya Mitra Complete Knowledge Base - India & Kolkata Specific",
+  "topics": ["symptoms_diseases", "medicines_dosages", "first_aid", "diet_wellness", "government_schemes", "hospitals", "custom_qa"],
+
+  "symptoms_diseases": [
+    {
+      "id": "sd_001",
+      "name": "Dengue Fever",
+      "keywords": ["dengue", "breakbone", "platelet", "aedes", "mosquito bite fever"],
+      "urgency": "HIGH",
+      "symptoms": ["sudden high fever 104°F", "severe headache behind eyes", "severe joint and muscle pain", "nausea and vomiting", "skin rash after 2-5 days of fever", "mild bleeding from gums or nose", "fatigue"],
+      "warning_signs": ["abdominal pain", "persistent vomiting", "bleeding gums", "blood in urine or stool", "rapid breathing", "restlessness"],
+      "diagnosis": "NS1 antigen test within 5 days, dengue IgM/IgG antibody test",
+      "treatment": "No specific antiviral. Paracetamol for fever. Plenty of fluids. AVOID aspirin and ibuprofen. Monitor platelet count daily.",
+      "prevention": "Avoid Aedes mosquito bites (daytime biter). Remove stagnant water. Use mosquito repellent and nets.",
+      "season": "Post-monsoon (July–October) — very common in Kolkata",
+      "response": "Dengue fever is common in Kolkata, especially after monsoon. Symptoms include sudden high fever, severe eye and joint pain, and a rash appearing 2-5 days after fever. Use ONLY paracetamol — avoid aspirin or ibuprofen as they can cause bleeding. Get an NS1 blood test done immediately. If you notice bleeding from gums, severe abdominal pain, or vomiting — go to hospital RIGHT AWAY as these are warning signs of severe dengue."
+    },
+    {
+      "id": "sd_002",
+      "name": "Malaria",
+      "keywords": ["malaria", "plasmodium", "anopheles", "cyclic fever", "chills fever sweating"],
+      "urgency": "HIGH",
+      "symptoms": ["fever occurring every 48-72 hours in cycles", "severe chills and shivering", "profuse sweating", "headache", "muscle aches", "nausea and vomiting", "fatigue and weakness"],
+      "warning_signs": ["jaundice", "seizures", "confusion or altered consciousness", "severe anemia", "dark urine", "kidney failure signs"],
+      "diagnosis": "Blood smear microscopy, Rapid Diagnostic Test (RDT)",
+      "treatment": "Artemisinin-based combination therapy (ACT). Do not stop medication early even if feeling better.",
+      "prevention": "Sleep under insecticide-treated mosquito nets. Use mosquito repellent. Wear full-sleeved clothes at night. Remove stagnant water near home.",
+      "season": "Monsoon and post-monsoon (June–November) — common in West Bengal",
+      "response": "Malaria presents as cyclic fever with chills every 48-72 hours, followed by profuse sweating. It is caused by mosquito bites and is common in West Bengal during and after monsoon. Get a blood test (RDT or smear test) done immediately at any government hospital or diagnostic centre. Treatment with antimalarial drugs is very effective when started early. Do not self-medicate. If you have fever with confusion, jaundice, or dark urine — this is cerebral malaria and requires emergency hospital admission."
+    },
+    {
+      "id": "sd_003",
+      "name": "Typhoid Fever",
+      "keywords": ["typhoid", "enteric fever", "salmonella", "contaminated water", "prolonged fever"],
+      "urgency": "HIGH",
+      "symptoms": ["prolonged fever rising gradually to 104°F", "severe headache", "weakness and fatigue", "stomach pain", "loss of appetite", "constipation early then diarrhea", "rose-colored spots on trunk (rare)"],
+      "warning_signs": ["severe abdominal pain (possible perforation)", "vomiting blood", "confusion", "high fever not responding to paracetamol"],
+      "diagnosis": "Widal test, blood culture (gold standard), complete blood count",
+      "treatment": "Antibiotics — azithromycin, ceftriaxone. Full course must be completed. Bed rest and light diet (khichdi, curd rice).",
+      "prevention": "Drink boiled or filtered water only. Avoid street food. Wash hands before eating. Typhoid vaccine available.",
+      "season": "Summer and monsoon — very common in Kolkata due to water contamination",
+      "response": "Typhoid (enteric fever) is very common in Kolkata, especially during summer and monsoon when water gets contaminated. Symptoms include prolonged fever that rises gradually over days, severe headache, and stomach pain. Get a Widal test or blood culture done. Treatment requires a full course of antibiotics — never stop early even if you feel better. Drink only boiled or filtered water. Eat light, easily digestible food like khichdi and curd. If you have severe stomach pain or are vomiting blood — go to the emergency ward immediately."
+    },
+    {
+      "id": "sd_004",
+      "name": "Tuberculosis (TB)",
+      "keywords": ["TB", "tuberculosis", "koch", "cough blood", "night sweats weight loss cough"],
+      "urgency": "HIGH",
+      "symptoms": ["persistent cough lasting more than 2 weeks", "coughing up blood or blood-stained sputum", "chest pain", "fever especially in evenings", "night sweats", "unexplained weight loss", "loss of appetite", "fatigue"],
+      "warning_signs": ["coughing up large amounts of blood", "difficulty breathing", "severe chest pain"],
+      "diagnosis": "Sputum test, chest X-ray, Mantoux skin test, GeneXpert test (available free at govt hospitals)",
+      "treatment": "DOTS (Directly Observed Treatment Short-course) — 6 month antibiotic course. FREE at all government hospitals in India under Nikshay program.",
+      "prevention": "BCG vaccine at birth. Avoid close contact with active TB patients. Good ventilation at home.",
+      "season": "Year-round — India has the highest TB burden globally",
+      "response": "TB is a serious but completely curable disease. Key signs are a persistent cough lasting more than 2 weeks, evening fever, night sweats, and unexplained weight loss. In Kolkata, TB testing and treatment is completely FREE at all government hospitals and health centres under the Nikshay program. Do not ignore a persistent cough — get tested immediately. The 6-month treatment course must be completed fully or drug-resistant TB can develop. TB patients get free medicines, nutrition support (₹500/month), and dietary supplements from the government."
+    },
+    {
+      "id": "sd_005",
+      "name": "Diabetes",
+      "keywords": ["diabetes", "blood sugar", "insulin", "hyperglycemia", "sugar", "diabetic"],
+      "urgency": "MEDIUM",
+      "symptoms": ["frequent urination especially at night", "excessive thirst", "unexplained weight loss", "extreme fatigue", "blurry vision", "slow-healing wounds or cuts", "frequent infections", "tingling or numbness in hands and feet"],
+      "warning_signs": ["very high blood sugar with confusion (hyperglycemia)", "very low blood sugar with shakiness and sweating (hypoglycemia — eat sugar immediately)", "chest pain in diabetic patients (silent heart attack risk)"],
+      "diagnosis": "Fasting blood glucose (normal below 100 mg/dL, diabetes 126+ mg/dL), HbA1c test, OGTT",
+      "treatment": "Lifestyle changes first — diet control, daily exercise. Medications: Metformin (first line), insulin if needed. Regular monitoring of blood sugar, eyes, kidneys, and feet.",
+      "prevention": "Healthy diet, 30 minutes exercise daily, maintain healthy weight, avoid sugary drinks and refined carbs.",
+      "season": "Year-round chronic condition",
+      "response": "India has one of the world's highest diabetic populations. Early warning signs include frequent urination, excessive thirst, blurry vision, and slow-healing wounds. A simple fasting blood sugar test (available at any diagnostic lab for under ₹100) can confirm diabetes. Type 2 diabetes can be controlled or even reversed with diet changes and regular exercise. If you are already diabetic, monitor your blood sugar regularly, take medicines as prescribed, and get annual eye and kidney checkups. If you feel shaky, sweaty, or confused — this could be low blood sugar (hypoglycemia): eat 2 teaspoons of sugar or drink a glass of juice immediately."
+    },
+    {
+      "id": "sd_006",
+      "name": "Hypertension (High Blood Pressure)",
+      "keywords": ["hypertension", "high blood pressure", "BP", "blood pressure", "silent killer"],
+      "urgency": "MEDIUM",
+      "symptoms": ["usually no symptoms (silent killer)", "occasional headache", "dizziness", "nosebleed", "blurred vision", "chest pain in severe cases"],
+      "warning_signs": ["BP above 180/120 (hypertensive crisis — emergency)", "BP with chest pain or difficulty breathing", "BP with sudden severe headache or vision changes (possible stroke)"],
+      "diagnosis": "Blood pressure measurement. Normal: below 120/80. Pre-hypertension: 120-139/80-89. Hypertension: 140/90 or above.",
+      "treatment": "Lifestyle changes: reduce salt (less than 5g/day), exercise 30 mins/day, quit smoking, limit alcohol. Medications if needed: ACE inhibitors, beta-blockers, calcium channel blockers.",
+      "prevention": "Healthy diet, regular exercise, reduce salt and stress, maintain healthy weight, avoid smoking and alcohol.",
+      "season": "Year-round chronic condition",
+      "response": "High blood pressure (hypertension) is called a silent killer because it usually has NO symptoms but silently damages your heart, brain, and kidneys over years. Normal blood pressure is below 120/80 mmHg. Check your BP regularly at any pharmacy or health centre — it is free at government hospitals. Reduce salt in your diet (avoid papad, pickles, processed food), exercise daily, and take prescribed medicines without skipping. If your BP is above 180/120 with chest pain or severe headache — go to emergency immediately as this could cause a stroke or heart attack."
+    },
+    {
+      "id": "sd_007",
+      "name": "Asthma",
+      "keywords": ["asthma", "wheeze", "wheezing", "inhaler", "bronchospasm", "breathing difficulty"],
+      "urgency": "MEDIUM",
+      "symptoms": ["wheezing (whistling sound when breathing)", "shortness of breath", "chest tightness", "coughing especially at night or early morning", "symptoms worsen with exercise or cold air"],
+      "warning_signs": ["no relief from rescue inhaler after 3 doses", "lips or fingernails turning blue", "unable to speak in full sentences", "severe breathing difficulty"],
+      "diagnosis": "Spirometry test, peak flow meter, chest X-ray, allergy tests",
+      "treatment": "Rescue inhaler (salbutamol) for acute attacks. Daily controller inhaler (corticosteroids) for prevention. Identify and avoid triggers.",
+      "prevention": "Avoid dust, smoke, pollen, strong smells, cold air. Keep home well-ventilated. Use dust-proof pillow covers.",
+      "season": "Winter and monsoon when air quality worsens — common in Kolkata due to pollution",
+      "response": "During an asthma attack: sit upright (do NOT lie down), take 2-4 puffs of your rescue inhaler (salbutamol), stay calm and breathe slowly. If no improvement after 20 minutes or symptoms worsen — call 112 or go to emergency. Kolkata has high air pollution which is a major asthma trigger. Avoid going out on high pollution days, wear a mask outdoors, and keep your rescue inhaler with you at all times. Never stop your daily controller inhaler without consulting your doctor even if you feel fine."
+    },
+    {
+      "id": "sd_008",
+      "name": "Chikungunya",
+      "keywords": ["chikungunya", "chik", "joint pain fever", "severe joint pain mosquito"],
+      "urgency": "MEDIUM",
+      "symptoms": ["sudden high fever", "severe joint pain — especially wrists, ankles, knees (may last weeks to months)", "muscle pain", "headache", "fatigue", "skin rash", "joint swelling"],
+      "warning_signs": ["joint pain persisting for months", "neurological symptoms like confusion", "heart complications"],
+      "diagnosis": "Chikungunya IgM antibody test, RT-PCR",
+      "treatment": "No specific antiviral. Paracetamol for fever and pain. Rest and fluids. Ibuprofen/naproxen for joint pain ONLY after fever resolves and doctor confirms it is not dengue.",
+      "prevention": "Prevent Aedes mosquito bites. Use repellent, wear full-sleeved clothes, use mosquito nets.",
+      "season": "Monsoon and post-monsoon — common in West Bengal",
+      "response": "Chikungunya is caused by the same Aedes mosquito as dengue and is very common in West Bengal during monsoon. The main feature is intense joint pain that can last weeks or even months after the fever resolves. Paracetamol helps with fever. The joint pain usually improves gradually — physiotherapy and gentle exercises help recovery. Rest well and drink plenty of fluids. There is no vaccine currently. Prevent mosquito bites to avoid infection."
+    },
+    {
+      "id": "sd_009",
+      "name": "COVID-19",
+      "keywords": ["covid", "corona", "coronavirus", "SARS-CoV-2", "covid symptoms"],
+      "urgency": "MEDIUM",
+      "symptoms": ["fever or chills", "cough", "shortness of breath", "fatigue", "body aches", "headache", "loss of taste or smell", "sore throat", "runny nose", "nausea or vomiting", "diarrhea"],
+      "warning_signs": ["difficulty breathing or shortness of breath", "persistent chest pain or pressure", "confusion or inability to stay awake", "bluish lips or face", "oxygen saturation below 94%"],
+      "diagnosis": "RAT (Rapid Antigen Test) available at home. RT-PCR for confirmation. Available at govt hospitals free of cost.",
+      "treatment": "Mild cases: home isolation, rest, fluids, paracetamol. Moderate/severe: hospital oxygen support, medications as prescribed by doctor.",
+      "prevention": "COVID vaccination (free at govt hospitals). Mask in crowded areas. Hand hygiene. Ventilated spaces.",
+      "season": "Year-round with periodic waves",
+      "response": "COVID-19 symptoms range from mild (cold-like) to severe (breathing difficulty). For mild symptoms: isolate at home, rest, drink fluids, take paracetamol for fever. Monitor your oxygen level with a pulse oximeter — if SpO2 drops below 94%, go to hospital immediately. Free COVID treatment and vaccination is available at all government hospitals in Kolkata. If you have difficulty breathing, chest pain, or confusion — call 112 immediately."
+    },
+    {
+      "id": "sd_010",
+      "name": "Diarrhea & Gastroenteritis",
+      "keywords": ["diarrhea", "loose motion", "gastroenteritis", "stomach infection", "food poisoning", "vomiting diarrhea"],
+      "urgency": "LOW",
+      "symptoms": ["loose watery stools 3 or more times a day", "stomach cramps", "nausea and vomiting", "fever", "blood in stool (serious — see doctor)"],
+      "warning_signs": ["signs of severe dehydration: no urination for 8 hours, sunken eyes, dry mouth, extreme thirst", "blood in stool", "high fever with diarrhea", "diarrhea in infants lasting more than 1 day"],
+      "diagnosis": "Stool routine test, stool culture if blood present",
+      "treatment": "ORS (Oral Rehydration Solution) is the most important treatment. Zinc tablets for children under 5. Light diet (BRAT: bananas, rice, applesauce, toast). Antibiotics only if bacterial infection confirmed by doctor.",
+      "prevention": "Drink boiled or filtered water. Wash hands before eating and after toilet. Avoid outside food during monsoon.",
+      "season": "Monsoon — very common in Kolkata due to water contamination",
+      "response": "Diarrhea is very common in Kolkata especially during monsoon. The most important treatment is ORS (Oral Rehydration Solution) — you can buy it at any pharmacy or make it at home (1 litre boiled water + 6 teaspoons sugar + half teaspoon salt). Drink a glass after every loose motion. Eat light food — rice, curd, banana, khichdi. Avoid spicy, oily, and outside food. See a doctor if you have blood in stool, fever above 102°F with diarrhea, or signs of dehydration (no urine for 8 hours, very dry mouth). Diarrhea in infants and elderly people needs prompt medical attention."
+    },
+    {
+      "id": "sd_011",
+      "name": "Gout & Inflammatory Arthritis",
+      "keywords": ["gout", "uric acid", "knee joint", "knee pain", "swelling knee", "joint swelling"],
+      "urgency": "MEDIUM",
+      "symptoms": ["severe sudden joint pain", "swelling and redness in knee or big toe", "joint feels hot to the touch", "limited range of motion"],
+      "warning_signs": ["high fever with joint pain (possible joint infection)", "inability to move joint at all"],
+      "diagnosis": "Serum uric acid test, joint fluid analysis, X-ray",
+      "treatment": "Rest, elevate joint, cold packs. Meds: NSAIDs (ibuprofen, naproxen), colchicine under doctor's guidance.",
+      "prevention": "Reduce purine-rich foods (red meat, seafood), limit alcohol, drink plenty of water to flush uric acid.",
+      "season": "Year-round",
+      "response": "Gout is a painful form of arthritis caused by high uric acid crystals depositing in joints, commonly the big toe or knee. If you have severe joint pain, swelling, and redness without trauma, rest and elevate the joint. Apply cold packs. Avoid self-medicating with strong steroids. Consult a doctor or rheumatologist for specific medications like colchicine or NSAIDs. If you also have a high fever, go to a clinic immediately as it could indicate an infected joint (septic arthritis)."
+    },
+    {
+      "id": "sd_012",
+      "name": "Drug Eruption & Erythema Multiforme",
+      "keywords": ["target lesions", "rash antibiotics", "drug rash", "erythema multiforme", "target-like lesions"],
+      "urgency": "MEDIUM",
+      "symptoms": ["itchy red rash with bullseye or target-like circular spots", "lesions spreading on arms and chest", "mild fever", "sore throat"],
+      "warning_signs": ["blisters in mouth, eyes, or genitals", "peeling skin over large areas (Stevens-Johnson syndrome risk)"],
+      "diagnosis": "Clinical skin examination, skin biopsy if needed",
+      "treatment": "Stop the suspected antibiotic or medication immediately after consulting doctor. Antihistamines for itching, topical mild steroids.",
+      "prevention": "Never take the causative drug again. Inform all healthcare providers of your drug allergy.",
+      "season": "Year-round",
+      "response": "A progressive rash with target-like circular lesions after taking antibiotics could indicate an allergic drug eruption such as Erythema Multiforme. You should stop taking the suspected medication immediately and see a doctor or dermatologist today for a proper assessment. Do not ignore it, as severe drug reactions can progress to serious systemic conditions. If you notice any blistering in your mouth, eyes, or throat, or skin peeling, seek emergency medical care immediately."
+    },
+    {
+      "id": "sd_013",
+      "name": "Meningitis",
+      "keywords": ["meningitis", "stiff neck", "photophobia", "sensitivity to light", "neck stiffness"],
+      "urgency": "HIGH",
+      "symptoms": ["high fever", "stiff neck", "severe headache", "nausea or vomiting", "sensitivity to light", "confusion", "lethargy"],
+      "warning_signs": ["seizures", "unconsciousness", "delirium", "purple skin rash"],
+      "diagnosis": "Lumbar puncture (spinal tap), blood culture, CT scan",
+      "treatment": "EMERGENCY hospitalization. Intravenous antibiotics and supportive care immediately.",
+      "prevention": "Meningococcal vaccine, pneumococcal vaccine, good hygiene.",
+      "season": "Year-round",
+      "response": "Meningitis is a medical emergency characterized by inflammation of the membranes covering the brain and spinal cord. Key symptoms are high fever, sudden stiff neck, severe headache, and light sensitivity. Go to a hospital emergency department immediately for a spinal tap and IV antibiotic treatment. Delayed treatment can cause permanent brain damage or be fatal."
+    }
+  ],
+
+  "medicines_dosages": [
+    {
+      "id": "med_001",
+      "name": "Paracetamol (Crocin / Dolo 650 / Calpol)",
+      "keywords": ["paracetamol", "crocin", "dolo", "calpol", "acetaminophen", "fever tablet"],
+      "type": "Pain reliever & fever reducer",
+      "adult_dose": "500mg–1000mg every 4–6 hours. Maximum 4g (4000mg) per day.",
+      "child_dose": "15mg per kg body weight per dose, every 4–6 hours. Max 5 doses in 24 hours.",
+      "uses": ["Fever", "Headache", "Body ache", "Toothache", "Period pain"],
+      "avoid_if": ["Liver disease", "Regular alcohol consumption", "Taking other paracetamol-containing medicines"],
+      "warning": "Paracetamol overdose causes serious liver damage. Always check if other cold/flu medicines contain paracetamol to avoid double dosing.",
+      "response": "Paracetamol (sold as Crocin, Dolo 650, Calpol in India) is safe and effective for fever and pain. Adult dose: 500mg–1000mg every 4–6 hours, maximum 4g per day. For children: 15mg per kg body weight per dose. Never exceed the maximum dose — overdose causes serious liver damage. Safe during pregnancy when used as directed. Do NOT combine with other medicines containing paracetamol. If liver disease or you drink alcohol regularly, consult doctor before use."
+    },
+    {
+      "id": "med_002",
+      "name": "ORS (Oral Rehydration Solution — Electral / Pedialyte)",
+      "keywords": ["ORS", "oral rehydration", "electral", "dehydration solution", "rehydration"],
+      "type": "Rehydration therapy",
+      "adult_dose": "1 sachet dissolved in 1 litre of clean water. Drink 200–400ml after each loose motion.",
+      "child_dose": "Same preparation. Give small sips frequently. Children under 2: 1/4 to 1/2 cup after each loose stool.",
+      "homemade_ors": "1 litre boiled water + 6 level teaspoons sugar + 1/2 level teaspoon salt. Mix well.",
+      "uses": ["Diarrhea", "Vomiting", "Dehydration from heat", "After heavy sweating"],
+      "warning": "Do NOT use plain water alone for diarrhea — it does not replace lost electrolytes.",
+      "response": "ORS is the single most effective treatment for diarrhea and dehydration. Available at every pharmacy as Electral or Pedialyte sachets (₹10–₹20). Dissolve one sachet in 1 litre of clean water and drink 200–400ml after each loose motion. You can also make it at home: mix 6 teaspoons sugar + half teaspoon salt in 1 litre of boiled water. Give small sips to children frequently. Do NOT give only plain water — it does not replace the salts lost during diarrhea."
+    },
+    {
+      "id": "med_003",
+      "name": "Ibuprofen (Brufen / Combiflam)",
+      "keywords": ["ibuprofen", "brufen", "combiflam", "anti-inflammatory", "NSAID"],
+      "type": "Anti-inflammatory pain reliever",
+      "adult_dose": "400mg every 6–8 hours with food. Maximum 1200mg per day (OTC). Maximum 2400mg per day (prescription).",
+      "child_dose": "5–10mg per kg per dose every 6–8 hours. Do NOT use in children under 6 months.",
+      "uses": ["Fever", "Joint pain and inflammation", "Muscle pain", "Headache", "Period pain", "Dental pain"],
+      "avoid_if": ["Stomach ulcer", "Kidney disease", "Heart failure", "Pregnancy (especially 3rd trimester)", "DENGUE (risk of bleeding)", "Asthma triggered by aspirin"],
+      "warning": "Always take with food to protect stomach. AVOID in dengue fever — increases bleeding risk.",
+      "response": "Ibuprofen (Brufen, Combiflam) is good for pain with inflammation. Adult dose: 400mg every 6–8 hours, always take WITH food. IMPORTANT: Do NOT take ibuprofen if you have dengue fever (increases bleeding risk), stomach ulcer, or kidney problems. Avoid during pregnancy. Paracetamol is safer for most fever — use ibuprofen specifically when there is inflammation (joint pain, muscle pain, swelling)."
+    },
+    {
+      "id": "med_004",
+      "name": "Antacids (Digene / Gelusil / Pantoprazole)",
+      "keywords": ["antacid", "digene", "gelusil", "acidity", "heartburn", "pantoprazole", "omeprazole", "acid reflux"],
+      "type": "Antacid / Proton pump inhibitor",
+      "adult_dose": "Digene/Gelusil (liquid): 10ml after meals and at bedtime. Pantoprazole 40mg: once daily before breakfast.",
+      "child_dose": "Consult doctor. Digene syrup only for children above 6 years.",
+      "uses": ["Acidity and heartburn", "Stomach ulcer", "GERD (gastroesophageal reflux)", "Bloating and indigestion"],
+      "avoid_if": ["Long-term PPI use without medical supervision (reduces calcium absorption)", "Kidney disease (magnesium-containing antacids)"],
+      "warning": "Frequent antacid use may mask serious conditions like stomach cancer. See a doctor if acidity is persistent.",
+      "response": "For acidity and heartburn: Digene or Gelusil liquid (10ml after meals) gives quick relief. For more persistent acidity: Pantoprazole 40mg (available OTC in India) taken once daily before breakfast works well. Avoid spicy food, tea/coffee on empty stomach, and lying down right after eating. If acidity is severe, persistent, with weight loss or difficulty swallowing — see a doctor as it may indicate an ulcer or GERD requiring proper treatment."
+    },
+    {
+      "id": "med_005",
+      "name": "Cetirizine (Cetzine / Zyrtec)",
+      "keywords": ["cetirizine", "antihistamine", "allergy tablet", "cetzine", "zyrtec", "itching allergy"],
+      "type": "Antihistamine (anti-allergy)",
+      "adult_dose": "10mg once daily at night (causes mild drowsiness). For children 6–12: 5mg once daily.",
+      "child_dose": "2–5 years: 2.5mg once daily. 6–12 years: 5mg once daily. Above 12 years: 10mg once daily.",
+      "uses": ["Allergic rhinitis (runny nose, sneezing)", "Skin allergies and hives", "Itching", "Watery eyes"],
+      "avoid_if": ["Severe kidney disease", "Do not drive after taking (mild drowsiness)"],
+      "warning": "Take at night as it causes mild sleepiness. Do not take with alcohol.",
+      "response": "Cetirizine (Cetzine, Zyrtec) is a safe and effective antihistamine for allergies. Adult dose: 10mg once daily, best taken at night as it causes mild drowsiness. Use for runny nose, sneezing, skin rashes, itching, or watery eyes due to allergies. Very common in Kolkata during spring (pollen season) and winter (dust allergies). Safe for children above 2 years at adjusted doses. Available without prescription at all pharmacies."
+    },
+    {
+      "id": "med_006",
+      "name": "Metformin",
+      "keywords": ["metformin", "glycomet", "glucophage", "diabetes medicine", "blood sugar tablet"],
+      "type": "Antidiabetic (biguanide)",
+      "adult_dose": "500mg–1000mg twice daily with meals. Start low, increase gradually as advised by doctor.",
+      "child_dose": "Not recommended for children under 10 without specialist advice.",
+      "uses": ["Type 2 diabetes management", "Prediabetes (under doctor supervision)", "PCOS (polycystic ovary syndrome)"],
+      "avoid_if": ["Kidney disease (creatinine above 1.5 in men, 1.4 in women)", "Liver disease", "Before surgery or CT scan with contrast dye"],
+      "warning": "Always take with meals to reduce stomach upset. Do NOT stop taking without consulting your doctor. Report muscle pain or weakness immediately (rare lactic acidosis).",
+      "response": "Metformin (Glycomet, Glucophage) is the most commonly prescribed first-line medicine for Type 2 diabetes. It helps lower blood sugar safely. Always take with meals to reduce nausea. Never stop taking it without consulting your doctor — blood sugar can spike dangerously. Get kidney function tests (creatinine) every 6 months while on metformin. Available at all pharmacies and FREE at government hospital dispensaries in West Bengal."
+    },
+    {
+      "id": "med_007",
+      "name": "Salbutamol Inhaler (Asthalin / Ventolin)",
+      "keywords": ["salbutamol", "asthalin", "ventolin", "inhaler", "asthma inhaler", "bronchodilator"],
+      "type": "Bronchodilator (rescue inhaler)",
+      "adult_dose": "1–2 puffs every 4–6 hours as needed. For acute attack: 2–4 puffs, repeat after 20 minutes if needed.",
+      "child_dose": "1–2 puffs as needed. Always use with spacer device in young children.",
+      "uses": ["Acute asthma attack (rescue inhaler)", "Exercise-induced bronchospasm", "COPD exacerbation"],
+      "avoid_if": ["Heart disease (use cautiously)", "Thyroid disease"],
+      "warning": "This is a RESCUE inhaler — not for daily use. If you need it more than 3 times a week, your asthma is not controlled — see a doctor. Always carry it with you.",
+      "response": "Salbutamol inhaler (Asthalin, Ventolin) is your emergency rescue inhaler for asthma attacks. During an attack: sit upright, take 1–2 puffs, wait 1 minute, take 1–2 more puffs if needed. If no improvement after 3 doses (20 minutes) — call 112 and go to emergency. Always keep it with you at all times. If you are using your rescue inhaler more than 3 times a week, your asthma is not well-controlled and you need a daily controller inhaler — see a pulmonologist."
+    },
+    {
+      "id": "med_008",
+      "name": "Antibiotics (General Guidance)",
+      "keywords": ["antibiotic", "amoxicillin", "azithromycin", "ciprofloxacin", "antibiotic course"],
+      "type": "Antibacterial",
+      "adult_dose": "Depends on type — always follow doctor's prescription exactly.",
+      "child_dose": "Weight-based dosing — always follow doctor's prescription.",
+      "uses": ["Bacterial infections only — typhoid, UTI, pneumonia, skin infections, TB"],
+      "avoid_if": ["Viral infections (cold, flu, COVID) — antibiotics have NO effect on viruses", "Without doctor prescription"],
+      "warning": "NEVER self-prescribe antibiotics. Complete the FULL course. India has a serious antibiotic resistance crisis due to misuse.",
+      "response": "Antibiotics only work against BACTERIAL infections — they have absolutely NO effect on viral infections like common cold, flu, or COVID-19. Taking antibiotics for viral infections is dangerous as it creates antibiotic-resistant bacteria. Always take antibiotics ONLY when prescribed by a doctor, and always complete the FULL course even if you feel better after 2-3 days. Stopping early allows resistant bacteria to survive and multiply. India faces a serious antibiotic resistance crisis — every unnecessary antibiotic course makes infections harder to treat for everyone."
+    }
+  ],
+
+  "first_aid": [
+    {
+      "id": "fa_001",
+      "name": "Burns",
+      "keywords": ["burn", "burnt", "scalded", "fire burn", "hot water burn", "chemical burn"],
+      "urgency": "MEDIUM",
+      "steps": [
+        "1. Cool the burn IMMEDIATELY — hold under cool (not cold/ice) running water for 10–20 minutes",
+        "2. Remove jewellery, watches, tight clothing near the burn area before swelling starts",
+        "3. Cover with a clean non-fluffy bandage, cling film, or clean cloth",
+        "4. Take paracetamol for pain relief",
+        "5. Go to hospital for burns larger than palm size, or on face/hands/feet/genitals"
+      ],
+      "do_not": ["Apply butter, ghee, toothpaste, oil, or ice (worsens damage)", "Break blisters", "Remove clothing stuck to burned skin"],
+      "emergency_signs": ["Burns covering large area of body", "Burns on face, hands, feet, or genitals", "Chemical or electrical burns", "Deep white or charred burns", "Burns with difficulty breathing"],
+      "response": "For a burn: IMMEDIATELY hold under cool running water for 10–20 minutes — this is the single most important step. Do NOT apply butter, ghee, toothpaste, or oil — these are harmful myths that worsen burns. Remove jewellery before swelling. Cover with a clean cloth. Take paracetamol for pain. Go to hospital if the burn is larger than your palm, is on your face/hands/feet, or looks white and deep. Chemical or electrical burns always require emergency care. Most burns in India happen from cooking accidents — the water treatment works equally well for steam burns."
+    },
+    {
+      "id": "fa_002",
+      "name": "Choking",
+      "keywords": ["choking", "food stuck throat", "can't breathe object", "child choking", "Heimlich"],
+      "urgency": "EMERGENCY",
+      "steps_adult": [
+        "1. Ask 'Are you choking?' — if they can speak/cough, encourage forceful coughing",
+        "2. If they cannot speak or are turning blue: Give 5 firm back blows between shoulder blades with heel of hand",
+        "3. Give 5 abdominal thrusts (Heimlich maneuver): Stand behind, fist above navel, grab with other hand, thrust sharply inward and upward",
+        "4. Alternate 5 back blows + 5 abdominal thrusts until object dislodges or person loses consciousness",
+        "5. If unconscious: Start CPR. Call 112 immediately."
+      ],
+      "steps_infant": [
+        "1. Hold face-down on your forearm, supporting head",
+        "2. Give 5 firm back blows with heel of hand",
+        "3. Turn face-up, give 5 chest thrusts (2 fingers on breastbone)",
+        "4. Repeat until object clears or infant loses consciousness",
+        "5. Call 112"
+      ],
+      "response": "Choking is a life-threatening emergency. If a person CAN cough or speak — encourage forceful coughing. If they CANNOT speak, cough, or are turning blue: Stand behind them, give 5 firm back blows between the shoulder blades. Then wrap your arms around their waist, make a fist just above the navel, grab your fist with the other hand and thrust sharply inward and upward. Alternate 5 back blows and 5 abdominal thrusts until the object comes out. Call 112 immediately if the person loses consciousness. For infants: use 5 back blows + 5 gentle chest thrusts (NOT abdominal thrusts)."
+    },
+    {
+      "id": "fa_003",
+      "name": "Snake Bite",
+      "keywords": ["snake bite", "snakebite", "bitten snake", "snake venom", "cobra bite", "viper bite"],
+      "urgency": "EMERGENCY",
+      "steps": [
+        "1. Move the person AWAY from the snake — do not try to catch or kill it",
+        "2. Keep the victim completely calm and as still as possible — movement speeds venom spread",
+        "3. Remove rings, watches, tight clothing (swelling will occur)",
+        "4. Keep the bitten limb at or BELOW heart level",
+        "5. Wipe the wound gently — do NOT wash with water",
+        "6. RUSH to hospital IMMEDIATELY for anti-venom treatment",
+        "7. Note the snake's appearance if safe to do so (do not approach)"
+      ],
+      "do_not": ["Cut the wound", "Suck the venom", "Apply tourniquet", "Apply ice or electric shock", "Give alcohol"],
+      "anti_venom": "FREE at all government hospitals in West Bengal. Anti-venom must be given within 1–4 hours for best results.",
+      "response": "Snake bite is a medical emergency — get to hospital IMMEDIATELY. While going: keep the victim calm and still (movement spreads venom faster), remove tight jewellery, keep the bitten arm or leg below heart level. Do NOT cut the wound, suck the venom, or apply a tourniquet — these are dangerous myths that cause more harm. Anti-venom is available FREE at all government hospitals in West Bengal including SSKM, NRS, and all district hospitals. The four most dangerous snakes in India are cobra, krait, Russell's viper, and saw-scaled viper. Time is critical — reach hospital within 1 hour."
+    },
+    {
+      "id": "fa_004",
+      "name": "Heat Stroke",
+      "keywords": ["heatstroke", "sunstroke", "heat exhaustion", "overheating", "fainted heat"],
+      "urgency": "EMERGENCY",
+      "symptoms": ["body temperature above 104°F/40°C", "hot red dry skin (no sweating)", "rapid strong pulse", "confusion or unconsciousness", "throbbing headache"],
+      "steps": [
+        "1. CALL 112 immediately",
+        "2. Move person to cool shaded area immediately",
+        "3. Remove excess clothing",
+        "4. Cool rapidly: apply cool wet cloths to skin, fan them vigorously, place ice packs on armpits, groin, and neck",
+        "5. Give cool water ONLY if fully conscious and can swallow",
+        "6. Do NOT give fever-reducing medicines (they do not work for heat stroke)"
+      ],
+      "heat_exhaustion": "Less severe precursor to heat stroke. Symptoms: heavy sweating, weakness, cold pale clammy skin, rapid weak pulse, nausea. Treat by moving to cool area, removing clothing, cool wet cloths, and ORS solution.",
+      "response": "Heat stroke is a life-threatening emergency — very common in Kolkata's intense summer heat. Signs: hot red skin WITHOUT sweating, temperature above 104°F, confusion, rapid pulse. Call 112 immediately. While waiting: move to shade, remove clothing, apply cool wet cloths and ice packs to armpits, groin, and neck. Fan vigorously. Give water only if conscious. Do NOT give fever medicines — they do not work for heat stroke. Heat exhaustion (heavy sweating, weakness, pale clammy skin) is the milder warning stage — treat it promptly before it progresses to heat stroke."
+    },
+    {
+      "id": "fa_005",
+      "name": "Drowning / Near Drowning",
+      "keywords": ["drowning", "near drowning", "water accident", "drowned"],
+      "urgency": "EMERGENCY",
+      "steps": [
+        "1. Call 112 immediately",
+        "2. Remove from water safely — do not put yourself at risk",
+        "3. Check for breathing and pulse",
+        "4. If not breathing: Start CPR immediately — 30 chest compressions + 2 rescue breaths",
+        "5. Do NOT hold upside down to drain water — this wastes precious time",
+        "6. Keep warm — drowning victims lose body heat rapidly",
+        "7. All near-drowning victims need hospital evaluation even if they seem fine"
+      ],
+      "response": "For a drowning victim: Call 112 immediately. Remove from water carefully. If not breathing, start CPR right away — 30 hard chest compressions followed by 2 rescue breaths. Do NOT waste time holding them upside down to drain water. Continue CPR until emergency services arrive. Even if the person appears to recover and feel fine — they MUST go to hospital immediately as delayed pulmonary edema (water in lungs) can occur hours later and be fatal."
+    },
+    {
+      "id": "fa_006",
+      "name": "Electric Shock",
+      "keywords": ["electric shock", "electrocution", "electricity", "shocked"],
+      "urgency": "EMERGENCY",
+      "steps": [
+        "1. Do NOT touch the person while they are still in contact with the electrical source",
+        "2. Switch OFF the power at the mains or circuit breaker IMMEDIATELY",
+        "3. If power cannot be switched off: use a DRY non-conductive object (wooden stick, plastic chair) to push person away from source",
+        "4. Once safe — check for breathing and pulse",
+        "5. If not breathing: Start CPR",
+        "6. Call 112",
+        "7. Treat any burns with cool running water",
+        "8. Keep person warm and still — do not move if spinal injury suspected"
+      ],
+      "response": "Electric shock emergency: NEVER touch the person while they are still in contact with the electricity source — you will get shocked too. FIRST switch off the mains power. If you cannot reach the switch, use a dry wooden stick to push them away from the source. Once safe, check if they are breathing. If not breathing — start CPR immediately and call 112. All electric shock victims need hospital evaluation even if they appear fine, as internal burns and heart rhythm problems can develop later."
+    }
+  ],
+
+  "diet_wellness": [
+    {
+      "id": "dw_001",
+      "name": "Balanced Indian Diet",
+      "keywords": ["balanced diet", "healthy eating", "Indian diet", "nutrition", "what to eat", "healthy food"],
+      "response": "A healthy balanced Indian diet should include: Grains (40–50%): whole wheat roti, brown rice, millets like bajra, jowar, and ragi — excellent nutrition and fibre. Protein (20–25%): dal, rajma, chana, paneer, curd, eggs, fish — at least 2 servings per day. Vegetables (20–25%): include leafy greens like palak and methi daily, aim for 5 different coloured vegetables per week. Fruits (2 servings): seasonal fruits — guava, papaya, banana, amla (very rich in Vitamin C). Dairy: low-fat milk or curd daily for calcium. Healthy fats: moderate ghee, mustard oil, or coconut oil. LIMIT: refined sugar, maida (white flour), fried foods, pickles, papad, packaged snacks, and sugary drinks. A traditional Bengali thali with dal, sabzi, roti/rice, fish, curd, and a salad is actually nutritionally excellent."
+    },
+    {
+      "id": "dw_002",
+      "name": "Hydration",
+      "keywords": ["water", "hydration", "how much water", "dehydration", "fluids"],
+      "response": "Adults should drink 2.5–3 litres of water daily. In Kolkata's intense summer heat, increase to 3.5–4 litres. Signs of good hydration: pale yellow urine, urinating every 3–4 hours. Signs of dehydration: dark yellow urine, dry mouth, fatigue, dizziness, headache. Good hydration options beyond plain water: coconut water (excellent electrolytes), buttermilk or chaas (cooling and probiotic), lassi, lemon water (nimbu pani), sugarcane juice, and water-rich fruits like watermelon, cucumber, and tomatoes. Start your morning with 2 glasses of water before tea or coffee. During Durga Puja or other outdoor events in summer — carry a water bottle always."
+    },
+    {
+      "id": "dw_003",
+      "name": "Exercise & Physical Activity",
+      "keywords": ["exercise", "workout", "physical activity", "yoga", "walking", "fitness"],
+      "response": "The WHO recommends at least 150 minutes of moderate exercise per week — that is just 30 minutes on 5 days. Best options for Kolkata residents: morning walk in parks like Rabindra Sarobar, Maidan, or Botanical Garden (avoid early morning in summer due to heat). Yoga is excellent and very culturally appropriate — many free morning yoga classes happen in parks. Swimming is great in summer. For those with busy schedules: take stairs instead of lift, walk to the local market, or do 10-minute exercise breaks at home. Exercise significantly reduces risk of diabetes, hypertension, heart disease, and depression. Even 15 minutes of daily walking is far better than no exercise."
+    },
+    {
+      "id": "dw_004",
+      "name": "Sleep",
+      "keywords": ["sleep", "insomnia", "sleeping", "cant sleep", "sleep tips", "rest"],
+      "response": "Adults need 7–9 hours of good quality sleep each night. Poor sleep increases risk of diabetes, obesity, heart disease, and depression. Sleep hygiene tips: go to bed and wake up at the same time every day (even weekends), avoid phone and TV screens for at least 1 hour before bed (blue light disrupts sleep), keep your bedroom cool and dark, avoid heavy meals, tea, or coffee within 3 hours of bedtime. Warm milk with turmeric (haldi doodh) before bed genuinely helps sleep — the tryptophan in milk promotes sleep. Brief afternoon rest (15–20 minute nap) is perfectly healthy and culturally common in India. If you cannot sleep for more than 3 weeks, see a doctor — insomnia can be linked to anxiety, thyroid, or sleep apnea."
+    },
+    {
+      "id": "dw_005",
+      "name": "Mental Health",
+      "keywords": ["stress", "anxiety", "depression", "mental health", "tension", "worried", "sad", "panic"],
+      "response": "Mental health is as important as physical health. Common signs of anxiety: constant worry, racing heart, difficulty sleeping, irritability, difficulty concentrating. Common signs of depression: persistent sadness for more than 2 weeks, loss of interest in activities you enjoyed, changes in sleep and appetite, fatigue, feeling hopeless. Immediate relief techniques: deep breathing (breathe in for 4 counts, hold for 4, breathe out for 4), talk to a trusted family member or friend, go for a walk outdoors. Free mental health support in India: iCall (Monday–Saturday, 8am–10pm): 9152987821. Vandrevala Foundation helpline: 1860-2662-345 (24/7). NIMHANS helpline: 080-46110007. Seeking help from a counselor or psychiatrist is a sign of strength, not weakness. Mental health treatment is available free at all government hospitals."
+    },
+    {
+      "id": "dw_006",
+      "name": "Monsoon Health Tips",
+      "keywords": ["monsoon", "rainy season", "monsoon health", "rain health tips"],
+      "response": "Kolkata's monsoon (June–October) brings beautiful rains but also major health risks. Essential monsoon health tips: Drink only boiled or filtered water — municipal water supply gets contaminated during heavy rains. Avoid roadside and outside food — cholera, typhoid, and hepatitis A spread through contaminated food and water. Keep your home free of stagnant water — empty coolers, flower pot plates, tyres, and blocked drains every 3 days (dengue and malaria mosquitoes breed in stagnant water). Dry your feet and between toes after getting wet — fungal infections are very common during monsoon. Keep an ORS supply at home. Get vaccinated against typhoid if you haven't already. Wear light, breathable cotton clothes to prevent skin infections."
+    },
+    {
+      "id": "dw_007",
+      "name": "Vitamin & Mineral Deficiencies Common in India",
+      "keywords": ["vitamin D", "vitamin B12", "iron deficiency", "anemia", "calcium", "deficiency"],
+      "response": "The most common nutritional deficiencies in India: Vitamin D deficiency — surprisingly common despite sunny weather, because most Indians avoid sun exposure. Symptoms: bone pain, weakness, fatigue, depression. Supplement: Vitamin D3 60,000 IU weekly for 8 weeks, then monthly maintenance. Get tested with a 25-OH Vitamin D blood test. Iron deficiency anemia — very common especially in women. Symptoms: extreme fatigue, paleness, shortness of breath, hair loss. Eat iron-rich foods: spinach, rajma, chana, jaggery, dates. Take iron tablets on empty stomach with lemon juice (Vitamin C improves absorption). Vitamin B12 deficiency — common in vegetarians/vegans. Symptoms: numbness, tingling, fatigue, memory problems. Supplement or eat eggs, milk, and fermented foods. Calcium — critical for bone health. Eat curd, milk, ragi (very rich in calcium), and green leafy vegetables."
+    }
+  ],
+
+  "government_schemes": [
+    {
+      "id": "gs_001",
+      "name": "Ayushman Bharat PM-JAY",
+      "keywords": ["Ayushman Bharat", "PM-JAY", "PMJAY", "health insurance", "free treatment", "5 lakh"],
+      "benefit": "Free health insurance of ₹5 lakh per family per year for secondary and tertiary hospital care",
+      "eligibility": "Economically vulnerable families based on SECC 2011 data. Primarily: rural families with no adult male member aged 16–59, families with disabled member as sole earner, daily wage workers, landless households.",
+      "how_to_check": "Visit pmjay.gov.in or call toll-free 14555. Show Aadhaar card at any empanelled hospital.",
+      "coverage": "1,949+ treatment packages including cancer, heart surgery, kidney dialysis, maternity care. Pre-existing diseases covered from day 1. Covers both government and empanelled private hospitals.",
+      "documents": "Aadhaar card, ration card or family income certificate",
+      "response": "Ayushman Bharat PM-JAY is India's largest health insurance scheme. It provides FREE treatment up to ₹5 lakh per family per year at government and empanelled private hospitals across India. Over 1,900 types of treatments are covered including major surgery, cancer treatment, and kidney dialysis. Pre-existing conditions are covered from day 1. To check if you are eligible: visit pmjay.gov.in and enter your mobile number and Aadhaar number, or call toll-free 14555, or go to any empanelled hospital with your Aadhaar card. The scheme covers most BPL (below poverty line) families. In West Bengal, this scheme operates as 'Swasthya Sathi' with even broader coverage."
+    },
+    {
+      "id": "gs_002",
+      "name": "Swasthya Sathi (West Bengal)",
+      "keywords": ["Swasthya Sathi", "West Bengal health scheme", "Bengal health insurance", "WB scheme"],
+      "benefit": "Free health coverage of ₹5 lakh per family per year — broader than PM-JAY, covers ALL families in West Bengal",
+      "eligibility": "ALL permanent residents of West Bengal — no income limit. Issued as a smart card.",
+      "how_to_apply": "Apply through your local panchayat/ward office or at health camps. The card is issued in the woman's name (priority to women).",
+      "coverage": "Covers hospitalization, surgery, ICU, dialysis, cancer treatment at government and empanelled private hospitals in West Bengal.",
+      "helpline": "1800-345-5384 (toll-free)",
+      "response": "Swasthya Sathi is West Bengal's own health insurance scheme — it covers ALL families in West Bengal (not just BPL families) with free treatment up to ₹5 lakh per year. The smart card is issued in the woman's name. To get your card: contact your local ward councillor, panchayat office, or attend a Swasthya Sathi camp in your area. Call 1800-345-5384 (toll-free) for more information. All major government hospitals and many private hospitals in Kolkata are empanelled under this scheme. If you are hospitalized and show your Swasthya Sathi card, you should not have to pay anything for covered treatments."
+    },
+    {
+      "id": "gs_003",
+      "name": "Janani Suraksha Yojana (JSY)",
+      "keywords": ["JSY", "Janani Suraksha", "maternity scheme", "pregnancy scheme", "delivery cash"],
+      "benefit": "Cash assistance for institutional delivery: ₹1,400 (rural) and ₹1,000 (urban) to pregnant women delivering in government hospitals",
+      "eligibility": "BPL pregnant women for up to 2 live births. No age restriction.",
+      "how_to_apply": "Contact your nearest ASHA worker, ANM nurse, or Primary Health Centre (PHC)",
+      "additional_benefits": "Free antenatal care, free delivery, free C-section, free post-natal care, free immunization for newborn, iron and folic acid supplements.",
+      "response": "Janani Suraksha Yojana (JSY) provides cash assistance to encourage pregnant women to deliver in government hospitals instead of at home, which dramatically reduces maternal and infant deaths. BPL pregnant women get ₹1,400 in rural areas and ₹1,000 in urban areas for institutional delivery. In addition to cash, you get completely FREE antenatal checkups, delivery (including C-section if needed), post-natal care, and newborn immunization. Contact your local ASHA worker (community health worker) or your nearest Primary Health Centre to enroll during pregnancy. The ASHA worker will guide you through the entire process and accompany you to the hospital."
+    },
+    {
+      "id": "gs_004",
+      "name": "Nikshay (National TB Program)",
+      "keywords": ["TB free treatment", "Nikshay", "tuberculosis program", "TB medicine"],
+      "benefit": "Completely FREE TB testing, treatment, and medicines. ₹500 per month nutritional support to TB patients.",
+      "eligibility": "Any person diagnosed with TB in India — no income restriction",
+      "how_to_access": "Go to any government hospital or DOTS centre. All tests (sputum, GeneXpert, chest X-ray) are FREE.",
+      "response": "If you are diagnosed with TB, ALL treatment is completely FREE under the Nikshay national program. Free tests: sputum microscopy, GeneXpert, chest X-ray. Free medicines: full 6-month DOTS (Directly Observed Treatment) course. Free nutritional support: ₹500 per month deposited directly into your bank account during treatment. TB is completely curable if the full treatment course is completed. Never stop TB medicines early — incomplete treatment creates drug-resistant TB (MDR-TB) which is much harder and more expensive to treat. Go to any government hospital or DOTS centre in Kolkata — you will not be charged anything."
+    },
+    {
+      "id": "gs_005",
+      "name": "National Mental Health Programme",
+      "keywords": ["mental health scheme", "free psychiatrist", "mental health government", "NMHP"],
+      "benefit": "Free mental health consultation and medicines at all government hospitals",
+      "how_to_access": "Visit the psychiatry OPD at any government hospital. NIMHANS helpline: 080-46110007. iCall: 9152987821",
+      "response": "Free mental health services are available at all government hospitals in West Bengal under the National Mental Health Programme. You can visit the psychiatry or counselling OPD at SSKM, NRS Medical College, or any district hospital without any fees. Free psychiatric medicines are provided at government dispensaries. If you need immediate support: iCall helpline (Mon–Sat, 8am–10pm): 9152987821. Vandrevala Foundation (24/7): 1860-2662-345. Seeking mental health treatment is completely normal and you deserve support."
+    }
+  ],
+
+  "hospitals": [
+    {
+      "id": "hosp_001",
+      "name": "SSKM (Seth Sukhlal Karnani Memorial Hospital)",
+      "keywords": ["SSKM", "PG hospital", "government hospital Kolkata", "best hospital Kolkata"],
+      "type": "Government — Premier teaching hospital",
+      "location": "244 AJC Bose Road, Bhowanipore, Kolkata 700020",
+      "phone": "033-2223-6000",
+      "emergency": "033-2223-6161",
+      "specialties": ["All specialties", "Trauma center", "Burns unit", "Cardiac surgery", "Neurosurgery"],
+      "free_services": "All OPD, emergency, and inpatient services are free. Free medicines for admitted patients.",
+      "response": "SSKM Hospital (also called PG Hospital) is Kolkata's premier government teaching hospital located on AJC Bose Road, Bhowanipore. It offers all specialties completely FREE including emergency care, surgery, ICU, and specialist consultations. Emergency: 033-2223-6161. OPD runs Monday–Saturday from 9am to 1pm — arrive early as queues are long. It has dedicated departments for burns, trauma, cardiac surgery, and neurosurgery. Accepts Swasthya Sathi and Ayushman Bharat cards."
+    },
+    {
+      "id": "hosp_002",
+      "name": "NRS Medical College & Hospital",
+      "keywords": ["NRS", "Nil Ratan Sircar", "NRS hospital", "Sealdah hospital"],
+      "type": "Government — Medical college hospital",
+      "location": "138 AJC Bose Road, Near Sealdah, Kolkata 700014",
+      "phone": "033-2265-0108",
+      "emergency": "033-2265-0108",
+      "specialties": ["General medicine", "Surgery", "Pediatrics", "Orthopedics", "Gynecology", "Psychiatry"],
+      "free_services": "All services free. Good psychiatry and mental health OPD.",
+      "response": "NRS (Nil Ratan Sircar) Medical College & Hospital is a major government hospital near Sealdah, Kolkata. All services are free including OPD, emergency, and inpatient care. It has a well-regarded psychiatry OPD and pediatrics department. Address: 138 AJC Bose Road. Phone: 033-2265-0108. Located centrally and easily accessible by metro (Sealdah station) and bus."
+    },
+    {
+      "id": "hosp_003",
+      "name": "Calcutta Medical College & Hospital (CMCH)",
+      "keywords": ["Calcutta Medical College", "CMC", "College Street hospital", "CMCH"],
+      "type": "Government — Oldest medical college hospital in Asia",
+      "location": "88 College Street, Kolkata 700073",
+      "phone": "033-2241-1354",
+      "emergency": "033-2241-1354",
+      "specialties": ["All specialties", "Ophthalmology", "ENT", "Dermatology", "Orthopedics"],
+      "free_services": "All government hospital services free",
+      "response": "Calcutta Medical College & Hospital (CMCH) is one of the oldest medical colleges in Asia, located at College Street. All medical services are completely free. It has strong departments in ophthalmology, ENT, dermatology, and orthopedics. Address: 88 College Street, Kolkata. Phone: 033-2241-1354. Accessible by metro (Central station)."
+    },
+    {
+      "id": "hosp_004",
+      "name": "Chittaranjan National Cancer Institute (CNCI)",
+      "keywords": ["CNCI", "cancer hospital Kolkata", "cancer treatment free", "Chittaranjan cancer"],
+      "type": "Government — Specialized cancer centre",
+      "location": "37 S P Mukherjee Road, Kolkata 700026",
+      "phone": "033-2476-5101",
+      "specialties": ["All types of cancer", "Chemotherapy", "Radiation therapy", "Cancer surgery", "Palliative care"],
+      "free_services": "Highly subsidized or free cancer treatment for BPL patients. Accepts PM-JAY and Swasthya Sathi.",
+      "response": "Chittaranjan National Cancer Institute (CNCI) is Kolkata's premier cancer hospital, located on S P Mukherjee Road. It provides highly subsidized or free cancer treatment for economically vulnerable patients under Swasthya Sathi and PM-JAY. Services include all types of cancer surgery, chemotherapy, radiation therapy, and palliative care. Address: 37 S P Mukherjee Road, Kolkata 700026. Phone: 033-2476-5101. For cancer-related queries or OPD registration, arrive early on weekdays."
+    },
+    {
+      "id": "hosp_005",
+      "name": "Emergency & Helpline Numbers — Kolkata",
+      "keywords": ["emergency number", "ambulance", "helpline", "112", "1911", "hospital phone"],
+      "type": "Emergency contacts",
+      "contacts": {
+        "National Emergency": "112 (Police + Ambulance + Fire — single number)",
+        "Ambulance (West Bengal)": "102 (free ambulance service for pregnant women and seriously ill)",
+        "Kolkata Police": "100",
+        "Fire Brigade": "101",
+        "KMDA Control Room": "1800-345-5000",
+        "Mental Health Helpline (iCall)": "9152987821",
+        "Vandrevala Foundation (24/7)": "1860-2662-345",
+        "COVID Helpline WB": "1800-313-444-222",
+        "Swasthya Sathi Helpline": "1800-345-5384",
+        "PM-JAY Helpline": "14555",
+        "Women Helpline": "181",
+        "Child Helpline": "1098"
+      },
+      "response": "Important emergency and health helpline numbers for Kolkata and West Bengal: Medical Emergency / Ambulance: 112. Free Ambulance (pregnant women & serious illness): 102. Mental health support iCall: 9152987821 (Mon–Sat 8am–10pm). Vandrevala Foundation 24/7: 1860-2662-345. Swasthya Sathi scheme helpline: 1800-345-5384. PM-JAY helpline: 14555. COVID helpline West Bengal: 1800-313-444-222. Women helpline: 181. Child helpline: 1098. Save these numbers on your phone — emergencies happen when least expected."
+    }
+  ],
+
+  "custom_qa": [
+    {
+      "id": "qa_001",
+      "question": "What should I do in a medical emergency in Kolkata?",
+      "keywords": ["emergency", "what to do emergency", "medical emergency Kolkata"],
+      "response": "In a medical emergency in Kolkata: Call 112 (single emergency number for ambulance, police, fire). For free ambulance especially for pregnant women or seriously ill: call 102. State clearly your location, the nature of the emergency, and the patient's condition. While waiting for the ambulance: keep the patient calm, do not move them if there is a spinal injury risk, do not give food or water to an unconscious person. Nearest major emergency centers in Kolkata: SSKM Emergency (033-2223-6161), NRS Hospital (033-2265-0108), Calcutta Medical College (033-2241-1354). If you have a Swasthya Sathi card, you can walk into any empanelled hospital emergency without paying."
+    },
+    {
+      "id": "qa_002",
+      "question": "How do I know if I am dehydrated?",
+      "keywords": ["dehydrated", "dehydration signs", "how to know dehydration"],
+      "response": "Signs of dehydration from mild to severe: Mild: feeling thirsty, slightly dark yellow urine, dry mouth. Moderate: dark yellow or amber urine, headache, fatigue, dizziness when standing up, less frequent urination (less than 3-4 times a day). Severe (medical emergency): no urination for 8+ hours, sunken eyes, extreme dry mouth, confusion, rapid weak pulse, cold clammy skin. The easiest way to check hydration: look at your urine colour — pale yellow = good, dark yellow = drink more water, orange or brown = severely dehydrated. Treatment: drink water or ORS for mild to moderate dehydration. For severe dehydration (especially in children, elderly, or diabetics) — go to hospital for IV fluids."
+    },
+    {
+      "id": "qa_003",
+      "question": "What vaccinations should adults get in India?",
+      "keywords": ["vaccine adult", "vaccination India", "adult immunization", "which vaccine"],
+      "response": "Important vaccines for adults in India: Influenza (flu) vaccine: yearly, especially for elderly and those with diabetes, heart or lung disease. Typhoid vaccine: every 3 years, especially important in Kolkata where typhoid is common. Hepatitis B: 3-dose series if not vaccinated as a child. Tetanus-Diphtheria booster: every 10 years (or after deep wounds). COVID-19: primary series + boosters as recommended. Hepatitis A: recommended for those in high-risk areas. Pneumococcal vaccine: for adults above 65 or with chronic illness. Most of these vaccines are FREE at government hospitals and health centres in Kolkata. Private clinics charge ₹200–₹2,000 depending on the vaccine. Consult your doctor about which vaccines you specifically need based on your age and health conditions."
+    },
+    {
+      "id": "qa_004",
+      "question": "How do I manage a fever at home?",
+      "keywords": ["manage fever", "fever home treatment", "fever care", "temperature"],
+      "response": "Managing fever at home: Take paracetamol (Crocin or Dolo 650) — 500mg to 1000mg every 4-6 hours. Maximum 4g per day for adults. Rest and drink plenty of fluids — water, coconut water, ORS, lemon water, fruit juices. Wet cloth: place a cool (not cold) wet cloth on the forehead — this gives comfort but does not actually reduce fever significantly. Wear light clothing and keep the room cool and ventilated. Do NOT use ice or cold water bath — it causes shivering which actually raises internal temperature. Check temperature every 4-6 hours. When to see a doctor immediately: fever above 104°F (40°C), fever with stiff neck and headache, fever lasting more than 3 days, fever in a child under 3 months, fever with rash, or fever with confusion."
+    },
+    {
+      "id": "qa_005",
+      "question": "What are common food safety tips for Kolkata?",
+      "keywords": ["food safety", "safe food Kolkata", "avoid food poisoning", "street food safety"],
+      "response": "Food safety tips especially relevant for Kolkata: Avoid outside food and street food during monsoon (June-October) — this is when food poisoning, cholera, and typhoid are most common. If buying street food: choose freshly cooked hot food, avoid pre-cut fruits, raw salads, and foods kept open without cover. Drink only boiled or filtered water or sealed bottled water. At home: wash vegetables thoroughly, refrigerate cooked food within 2 hours, never eat food that smells off. Wash hands with soap for 20 seconds before cooking and eating, and after using the toilet. Fish and seafood (very popular in West Bengal) should be fresh and cooked thoroughly — never eat raw or undercooked fish. During festive seasons like Durga Puja, be cautious of prasad or food that has been sitting for hours."
+    },
+    {
+      "id": "qa_006",
+      "question": "What should every home medicine kit contain in India?",
+      "keywords": ["medicine kit", "home medicines", "first aid kit", "home pharmacy", "keep at home"],
+      "response": "Essential home medicine kit for an Indian household: Paracetamol (Crocin/Dolo 650) — fever and pain. ORS sachets (Electral) — dehydration and diarrhea. Antacid (Digene liquid or Pantoprazole) — acidity. Cetirizine (Cetzine 10mg) — allergies and itching. Bandages, cotton, antiseptic (Dettol/Savlon), medical tape — for wounds and cuts. Thermometer (digital) — to measure temperature. Iodine or betadine solution — wound cleaning. Betadine ointment — minor cuts and wounds. Oral contraceptive pills if needed. Any chronic disease medicines (prescribed by doctor). Pulse oximeter if elderly person at home (monitors oxygen level). Blood pressure monitor if hypertensive person at home. Keep all medicines in a cool dry place away from children. Check expiry dates every 6 months."
+    }
+  ]
+}
